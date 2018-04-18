@@ -28,4 +28,5 @@ public class DatabaseConnection {
 
     //Skapa en metod som stänger databas-connectionen
     //Skapa en metod som addar nya users till databasen.
+    //Skapa en metod som addar nya övningar till databasen.
 }
