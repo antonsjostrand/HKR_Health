@@ -22,7 +22,11 @@ public class DatabaseConnection {
                 ourDBC = new DatabaseConnection();
             }
         }catch (Exception e){
-            //Skapa error ifall det inte gick att skapa ett objekt av databaseconnection
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Database Connection");
+            alert.setHeaderText("Creation of object");
+            alert.setContentText("Failed to create object of class: DatabaseConnection");
+            alert.showAndWait();
         }
         return ourDBC;
     }
