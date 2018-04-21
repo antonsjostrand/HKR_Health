@@ -8,10 +8,28 @@ import java.sql.Statement;
 
 public class DatabaseConnection {
 
+    private static DatabaseConnection ourDBC;
     private String url = "jdbc:mysql://127.0.0.1:3306/hkr_health?user=root&password=root";
     private Statement st;
 
-    public DatabaseConnection(){
+    public static DatabaseConnection getInstance() {
+        try {
+            if (ourDBC == null) {
+                ourDBC = new DatabaseConnection();
+            }
+        }catch (Exception e){
+            //Skapa error ifall det inte gick att skapa ett objekt av databaseconnection
+        }
+        return ourDBC;
+    }
+
+
+    private DatabaseConnection(){
+
+    }
+
+    //Skapar en koppling till databasen.
+    public void connectToDB(){
         try{
             Connection c = DriverManager.getConnection(url);
             st = c.createStatement();
@@ -26,7 +44,6 @@ public class DatabaseConnection {
     }
 
 
-    //Skapa en metod som stänger databas-connectionen
-    //Skapa en metod som addar nya users till databasen.
+    public void
     //Skapa en metod som addar nya övningar till databasen.
 }

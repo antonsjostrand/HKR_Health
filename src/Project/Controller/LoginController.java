@@ -112,6 +112,7 @@ public class LoginController implements Initializable {
         Image image = new Image(getClass().getResourceAsStream("/Resources/dumbells.png"));
         startBackground.setImage(image);
 
-        DatabaseConnection dbConnection = new DatabaseConnection();
+        DatabaseConnection.getInstance().connectToDB();
+
     }
 }
