@@ -1,5 +1,9 @@
 package Project;
 
+import Project.Model.Admin;
+import Project.Model.Exercise;
+import Project.Model.Nutrition;
+import Project.Model.User;
 import javafx.scene.control.Alert;
 
 import java.sql.Connection;
@@ -44,6 +48,19 @@ public class DatabaseConnection {
     }
 
 
-    public void
-    //Skapa en metod som addar nya övningar till databasen.
+    public void addUserToDB(User user){
+
+    }
+
+    public void addExerciseToDB(Exercise exercise){
+
+    }
+
+    public void addNutritionToDB(Nutrition nutrition){
+
+    }
+
+    public void addAdminToDB(Admin admin){
+
+    }
 }

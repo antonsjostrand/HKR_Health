@@ -1,4 +1,4 @@
 package Project.Model;
 
-public class Admin {
+public class Admin extends Person {
 }
