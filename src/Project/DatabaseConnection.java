@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseConnection {
@@ -16,6 +17,7 @@ public class DatabaseConnection {
     private String url = "jdbc:mysql://127.0.0.1:3306/hkr_health?user=root&password=root";
     private Statement st;
 
+    //Skapar ett objekt om det inte redan finns något när man man kallar på metoden.
     public static DatabaseConnection getInstance() {
         try {
             if (ourDBC == null) {
@@ -31,7 +33,7 @@ public class DatabaseConnection {
         return ourDBC;
     }
 
-
+    //Används ej.
     private DatabaseConnection(){
 
     }
@@ -53,7 +55,11 @@ public class DatabaseConnection {
 
 
     public void addUserToDB(User user){
+        try{
 
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void addExerciseToDB(Exercise exercise){
@@ -66,5 +72,11 @@ public class DatabaseConnection {
 
     public void addAdminToDB(Admin admin){
 
+    }
+    
+    //Metod som ska hämta det största userIDet för att man ska kunna skapa nya konton som fortsätter där man slutade
+    //Om man slutade på userid 1000, så skall metoden hämta 1000 och nästa konto man hämtar får 1001.
+    public int getUserID(){
+        return 10;
     }
 }

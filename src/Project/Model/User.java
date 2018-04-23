@@ -1,19 +1,26 @@
 package Project.Model;
 
+import Project.DatabaseConnection;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 
-public class User extends Person {
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class User extends Person implements Initializable {
+
+    private static int userIDCounter = DatabaseConnection.getInstance().getUserID();
     private String startWeight, height;
     private int maxLift, userID = 0;
 
     public User(String firstName, String lastName, String password, String SSN, int age, String startWeight, String height, int maxLift) {
             super(firstName, lastName, password, SSN, age);
         try{
+            userIDCounter++;
             this.startWeight = startWeight;
             this.height = height;
             this.maxLift = maxLift;
-            this.userID = userID++;
+            this.userID = userIDCounter;
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("User");
@@ -51,4 +58,8 @@ public class User extends Person {
         return userID;
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }
