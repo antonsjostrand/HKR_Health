@@ -9,18 +9,15 @@ import java.util.ResourceBundle;
 
 public class User extends Person implements Initializable {
 
-    private static int userIDCounter = DatabaseConnection.getInstance().getUserID();
-    private String startWeight, height;
-    private int maxLift, userID = 0;
+    private String startWeight, height, username;
 
-    public User(String firstName, String lastName, String password, String SSN, int age, String startWeight, String height, int maxLift) {
+
+    public User(String username, String firstName, String lastName, String password, String SSN, int age, String startWeight, String height) {
             super(firstName, lastName, password, SSN, age);
         try{
-            userIDCounter++;
+            this.username = username;
             this.startWeight = startWeight;
             this.height = height;
-            this.maxLift = maxLift;
-            this.userID = userIDCounter;
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("User");
@@ -46,17 +43,7 @@ public class User extends Person implements Initializable {
         this.height = height;
     }
 
-    public int getMaxLift() {
-        return maxLift;
-    }
-
-    public void setMaxLift(int maxLift) {
-        this.maxLift = maxLift;
-    }
-
-    public int getUserID(){
-        return userID;
-    }
+    public String getUsername(){ return username; }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

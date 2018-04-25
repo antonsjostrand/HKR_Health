@@ -74,9 +74,4 @@ public class DatabaseConnection {
 
     }
 
-    //Metod som ska hämta det största userIDet för att man ska kunna skapa nya konton som fortsätter där man slutade
-    //Om man slutade på userid 1000, så skall metoden hämta 1000 och nästa konto man hämtar får 1001.
-    public int getUserID(){
-        return 10;
-    }
 }

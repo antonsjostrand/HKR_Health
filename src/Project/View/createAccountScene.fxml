@@ -5,26 +5,25 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.CreateAccountController">
    <children>
       <TextField fx:id="firstNameTF" layoutX="24.0" layoutY="55.0" />
       <TextField fx:id="lastNameTF" layoutX="24.0" layoutY="104.0" />
       <TextField fx:id="ageTF" layoutX="24.0" layoutY="159.0" />
-      <TextField fx:id="heightTF" layoutX="24.0" layoutY="216.0" />
-      <TextField fx:id="weightTF" layoutX="24.0" layoutY="270.0" />
-      <TextField fx:id="ssnTF" layoutX="24.0" layoutY="331.0" />
-      <TextField fx:id="maxLiftTF" layoutX="24.0" layoutY="389.0" />
+      <TextField fx:id="heightTF" layoutX="24.0" layoutY="350.0" />
+      <TextField fx:id="weightTF" layoutX="24.0" layoutY="404.0" />
+      <TextField fx:id="userNameTF" layoutX="24.0" layoutY="275.0" />
       <TextField fx:id="passwordTF" layoutX="24.0" layoutY="454.0" />
       <Label layoutX="24.0" layoutY="38.0" text="Firstname" />
       <Label layoutX="24.0" layoutY="87.0" text="Lastname" />
       <Label layoutX="24.0" layoutY="142.0" text="Age" />
-      <Label layoutX="24.0" layoutY="199.0" text="Height" />
-      <Label layoutX="24.0" layoutY="253.0" text="Weight" />
-      <Label layoutX="24.0" layoutY="314.0" text="SSN" />
-      <Label layoutX="24.0" layoutY="372.0" text="maxlift" />
+      <Label layoutX="24.0" layoutY="333.0" text="Height" />
+      <Label layoutX="24.0" layoutY="387.0" text="Weight" />
+      <Label layoutX="24.0" layoutY="259.0" text="Username" />
       <Label layoutX="24.0" layoutY="437.0" text="password" />
       <Button fx:id="createAccountButton" layoutX="381.0" layoutY="524.0" mnemonicParsing="false" onAction="#createAccountButtonPressed" text="Create Account" />
       <Button fx:id="cancelButton" layoutX="517.0" layoutY="524.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
+      <TextField fx:id="ssnTF" layoutX="24.0" layoutY="213.0" />
+      <Label layoutX="24.0" layoutY="196.0" text="SSN" />
    </children>
 </AnchorPane>

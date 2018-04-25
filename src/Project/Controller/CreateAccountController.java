@@ -26,8 +26,8 @@ public class CreateAccountController implements Initializable{
     @FXML private TextField heightTF;
     @FXML private TextField weightTF;
     @FXML private TextField ssnTF;
-    @FXML private TextField maxLiftTF;
     @FXML private TextField passwordTF;
+    @FXML private TextField usernameTF;
     @FXML private Button createAccountButton;
     @FXML private Button cancelButton;
 
@@ -50,17 +50,17 @@ public class CreateAccountController implements Initializable{
     @FXML
     void createAccountButtonPressed(ActionEvent event) {
         try{
-            User newUser = new User(firstNameTF.getText(),
+            User newUser = new User(usernameTF.getText(),
+                    firstNameTF.getText(),
                     lastNameTF.getText(),
                     passwordTF.getText(),
                     ssnTF.getText(),
                     Integer.valueOf(ageTF.getText()),
                     weightTF.getText(),
-                    heightTF.getText(),
-                    Integer.valueOf(maxLiftTF.getText()));
+                    heightTF.getText());
 
             DatabaseConnection.getInstance().addUserToDB(newUser);
-            System.out.println(newUser.getUserID());
+
         }catch (Exception e){
             e.printStackTrace();
             //Adda error handling
