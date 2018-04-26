@@ -12,7 +12,7 @@
       <TextField fx:id="ageTF" layoutX="24.0" layoutY="159.0" />
       <TextField fx:id="heightTF" layoutX="24.0" layoutY="350.0" />
       <TextField fx:id="weightTF" layoutX="24.0" layoutY="404.0" />
-      <TextField fx:id="userNameTF" layoutX="24.0" layoutY="275.0" />
+      <TextField fx:id="usernameTF" layoutX="24.0" layoutY="275.0" />
       <TextField fx:id="passwordTF" layoutX="24.0" layoutY="454.0" />
       <Label layoutX="24.0" layoutY="38.0" text="Firstname" />
       <Label layoutX="24.0" layoutY="87.0" text="Lastname" />

@@ -13,12 +13,17 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
+
 public class CreateAccountController implements Initializable{
+
+    private boolean checkUserName;
+    private boolean checkSSN;
 
     @FXML private TextField firstNameTF;
     @FXML private TextField lastNameTF;
@@ -50,19 +55,67 @@ public class CreateAccountController implements Initializable{
     @FXML
     void createAccountButtonPressed(ActionEvent event) {
         try{
-            User newUser = new User(usernameTF.getText(),
-                    firstNameTF.getText(),
-                    lastNameTF.getText(),
-                    passwordTF.getText(),
-                    ssnTF.getText(),
-                    Integer.valueOf(ageTF.getText()),
-                    weightTF.getText(),
-                    heightTF.getText());
+            checkUserName = DatabaseConnection.getInstance().checkUserName(usernameTF.getText());
+            checkSSN = DatabaseConnection.getInstance().checkSSN(ssnTF.getText());
 
-            DatabaseConnection.getInstance().addUserToDB(newUser);
+            if (checkUserName == false && checkSSN == false) {
+                        User newUser = new User(usernameTF.getText(),
+                            firstNameTF.getText(),
+                            lastNameTF.getText(),
+                            passwordTF.getText(),
+                            ssnTF.getText(),
+                            Integer.valueOf(ageTF.getText()),
+                            weightTF.getText(),
+                            heightTF.getText());
 
+                DatabaseConnection.getInstance().addUserToDB(newUser);
+
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Account Creation");
+                alert.setHeaderText("Account Created");
+                alert.setContentText("Account creation successful.");
+                alert.showAndWait();
+
+                usernameTF.clear();
+                firstNameTF.clear();
+                lastNameTF.clear();
+                passwordTF.clear();
+                ssnTF.clear();
+                ageTF.clear();
+                weightTF.clear();
+                heightTF.clear();
+
+            }else if (checkUserName == true && checkSSN == false){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Username");
+                alert.setContentText("Username already exists.");
+                alert.showAndWait();
+
+                usernameTF.clear();
+
+            }else if (checkUserName == false && checkSSN == true){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("SSN");
+                alert.setContentText("SSN already exists.");
+                alert.showAndWait();
+
+                ssnTF.clear();
+
+            }else if (checkUserName == true && checkSSN == true){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Username & SSN");
+                alert.setContentText("Username and SSN already exists.");
+                alert.showAndWait();
+
+                usernameTF.clear();
+                ssnTF.clear();
+            }
         }catch (Exception e){
             e.printStackTrace();
+            System.out.println("HEJEHEHEHEH");
             //Adda error handling
         }
 
