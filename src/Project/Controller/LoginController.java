@@ -37,14 +37,8 @@ public class LoginController implements Initializable {
 
     @FXML void adminButtonPressed(ActionEvent event) {
         try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/adminScene.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            changeScene("adminScene", event);
+         
         } catch (IOException e){
             //Fixa error handling
         }
@@ -52,14 +46,8 @@ public class LoginController implements Initializable {
 
     @FXML void createAccountButtonPressed(ActionEvent event) {
         try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
+            changeScene("createAccountScene", event);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/createAccountScene.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
         } catch (IOException e){
             //Fixa error handling
         }
@@ -67,14 +55,8 @@ public class LoginController implements Initializable {
 
     @FXML void guestButtonPressed(ActionEvent event) {
         try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
+            changeScene("guestScene", event);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/guestScene.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
         } catch (IOException e){
             //Fixa error handling
         }
@@ -108,14 +90,8 @@ public class LoginController implements Initializable {
 
     @FXML void lostPasswordButtonPressed(ActionEvent event) {
         try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
+            changeScene("lostPasswordScene", event);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/lostPasswordScene.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
         }catch (IOException e){
             //Fixa error handling
         }
