@@ -14,6 +14,7 @@
       <TextField fx:id="weightTF" layoutX="24.0" layoutY="404.0" />
       <TextField fx:id="usernameTF" layoutX="24.0" layoutY="275.0" />
       <TextField fx:id="passwordTF" layoutX="24.0" layoutY="454.0" />
+      <TextField fx:id="ssnTF" layoutX="24.0" layoutY="213.0" />
       <Label layoutX="24.0" layoutY="38.0" text="Firstname" />
       <Label layoutX="24.0" layoutY="87.0" text="Lastname" />
       <Label layoutX="24.0" layoutY="142.0" text="Age" />
@@ -23,7 +24,6 @@
       <Label layoutX="24.0" layoutY="437.0" text="password" />
       <Button fx:id="createAccountButton" layoutX="381.0" layoutY="524.0" mnemonicParsing="false" onAction="#createAccountButtonPressed" text="Create Account" />
       <Button fx:id="cancelButton" layoutX="517.0" layoutY="524.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
-      <TextField fx:id="ssnTF" layoutX="24.0" layoutY="213.0" />
       <Label layoutX="24.0" layoutY="196.0" text="SSN" />
    </children>
 </AnchorPane>

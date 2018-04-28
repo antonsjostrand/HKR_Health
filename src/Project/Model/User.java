@@ -9,10 +9,11 @@ import java.util.ResourceBundle;
 
 public class User extends Person implements Initializable {
 
-    private String startWeight, height, username;
+    private String username;
+    private int  startWeight, height;
 
 
-    public User(String username, String firstName, String lastName, String password, String SSN, int age, String startWeight, String height) {
+    public User(String username, String firstName, String lastName, String password, String SSN, int age, int startWeight, int height) {
             super(firstName, lastName, password, SSN, age);
         try{
             this.username = username;
@@ -27,19 +28,19 @@ public class User extends Person implements Initializable {
         }
     }
 
-    public String getStartWeight() {
+    public int getStartWeight() {
         return startWeight;
     }
 
-    public void setStartWeight(String startWeight) {
+    public void setStartWeight(int startWeight) {
         this.startWeight = startWeight;
     }
 
-    public String getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    public void setHeight(String height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 

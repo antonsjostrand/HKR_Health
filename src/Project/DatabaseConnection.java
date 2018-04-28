@@ -7,6 +7,7 @@ import Project.Model.User;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
+import java.util.InputMismatchException;
 
 public class DatabaseConnection {
 
@@ -66,22 +67,21 @@ public class DatabaseConnection {
         }
     }
 
-    public boolean checkUserName(String username) throws Exception {
+    public boolean checkUserNameDB(String username) throws Exception {
         ResultSet rs = st.executeQuery("SELECT username FROM user WHERE username = '" + username + "'");
-        if (rs.next()) {
-            return true;
-        }else{
+            if (rs.next()) {
+                return true;
+            }
             return false;
-        }
     }
 
-    public boolean checkSSN(String SSN) throws Exception {
+    public boolean checkSSNDB(String SSN) throws Exception {
         ResultSet rs = st.executeQuery("SELECT SSN FROM person WHERE SSN = '" + SSN + "'");
-        if (rs.next()) {
-            return true;
-        } else {
-            return false;
-        }
+             if (rs.next()) {
+                   return true;
+             } else {
+                   return false;
+             }
     }
 
     public void addExerciseToDB(Exercise exercise){
