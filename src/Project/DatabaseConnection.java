@@ -52,7 +52,7 @@ public class DatabaseConnection {
         }
     }
 
-
+    //Addar en ny användare till databasen.
     public void addUserToDB(User user){
         try{
             st.executeUpdate("INSERT INTO person (firstName, lastName, password, age, SSN) " +
@@ -67,6 +67,7 @@ public class DatabaseConnection {
         }
     }
 
+    //Kontrollerar om ett användarnamn finns i databasen.
     public boolean checkUserNameDB(String username) throws Exception {
         ResultSet rs = st.executeQuery("SELECT username FROM user WHERE username = '" + username + "'");
             if (rs.next()) {
@@ -75,6 +76,7 @@ public class DatabaseConnection {
             return false;
     }
 
+    //Kontrollerar om ett personnummer finns i databasen.
     public boolean checkSSNDB(String SSN) throws Exception {
         ResultSet rs = st.executeQuery("SELECT SSN FROM person WHERE SSN = '" + SSN + "'");
              if (rs.next()) {
@@ -94,6 +96,24 @@ public class DatabaseConnection {
 
     public void addAdminToDB(Admin admin){
 
+    }
+
+    public boolean handleUserLogin(String username, String password) throws Exception{
+        String SSN, retrievedPassword;
+        ResultSet rsOne = st.executeQuery("SELECT Person_SSN FROM user WHERE username = '" + username+ "'");
+            if (rsOne.next()){
+                SSN = rsOne.getString(1);
+
+                ResultSet rsTwo = st.executeQuery("SELECT password FROM person WHERE SSN = '" + SSN + "'");
+                if (rsTwo.next()){
+                    retrievedPassword = rsTwo.getString(1);
+
+                        if (password.equals(retrievedPassword)){
+                            return true;
+                        }
+                }
+            }
+        return false;
     }
 
 }
