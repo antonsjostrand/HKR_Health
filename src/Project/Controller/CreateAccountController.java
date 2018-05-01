@@ -123,9 +123,9 @@ public class CreateAccountController implements Initializable {
 
     //Kontrollerar så att inga textfields är tomma när man försöker skapa ett konto.
     public void checkInputNotEmpty(){
-        if (usernameTF.getText().equals("") || firstNameTF.getText().equals("") || lastNameTF.getText().equals("") ||
-                passwordTF.getText().equals("") || ssnTF.getText().equals("") || ageTF.getText().equals("") ||
-                weightTF.getText().equals("") || heightTF.getText().equals("")) {
+        if (usernameTF.getText().isEmpty() || firstNameTF.getText().isEmpty() || lastNameTF.getText().isEmpty() ||
+                passwordTF.getText().isEmpty() || ssnTF.getText().isEmpty() || ageTF.getText().isEmpty() ||
+                weightTF.getText().isEmpty() || heightTF.getText().isEmpty()) {
             throw new NullPointerException();
         }
     }

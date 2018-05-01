@@ -98,6 +98,7 @@ public class DatabaseConnection {
 
     }
 
+    //Kontrollerar att man använder sig av ett användarnamn och lösenord ihop.
     public boolean handleUserLogin(String username, String password) throws Exception{
         String SSN, retrievedPassword;
         ResultSet rsOne = st.executeQuery("SELECT Person_SSN FROM user WHERE username = '" + username+ "'");

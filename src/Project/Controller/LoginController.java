@@ -23,7 +23,6 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
-    private boolean loginStatus;
 
     @FXML private ImageView startBackground;
     @FXML private AnchorPane anchorPane;
@@ -38,7 +37,7 @@ public class LoginController implements Initializable {
     @FXML void adminButtonPressed(ActionEvent event) {
         try {
             changeScene("adminScene", event);
-         
+
         } catch (IOException e){
             //Fixa error handling
         }
@@ -64,6 +63,7 @@ public class LoginController implements Initializable {
 
     @FXML void loginButtonPressed(ActionEvent event) {
         try {
+            boolean loginStatus;
             loginStatus = DatabaseConnection.getInstance().handleUserLogin(userNameTF.getText(), passwordTF.getText());
 
             if (loginStatus == true) {
