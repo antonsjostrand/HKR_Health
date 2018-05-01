@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.AccountInfoController">
+   <children>
+      <Button layoutX="50.0" layoutY="523.0" mnemonicParsing="false" onAction="#goBack" text="&lt;&lt;" />
+      <Text layoutX="693.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First day with HKR Health">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="452.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Info">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="updateHeight" layoutX="152.0" layoutY="230.0" promptText="Enter height (cm)..." />
+      <TextField fx:id="updateWeight" layoutX="152.0" layoutY="288.0" promptText="Enter weight (kg)..." />
+      <Text layoutX="152.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height:" />
+      <Text layoutX="152.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight:" />
+      <TextField fx:id="updateAge" layoutX="152.0" layoutY="345.0" promptText="Enter age (18)..." />
+      <Text layoutX="152.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" />
+      <Text layoutX="426.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BMI:" />
+      <Text layoutX="179.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Info">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="currentHeight" editable="false" layoutX="426.0" layoutY="230.0" />
+      <TextField fx:id="currentWeight" editable="false" layoutX="425.0" layoutY="288.0" />
+      <TextField fx:id="currentAge" editable="false" layoutX="425.0" layoutY="345.0" />
+      <TextField fx:id="currentBmi" editable="false" layoutX="425.0" layoutY="398.0" />
+      <TextField editable="false" layoutX="719.0" layoutY="230.0" />
+      <TextField editable="false" layoutX="719.0" layoutY="288.0" />
+      <TextField editable="false" layoutX="719.0" layoutY="345.0" />
+      <TextField editable="false" layoutX="719.0" layoutY="398.0" />
+      <Text layoutX="719.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BMI:" />
+      <Text layoutX="426.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" />
+      <Text layoutX="719.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" />
+      <Text layoutX="722.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight:" />
+      <Text layoutX="429.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight:" />
+      <Text layoutX="430.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height:" />
+      <Text layoutX="721.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height:" />
+      <Button layoutX="194.0" layoutY="398.0" mnemonicParsing="false" onAction="#saveInfo" text="Save Info" />
+   </children>
+</AnchorPane>

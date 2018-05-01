@@ -125,7 +125,7 @@ public class UserController implements Initializable {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/myAccountScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/accountInfoScene.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

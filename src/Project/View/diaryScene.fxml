@@ -9,31 +9,42 @@
 
 <AnchorPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.DiaryController">
    <children>
-      <ImageView fx:id="diaryLogo" fitHeight="241.0" fitWidth="1000.0" layoutX="-25.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="88.0" layoutY="422.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="97.0" text="Daily Update" />
-      <Button layoutX="88.0" layoutY="481.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="97.0" text="Show History" />
-      <Text layoutX="83.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notebook" underline="true">
+      <ImageView fx:id="diaryLogo" fitHeight="146.0" fitWidth="639.0" layoutX="150.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+      <Text layoutX="227.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Measurements">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text layoutX="227.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Measurements" underline="true">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Button layoutX="239.0" layoutY="422.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="133.0" text="New Measurements" />
-      <Button layoutX="239.0" layoutY="481.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="133.0" text="Show Measurements" />
-      <Text layoutX="730.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Keep track on your sleep">
+      <Button layoutX="227.0" layoutY="312.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="133.0" text="New Measurements" />
+      <Button layoutX="227.0" layoutY="373.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="133.0" text="Measurement History" />
+      <Text layoutX="724.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Keep track on your sleep">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="762.0" layoutY="481.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="133.0" text="Sleep" />
-      <Text layoutX="422.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Measurements" underline="true">
+      <Button layoutX="756.0" layoutY="331.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="133.0" text="Sleep" />
+      <Text layoutX="422.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutrition">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
+      <Text layoutX="95.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notebook">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="95.0" layoutY="312.0" mnemonicParsing="false" onAction="#dailyUpdate" prefHeight="38.0" prefWidth="97.0" text="Daily Update" />
+      <Button layoutX="95.0" layoutY="373.0" mnemonicParsing="false" onAction="#notebookHistory" prefHeight="38.0" prefWidth="120.0" text="Notebook History" />
+      <Button layoutX="415.0" layoutY="312.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="82.0" text="Daily intake" />
+      <Button layoutX="415.0" layoutY="373.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="120.0" text="Nutrition History" />
+      <Text layoutX="568.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercises">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="568.0" layoutY="312.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="133.0" text="Add latest workout" />
+      <Button layoutX="568.0" layoutY="373.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="133.0" text="Workout History" />
+      <Button layoutX="36.0" layoutY="438.0" mnemonicParsing="false" onAction="#goBack" text="&lt;&lt;" />
+      <Button layoutX="866.0" layoutY="61.0" mnemonicParsing="false" onAction="#myAccountButton" prefHeight="67.0" prefWidth="94.0" text="My Account" />
    </children>
 </AnchorPane>
