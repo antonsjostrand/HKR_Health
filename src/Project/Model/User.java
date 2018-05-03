@@ -13,8 +13,8 @@ public class User extends Person implements Initializable {
     private int  startWeight, height;
 
 
-    public User(String username, String firstName, String lastName, String password, String SSN, int age, int startWeight, int height) {
-            super(firstName, lastName, password, SSN, age);
+    public User(String username, String firstName, String lastName, String password, String email, String SSN, int age, int startWeight, int height) {
+            super(firstName, lastName, password, email, SSN, age);
         try{
             this.username = username;
             this.startWeight = startWeight;

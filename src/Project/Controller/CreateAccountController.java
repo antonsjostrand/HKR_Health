@@ -48,6 +48,8 @@ public class CreateAccountController implements Initializable {
     @FXML
     private TextField usernameTF;
     @FXML
+    private TextField emailTF;
+    @FXML
     private Button createAccountButton;
     @FXML
     private Button cancelButton;
@@ -80,6 +82,7 @@ public class CreateAccountController implements Initializable {
             checkHeightFormat(heightTF.getText());
             checkWeightFormat(weightTF.getText());
             checkPasswordFormat(passwordTF.getText());
+            //Lägg till metoden för att kolla email formatet
 
             //Kontrollerar om användarnamnet eller personnumret redan finns lagrat i databasen.
             checkUserName = DatabaseConnection.getInstance().checkUserNameDB(usernameTF.getText());
@@ -98,7 +101,7 @@ public class CreateAccountController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Input failure");
-            alert.setContentText("Check that your age, height and weight information is correct.");
+            alert.setContentText("Check that your age, SSN, height and weight information is correct.");
             alert.showAndWait();
 
         } catch (InputMismatchException e){
@@ -125,7 +128,7 @@ public class CreateAccountController implements Initializable {
     public void checkInputNotEmpty(){
         if (usernameTF.getText().isEmpty() || firstNameTF.getText().isEmpty() || lastNameTF.getText().isEmpty() ||
                 passwordTF.getText().isEmpty() || ssnTF.getText().isEmpty() || ageTF.getText().isEmpty() ||
-                weightTF.getText().isEmpty() || heightTF.getText().isEmpty()) {
+                weightTF.getText().isEmpty() || heightTF.getText().isEmpty() || emailTF.getText().isEmpty()) {
             throw new NullPointerException();
         }
     }
@@ -190,6 +193,7 @@ public class CreateAccountController implements Initializable {
                     firstNameTF.getText(),
                     lastNameTF.getText(),
                     passwordTF.getText(),
+                    emailTF.getText(),
                     ssnTF.getText(),
                     Integer.valueOf(ageTF.getText()),
                     Integer.valueOf(weightTF.getText()),
@@ -211,6 +215,7 @@ public class CreateAccountController implements Initializable {
             ageTF.clear();
             weightTF.clear();
             heightTF.clear();
+            emailTF.clear();
 
         } else if (username == true && SSN == false) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -306,6 +311,11 @@ public class CreateAccountController implements Initializable {
                 throw new InputMismatchException();
             }
         }
+    }
+
+    //Skapa metod för att kontrollera email på något sätt
+    public void checkEmailFormat(String email){
+
     }
 
 }

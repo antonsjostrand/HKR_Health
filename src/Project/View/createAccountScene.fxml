@@ -25,5 +25,7 @@
       <Button fx:id="createAccountButton" layoutX="381.0" layoutY="524.0" mnemonicParsing="false" onAction="#createAccountButtonPressed" text="Create Account" />
       <Button fx:id="cancelButton" layoutX="517.0" layoutY="524.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
       <Label layoutX="24.0" layoutY="196.0" text="SSN" />
+      <TextField fx:id="emailTF" layoutX="24.0" layoutY="512.0" />
+      <Label layoutX="21.0" layoutY="495.0" text="Email" />
    </children>
 </AnchorPane>

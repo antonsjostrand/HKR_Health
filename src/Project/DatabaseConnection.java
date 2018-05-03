@@ -7,7 +7,6 @@ import Project.Model.User;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
-import java.util.InputMismatchException;
 
 public class DatabaseConnection {
 
@@ -55,9 +54,9 @@ public class DatabaseConnection {
     //Addar en ny användare till databasen.
     public void addUserToDB(User user){
         try{
-            st.executeUpdate("INSERT INTO person (firstName, lastName, password, age, SSN) " +
+            st.executeUpdate("INSERT INTO person (firstName, lastName, password, age, email, SSN) " +
                     "VALUES ('" + user.getFirstName() + "', '" + user.getLastName() + "', '" + user.getPassword() +
-                            "', '" + user.getAge() + "', '" + user.getSSN() + "');");
+                            "', '" + user.getAge() + "', '" + user.getEmail()+ "', '" + user.getSSN() + "');");
 
             statement.executeUpdate("INSERT INTO user (height, startWeight, Person_SSN, username) " +
                     "VALUES ('" + user.getHeight() + "', '" + user.getStartWeight() + "', '" + user.getSSN() + "', '" +

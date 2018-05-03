@@ -4,14 +4,15 @@ import javafx.scene.control.Alert;
 
 public class Person {
 
-    private String firstName, lastName, password, SSN;
+    private String firstName, lastName, password, email, SSN;
     private int age;
 
-    public Person (String firstName, String lastName, String password, String SSN, int age){
+    public Person (String firstName, String lastName, String password,String email, String SSN, int age){
         try {
             this.firstName = firstName;
             this.lastName = lastName;
             this.password = password;
+            this.email = email;
             this.SSN = SSN;
             this.age = age;
         }catch (Exception e){
@@ -61,5 +62,13 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
