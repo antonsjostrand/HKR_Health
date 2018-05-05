@@ -82,8 +82,8 @@ public class CreateAccountController implements Initializable {
             checkHeightFormat(heightTF.getText());
             checkWeightFormat(weightTF.getText());
             checkPasswordFormat(passwordTF.getText());
-            //Lägg till metoden för att kolla email formatet
-
+            checkEmailFormat(emailTF.getText());
+            
             //Kontrollerar om användarnamnet eller personnumret redan finns lagrat i databasen.
             checkUserName = DatabaseConnection.getInstance().checkUserNameDB(usernameTF.getText());
             checkSSN = DatabaseConnection.getInstance().checkSSNDB(ssnTF.getText());
@@ -315,7 +315,14 @@ public class CreateAccountController implements Initializable {
 
     //Skapa metod för att kontrollera email på något sätt
     public void checkEmailFormat(String email){
-
+        if (email.contains("@gmail.com") || email.contains("@hotmail.com") || email.contains("@hotmail.se")){
+            return;
+        }else{
+            emailTF.clear();
+            emailTF.setText("Enter a proper email.");
+            emailTF.requestFocus();
+            throw new InputMismatchException();
+        }
     }
 
 }
