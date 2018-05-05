@@ -1,26 +1,39 @@
 package Project.Controller;
 
+import Project.DatabaseConnection;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.IOException;
+import java.security.SecureRandom;
+import java.util.InputMismatchException;
 import java.util.Properties;
 
 public class LostPasswordController {
 
     private final String databaseMail = "HKR.Health.App@gmail.com";
     private final String databaseMailPassword = "Projecttwoapp";
-    private String receiverMail = "anton.sjostrand10@gmail.com";
-    private String subject = "test", body = "Testing application mail function";
+    private final String subject = "Your new password.";
+    private String body, newPassword;
+    boolean checkStatus;
 
     @FXML
     private TextField emailTF;
+
+    @FXML private TextField ssnTF;
 
     @FXML
     private Button passwordButton;
@@ -29,20 +42,53 @@ public class LostPasswordController {
     private Button cancelButton;
 
     @FXML
-    void cancelButtonPressed(ActionEvent event) {
+    void cancelButtonPressed(ActionEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/loginScene.fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     @FXML
     void passwordButtonPressed(ActionEvent event) {
-        sendEmail(databaseMail, databaseMailPassword, receiverMail, subject, body);
+        try{
+            checkStatus = DatabaseConnection.getInstance().checkEmailDB(ssnTF.getText(), emailTF.getText());
+
+            if (checkStatus == true){
+                newPassword = createRandomPassword();
+                DatabaseConnection.getInstance().updatePassword(newPassword, ssnTF.getText());
+                body = createLostPasswordMessage(newPassword);
+
+                sendEmail(databaseMail, databaseMailPassword, emailTF.getText(), subject, body);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Password change");
+                alert.setHeaderText("Password change.");
+                alert.setContentText("Your password has been changed." +
+                        " Check your email.");
+                alert.showAndWait();
+            }
+            else{
+                throw new InputMismatchException();
+            }
+
+
+        //Catcha AddressException och MessagingException
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
 
     }
 
-    //Subject och body behöver innehålla lösenordet!
-
-    public void sendEmail(String from, String password, String to, String subject, String body){
-        try {
+    //Metod som skickar mailet till den email man skriver in.
+    public void sendEmail(String from, String password, String to, String subject, String body) throws Exception{
             Properties properties = System.getProperties();
             String host = "smtp.gmail.com";
             properties.put("mail.smtp.starttls.enable", "true");
@@ -56,9 +102,9 @@ public class LostPasswordController {
             MimeMessage message = new MimeMessage(session);
 
             message.setFrom(new InternetAddress(from));
-            InternetAddress toAddress = new InternetAddress(to);
+            InternetAddress reciever = new InternetAddress(to);
 
-            message.addRecipient(Message.RecipientType.TO, toAddress);
+            message.addRecipient(Message.RecipientType.TO, reciever);
 
             message.setSubject(subject);
             message.setText(body);
@@ -68,12 +114,28 @@ public class LostPasswordController {
             transport.close();
 
 
-        //Catcha AddressException och MessagingException
-        }catch (Exception e){
 
-        }
+
     }
 
+    //Metod som skapar ett meddelande innehållande det nya lösenordet.
+    public String createLostPasswordMessage(String password){
+        String messageBody = "Your new password is " + password + ".";
+        return messageBody;
+
+    }
+
+    //Metod som skapar ett nytt lösenord.
+    public String createRandomPassword(){
+        String randomPassword = "";
+        SecureRandom rand = new SecureRandom();
+
+            for (int i = 0; i < 4; i++){
+                randomPassword = randomPassword + String.valueOf(rand.nextInt(10));
+            }
+
+        return randomPassword;
+    }
 }
 
 

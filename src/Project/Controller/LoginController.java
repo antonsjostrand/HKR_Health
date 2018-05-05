@@ -102,8 +102,6 @@ public class LoginController implements Initializable {
         Image image = new Image(getClass().getResourceAsStream("/Resources/dumbells.png"));
         startBackground.setImage(image);
 
-        DatabaseConnection.getInstance().connectToDB();
-
     }
 
     public void changeScene(String resource, ActionEvent event) throws IOException{
