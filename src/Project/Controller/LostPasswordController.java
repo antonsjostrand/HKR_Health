@@ -55,36 +55,36 @@ public class LostPasswordController {
 
     @FXML
     void passwordButtonPressed(ActionEvent event) {
-        try{
+        try {
             checkStatus = DatabaseConnection.getInstance().checkEmailDB(ssnTF.getText(), emailTF.getText());
 
-            if (checkStatus == true){
+            if (checkStatus == true) {
                 newPassword = createRandomPassword();
                 DatabaseConnection.getInstance().updatePassword(newPassword, ssnTF.getText());
                 body = createLostPasswordMessage(newPassword);
 
                 sendEmail(databaseMail, databaseMailPassword, emailTF.getText(), subject, body);
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Password change");
-                alert.setHeaderText("Password change.");
-                alert.setContentText("Your password has been changed." +
-                        " Check your email.");
-                alert.showAndWait();
-            }
-            else{
+            } else {
+                ssnTF.clear();
+                ssnTF.setText("Enter a vaild SSN.");
+                emailTF.clear();
+                emailTF.setText("Enter a vailed email.");
+                ssnTF.requestFocus();
                 throw new InputMismatchException();
             }
 
-
         //Catcha AddressException och MessagingException
+        }catch (InputMismatchException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input is not correct.");
+            alert.setContentText("The information you have entered doesn't exist or it's misspelled.");
+            alert.showAndWait();
+
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
-
-
     }
 
     //Metod som skickar mailet till den email man skriver in.
@@ -113,16 +113,20 @@ public class LostPasswordController {
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
 
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Password change");
+            alert.setHeaderText("Password change.");
+            alert.setContentText("Your password has been changed. Check your email.");
+            alert.showAndWait();
 
-
-
+            ssnTF.clear();
+            emailTF.clear();
     }
 
     //Metod som skapar ett meddelande innehållande det nya lösenordet.
     public String createLostPasswordMessage(String password){
         String messageBody = "Your new password is " + password + ".";
         return messageBody;
-
     }
 
     //Metod som skapar ett nytt lösenord.
