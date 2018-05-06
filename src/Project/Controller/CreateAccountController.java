@@ -83,7 +83,7 @@ public class CreateAccountController implements Initializable {
             checkWeightFormat(weightTF.getText());
             checkPasswordFormat(passwordTF.getText());
             checkEmailFormat(emailTF.getText());
-            
+
             //Kontrollerar om användarnamnet eller personnumret redan finns lagrat i databasen.
             checkUserName = DatabaseConnection.getInstance().checkUserNameDB(usernameTF.getText());
             checkSSN = DatabaseConnection.getInstance().checkSSNDB(ssnTF.getText());
