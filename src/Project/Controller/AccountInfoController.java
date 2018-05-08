@@ -1,6 +1,8 @@
 package Project.Controller;
 
+import Project.DatabaseConnection;
 import Project.Model.AccountInfo;
+import Project.UserInformation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,19 +15,34 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+
+import static java.sql.Connection.*;
 
 public class AccountInfoController implements Initializable {
 
     @FXML
-    TextField updateHeight, updateWeight, updateAge, currentHeight, currentWeight, currentAge, currentBmi;
+   private TextField updateHeight, updateWeight, updateAge, curHeight, curWeight, curAge, firstHeight, firstWeight, firstAge;;
 
+
+   private AccountInfo accInfo;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        try {
+            accInfo = DatabaseConnection.getInstance().retrieveAccountInfo(UserInformation.getInstance().getSSN());
+            firstHeight.setText(String.valueOf(accInfo.getHeight()));
+            firstWeight.setText(String.valueOf(accInfo.getWeight()));
+            firstAge.setText(String.valueOf(accInfo.getAge()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
     @FXML
     void goBack (ActionEvent event) {
         try {
@@ -40,21 +57,22 @@ public class AccountInfoController implements Initializable {
         } catch (IOException e) {
             //Fixa error handling
         }
-
     }
+
     @FXML
-    void saveInfo (){
-        try{
-            currentHeight.setText(updateHeight.getText());
-            currentWeight.setText(updateWeight.getText());
-            currentAge.setText(updateAge.getText());
-            //currentBmi.setText();
+    void saveButtonPressed () {
+        try {
+            accInfo = DatabaseConnection.getInstance().retrieveAccountInfo(UserInformation.getInstance().getSSN());
+            curHeight.setText(String.valueOf(updateHeight.getText()));
+            curWeight.setText(String.valueOf(updateWeight.getText()));
+            curAge.setText(String.valueOf(updateAge.getText()));
 
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             //Fixa error handling
         }
-
     }
 }
+
+
+

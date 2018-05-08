@@ -26,69 +26,78 @@ public class DiaryController implements Initializable {
         diaryLogo.setImage(image);
 
     }
-
-
-    @FXML void goBack (ActionEvent event) {
+    @FXML void measurementUpdate(ActionEvent event) {
         try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
+            changeScene("measurementScene", event);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/userScene.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-        } catch (IOException e) {
+        }catch (IOException e){
             //Fixa error handling
         }
-
     }
+
+    @FXML void measurementHistory(ActionEvent event) {
+        try {
+            changeScene("measurementHistoryScene", event);
+
+        }catch (IOException e){
+            //Fixa error handling
+        }
+    }
+
+
+    @FXML void goBack(ActionEvent event) {
+        try {
+            changeScene("userScene", event);
+
+        }catch (IOException e){
+            //Fixa error handling
+        }
+    }
+
 
     @FXML void myAccountButton(ActionEvent event) {
         try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
+            changeScene("accountInfoScene", event);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/accountInfoScene.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-        } catch (IOException e){
+        }catch (IOException e){
             //Fixa error handling
         }
     }
+
+
 
     @FXML void dailyUpdate(ActionEvent event) {
         try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
+            changeScene("notebookScene", event);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/notebookScene.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-        } catch (IOException e) {
+        }catch (IOException e){
             //Fixa error handling
         }
-
     }
 
-    @FXML void notebookHistory (ActionEvent event){
-            try {
-                Node node = (Node) event.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/notebookHistoryScene.fxml"));
-                Parent root = loader.load();
 
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-            } catch (IOException e) {
-                //Fixa error handling
-            }
+    @FXML void notebookHistory (ActionEvent event) {
+        try {
+            changeScene("notebookHistoryScene", event);
 
+        }catch (IOException e){
+            //Fixa error handling
         }
     }
+
+
+    public void changeScene(String resource, ActionEvent event) throws IOException{
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/" + resource + ".fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+}
+
+
 

@@ -9,6 +9,6 @@
    <children>
       <ImageView fx:id="notebookHistoryLogo" fitHeight="146.0" fitWidth="639.0" layoutX="181.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="24.0" layoutY="554.0" mnemonicParsing="false" onAction="#goBack" text="&lt;&lt;" />
-      <TextArea fx:id="textArea" layoutX="101.0" layoutY="202.0" prefHeight="341.0" prefWidth="798.0" />
+      <TextArea fx:id="textArea" editable="false" layoutX="101.0" layoutY="202.0" prefHeight="341.0" prefWidth="798.0" />
    </children>
 </AnchorPane>

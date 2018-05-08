@@ -1,12 +1,10 @@
 package Project;
 
-import Project.Model.Admin;
-import Project.Model.Exercise;
-import Project.Model.Nutrition;
-import Project.Model.User;
+import Project.Model.*;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
+import java.util.InputMismatchException;
 
 public class DatabaseConnection {
 
@@ -181,5 +179,40 @@ public class DatabaseConnection {
         }
         return 0;
     }
+
+    //Metod som hämtar alla värden för att kunna skapa ett AccountInfo objekt.
+    public AccountInfo retrieveAccountInfo(String SSN) throws Exception{
+        int retrievedHeight, retrievedAge, retrievedWeight;
+
+        ResultSet rs = st.executeQuery("SELECT Person.age, User.height, User.startWeight FROM person, user " +
+                "WHERE SSN = Person_SSN AND SSN = '" + SSN +"';");
+
+                if (rs.next()){
+                    retrievedAge = rs.getInt(1);
+                    retrievedHeight = rs.getInt(2);
+                    retrievedWeight = rs.getInt(3);
+
+                    AccountInfo accInfo = new AccountInfo(retrievedHeight, retrievedWeight, retrievedAge);
+                    return accInfo;
+                }
+
+        return null;
+    }
+
+    //Metod som hämtar en användares SSN.
+    public String retrieveUserSSN(String username) throws Exception{
+        String retrievedSSN;
+        ResultSet rs = st.executeQuery("SELECT Person_SSN FROM user WHERE username = '" + username + "'");
+
+            if (rs.next()){
+                retrievedSSN = rs.getString(1);
+                return retrievedSSN;
+            }
+
+        return "NO MATCH";
+    }
+
+    //Metod som ändrar dina currentStatistics updateAccountinfo.
+    //Metod som hämtar dina currentStatistics
 
 }
