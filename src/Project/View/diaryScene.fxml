@@ -16,12 +16,6 @@
       </Text>
       <Button layoutX="227.0" layoutY="312.0" mnemonicParsing="false" onAction="#measurementUpdate" prefHeight="38.0" prefWidth="133.0" text="New Measurements" />
       <Button layoutX="227.0" layoutY="373.0" mnemonicParsing="false" onAction="#measurementHistory" prefHeight="38.0" prefWidth="133.0" text="Measurement History" />
-      <Text layoutX="724.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Keep track on your sleep">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Button layoutX="756.0" layoutY="331.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="133.0" text="Sleep" />
       <Text layoutX="422.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutrition">
          <font>
             <Font size="24.0" />

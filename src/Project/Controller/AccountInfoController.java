@@ -61,7 +61,16 @@ public class AccountInfoController implements Initializable {
 
     @FXML
     void saveButtonPressed () {
+        try {
+            accInfo = DatabaseConnection.getInstance().retrieveAccountInfo(UserInformation.getInstance().getSSN());
+            curHeight.setText(String.valueOf(updateHeight.getText()));
+            curWeight.setText(String.valueOf(updateWeight.getText()));
+            curAge.setText(String.valueOf(updateAge.getText()));
 
+
+        } catch (Exception e) {
+            //Fixa error handling
+        }
     }
 }
 
