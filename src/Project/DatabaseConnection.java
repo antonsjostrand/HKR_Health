@@ -212,7 +212,26 @@ public class DatabaseConnection {
         return "NO MATCH";
     }
 
-    //Metod som ändrar dina currentStatistics updateAccountinfo.
-    //Metod som hämtar dina currentStatistics
+    //Metod som hämtar dina current statistics med hjälp av SSN som PK.
+    public AccountInfo retrieveCurrentStatistics(String SSN) throws Exception{
+        int retrievedHeight, retrievedAge, retrievedWeight;
 
+        ResultSet rs = st.executeQuery("SELECT currentWeight, currentHeight, currentAge FROM current_statistics" +
+                " WHERE User_Person_SSN = '" + SSN + "'");
+
+            if (rs.next()){
+                retrievedWeight = rs.getInt(1);
+                retrievedHeight = rs.getInt(2);
+                retrievedAge = rs.getInt(3);
+
+                AccountInfo currentStats = new AccountInfo(retrievedHeight, retrievedWeight, retrievedAge);
+                return currentStats;
+            }
+        return null;
+    }
+    //Metod som uppdaterar dina current statistics. Datumet måste vara i formattet: 5/4-18. Alltså d/m-år.
+    public void updateCurrentStatistics(String SSN, String username, String date, int height, int weight, int age) throws Exception{
+        st.executeUpdate("INSERT INTO current_statistics (currentWeight, currentHeight, currentAge, timeOfCreation, User_Person_SSN, User_username) " +
+                "VALUES ("+ weight + ", " + height + ", " + age + ", STR_TO_DATE('" + date + "', '%d/%m-%Y'), '" + SSN + "', '" + username + "');");
+    }
 }
