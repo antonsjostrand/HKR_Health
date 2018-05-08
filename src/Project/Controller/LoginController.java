@@ -1,6 +1,7 @@
 package Project.Controller;
 
 import Project.DatabaseConnection;
+import Project.UserInformation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -84,6 +85,8 @@ public class LoginController implements Initializable {
             loginStatus = DatabaseConnection.getInstance().handleUserLogin(userNameTF.getText(), passwordTF.getText());
 
             if (loginStatus == true) {
+                UserInformation.getInstance().setSSN(DatabaseConnection.getInstance().retrieveUserSSN(userNameTF.getText()));
+                UserInformation.getInstance().setUsername(userNameTF.getText());
                 changeScene("userScene", event);
 
             } else if (loginStatus == false) {
