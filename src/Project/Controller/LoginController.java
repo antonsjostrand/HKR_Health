@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
+    private boolean loginStatus;
 
     @FXML private ImageView startBackground;
     @FXML private AnchorPane anchorPane;
@@ -36,10 +37,27 @@ public class LoginController implements Initializable {
 
     @FXML void adminButtonPressed(ActionEvent event) {
         try {
-            changeScene("adminScene", event);
+            loginStatus = DatabaseConnection.getInstance().handleAdminLogin(userNameTF.getText(), passwordTF.getText());
 
-        } catch (IOException e){
-            //Fixa error handling
+            if (loginStatus == true) {
+                changeScene("adminScene", event);
+
+            }else if (loginStatus == false){
+                userNameTF.clear();
+                passwordTF.clear();
+                userNameTF.requestFocus();
+                throw new InputMismatchException();
+            }
+
+        }catch (InputMismatchException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Admin login failed.");
+            alert.setContentText("Username or password is not correct or you might not be an admin.");
+            alert.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -63,7 +81,6 @@ public class LoginController implements Initializable {
 
     @FXML void loginButtonPressed(ActionEvent event) {
         try {
-            boolean loginStatus;
             loginStatus = DatabaseConnection.getInstance().handleUserLogin(userNameTF.getText(), passwordTF.getText());
 
             if (loginStatus == true) {
@@ -78,7 +95,7 @@ public class LoginController implements Initializable {
         }catch (InputMismatchException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Username or password not correct.");
+            alert.setHeaderText("User login failed");
             alert.setContentText("Username or password is not correct, try again.");
             alert.showAndWait();
 

@@ -1,22 +1,28 @@
 package Project.Model;
 
+import Project.DatabaseConnection;
 import javafx.scene.control.Alert;
 
 import java.util.InputMismatchException;
 
 public class Exercise {
 
-    private String name, typeOfExercise, muscleGroup, instruction;
-    private int exerciseID = 0;
+    private String name, typeOfExercise, instruction, imagePath;
+    private String[] muscleGroup;
+    private int exerciseID;
 
-    public Exercise(String name, String typeOfExercise, String muscleGroup, String instruction) {
+    //Skapa en mapp som kommer innehålla alla bilder! Sen sparar vi en övnings bilds path (imagePath)
+    //till det övningsobjektet den tillhör så det kan lagras i DB
+
+    public Exercise(String name, String typeOfExercise,String instruction, String imagePath, String... muscleGroup) {
         try {
             if (typeOfExercise.equals("Stretch") || typeOfExercise.equals("Strength")) {
                 this.name = name;
                 this.typeOfExercise = typeOfExercise;
-                this.muscleGroup = muscleGroup;
                 this.instruction = instruction;
-                this.exerciseID = exerciseID++;
+                this.imagePath = imagePath;
+                this.muscleGroup = muscleGroup;
+                this.exerciseID = DatabaseConnection.getInstance().retrieveBiggestID("exerciseID", "exercise") + 1;
             }else{
                 throw new InputMismatchException();
             }
@@ -52,11 +58,11 @@ public class Exercise {
         this.typeOfExercise = typeOfExercise;
     }
 
-    public String getMuscleGroup() {
+    public String[] getMuscleGroup() {
         return muscleGroup;
     }
 
-    public void setMuscleGroup(String muscleGroup) {
+    public void setMuscleGroup(String[] muscleGroup) {
         this.muscleGroup = muscleGroup;
     }
 
@@ -72,4 +78,11 @@ public class Exercise {
         return exerciseID;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 }
