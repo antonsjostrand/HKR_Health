@@ -3,20 +3,54 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.LoginController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: FFFFF;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.LoginController">
    <children>
-      <ImageView fx:id="startBackground" fitHeight="450.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="guestButton" layoutX="306.0" layoutY="209.0" mnemonicParsing="false" onAction="#guestButtonPressed" text="GUEST" />
-      <TextField fx:id="userNameTF" layoutX="64.0" layoutY="122.0" />
-      <TextField fx:id="passwordTF" layoutX="64.0" layoutY="169.0" />
-      <Label layoutX="64.0" layoutY="105.0" text="Label" />
-      <Label layoutX="64.0" layoutY="152.0" text="Label" />
-      <Button fx:id="loginButton" layoutX="66.0" layoutY="209.0" mnemonicParsing="false" onAction="#loginButtonPressed" text="LOG IN" />
-      <Button fx:id="createAccountButton" layoutX="150.0" layoutY="209.0" mnemonicParsing="false" onAction="#createAccountButtonPressed" text="CREATE ACCOUNT" />
-      <Button fx:id="adminButton" layoutX="68.0" layoutY="263.0" mnemonicParsing="false" onAction="#adminButtonPressed" text="ADMIN" />
-      <Button fx:id="lostPasswordButton" layoutX="174.0" layoutY="263.0" mnemonicParsing="false" onAction="#lostPasswordButtonPressed" text="LOST PASSWORD" />
+      <AnchorPane layoutX="610.0" layoutY="60.0" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #65A631; -fx-border-color: #83e76f#83e76f #83e76f#83e76f;">
+         <children>
+            <TextField fx:id="userNameTF" layoutX="108.0" layoutY="173.0" prefHeight="27.0" prefWidth="218.0" promptText="username" style="-fx-background-color: #65A631 #65A631;" />
+            <TextField fx:id="passwordTF" layoutX="108.0" layoutY="223.0" prefHeight="27.0" prefWidth="218.0" promptText="password" style="-fx-background-color: #65A631 #65A631;" />
+            <Button fx:id="loginButton" layoutX="52.0" layoutY="319.0" mnemonicParsing="false" onAction="#loginButtonPressed" prefHeight="27.0" prefWidth="267.0" style="-fx-background-color: #83e76f#83e76f;" text="Log in" textFill="WHITE" />
+            <ImageView fx:id="login" fitHeight="34.0" fitWidth="36.0" layoutX="61.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/login.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="password" fitHeight="34.0" fitWidth="36.0" layoutX="61.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/password.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="lostPasswordButton" layoutX="114.0" layoutY="358.0" mnemonicParsing="false" onAction="#lostPasswordButtonPressed" prefHeight="15.0" prefWidth="147.0" style="-fx-background-color: #65A631 #65A631;" text="Lost password?" textFill="WHITE" underline="true" />
+            <Label layoutX="128.0" layoutY="53.0" prefHeight="53.0" prefWidth="103.0" text="Sign in" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="31.0" />
+               </font>
+            </Label>
+            <Button fx:id="adminButton" layoutX="274.0" layoutY="472.0" mnemonicParsing="false" onAction="#adminButtonPressed" prefHeight="27.0" prefWidth="75.0" style="-fx-background-color: #65A631 #65A631;" text="ADMIN" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="background" fitHeight="519.0" fitWidth="627.0" layoutX="-10.0" layoutY="54.0" opacity="0.12" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/loginBackground.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="87.0" layoutY="172.0" text="Welcome to HKR Health" textFill="#66c923">
+         <font>
+            <Font name="Helvetica Neue Light" size="43.0" />
+         </font>
+      </Label>
+      <Label layoutX="89.0" layoutY="216.0" prefHeight="60.0" prefWidth="478.0" text="Anything you need to know about a healthy lifestyle. &#10;Sign up now!" textFill="#66c923">
+         <font>
+            <Font name="Helvetica Neue Light" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="createAccountButton" layoutX="81.0" layoutY="287.0" mnemonicParsing="false" onAction="#createAccountButtonPressed" prefHeight="52.0" prefWidth="456.0" style="-fx-background-color: #83e76f#83e76f;" text="Sign up" textFill="WHITE" />
+      <Label layoutX="302.0" layoutY="341.0" text="or" textFill="#66c923" />
+      <Button fx:id="guestButton" layoutX="232.0" layoutY="362.0" mnemonicParsing="false" onAction="#guestButtonPressed" prefHeight="15.0" prefWidth="147.0" style="-fx-background-color: #83e76f#83e76f;" text="Enter as guest" textFill="WHITE" />
    </children>
 </AnchorPane>

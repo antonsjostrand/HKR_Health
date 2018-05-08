@@ -25,7 +25,9 @@ public class LoginController implements Initializable {
 
     private boolean loginStatus;
 
-    @FXML private ImageView startBackground;
+    @FXML private ImageView login;
+    @FXML private ImageView password;
+    @FXML private ImageView background;
     @FXML private AnchorPane anchorPane;
     @FXML private Button guestButton;
     @FXML private TextField userNameTF;
@@ -116,8 +118,12 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Image image = new Image(getClass().getResourceAsStream("/Resources/dumbells.png"));
-        startBackground.setImage(image);
+        Image loginImage = new Image(getClass().getResourceAsStream("/Resources/login.png"));
+        login.setImage(loginImage);
+        Image passwordImage = new Image(getClass().getResourceAsStream("/Resources/password.png"));
+        password.setImage(passwordImage);
+        Image backgroundImage = new Image(getClass().getResourceAsStream("/Resources/loginBackground.png"));
+        background.setImage(backgroundImage);
 
     }
 
@@ -131,4 +137,5 @@ public class LoginController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
 }

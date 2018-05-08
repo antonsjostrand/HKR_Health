@@ -17,13 +17,12 @@ public class Main extends Application {
         DatabaseConnection.getInstance().connectToDB();
 
         //Skapar ikonen
-        Image image = new Image(getClass().getResourceAsStream("/Resources/dumbells.png"));
+
 
         Parent root = FXMLLoader.load(getClass().getResource("View/loginScene.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("HKR Health");
         primaryStage.setScene(scene);
-        primaryStage.getIcons().add(image);
         primaryStage.show();
     }
 

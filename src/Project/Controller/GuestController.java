@@ -70,6 +70,21 @@ public class GuestController implements Initializable{
             // Error handling
         }
     }
+    @FXML
+    void guestPressedBack(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/loginScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            // Error handling
+        }
+    }
 
 
     @Override

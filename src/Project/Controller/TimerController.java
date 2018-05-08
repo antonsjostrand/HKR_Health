@@ -38,6 +38,8 @@ public class TimerController extends java.lang.Thread implements Initializable{
 
     private boolean state = true;
 
+    //Använd timeline animation!
+
     @FXML void startStopWatch() {
         state = true;
 
