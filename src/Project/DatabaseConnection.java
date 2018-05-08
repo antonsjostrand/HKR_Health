@@ -97,7 +97,7 @@ public class DatabaseConnection {
 
     }
 
-    //Kontrollerar att man använder sig av ett användarnamn och lösenord ihop.
+    //Kontrollerar att man använder sig av ett användarnamn och lösenord som hör ihop.
     public boolean handleUserLogin(String username, String password) throws Exception{
         String SSN, retrievedPassword;
         ResultSet rsOne = st.executeQuery("SELECT Person_SSN FROM user WHERE username = '" + username+ "'");
@@ -115,5 +115,25 @@ public class DatabaseConnection {
             }
         return false;
     }
+
+    //Metod som kontrollerar att emailadressen man skrivit in när man begär ett nytt lösenord
+    //stämmer överens med den man skrev in när man skapade kontot med hjälp av personens personnummer.
+    public boolean checkEmailDB(String SSN, String email) throws Exception{
+        String retrievedEmail;
+        ResultSet rs = st.executeQuery("SELECT email FROM person WHERE SSN = '" + SSN + "'");
+        if (rs.next()) {
+                retrievedEmail = rs.getString(1);
+                    if (retrievedEmail.equals(email)){
+                        return true;
+                    }
+        }
+        return false;
+    }
+
+    //Metod som ändrar lösenordet i databasen
+    public void updatePassword(String password, String SSN) throws Exception{
+        st.executeUpdate("UPDATE person SET password = '" + password + "' WHERE SSN = '" + SSN + "'");
+    }
+
 
 }

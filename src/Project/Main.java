@@ -13,6 +13,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        //Connectar till databasen.
+        DatabaseConnection.getInstance().connectToDB();
+
         //Skapar ikonen
         Image image = new Image(getClass().getResourceAsStream("/Resources/dumbells.png"));
 
