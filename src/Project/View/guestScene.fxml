@@ -28,6 +28,6 @@
                 <Image url="@../../Resources/hkrlogo.png" />
             </image>
         </ImageView>
-      <Button layoutX="25.0" layoutY="713.0" mnemonicParsing="false" onAction="#guestPressedBack" text="&lt;&lt;" />
+      <Button layoutX="357.0" layoutY="111.0" mnemonicParsing="false" onAction="#guestPressedBack" prefHeight="27.0" prefWidth="259.0" text="&lt;&lt;" />
     </children>
 </AnchorPane>
