@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.AdminController" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.AdminController">
+   <children>
+      <Button fx:id="exerciseButton" layoutX="105.0" layoutY="130.0" mnemonicParsing="false" onAction="#exerciseButtonPressed" text="Add Exercise" />
+      <Button fx:id="nutritionButton" layoutX="107.0" layoutY="175.0" mnemonicParsing="false" onAction="#nutritionButtonPressed" text="Add Nutrition" />
+      <Button fx:id="feedbackButton" layoutX="107.0" layoutY="225.0" mnemonicParsing="false" onAction="#feedbackButtonPressed" text="Check feedback" />
+      <Button fx:id="cancelButton" layoutX="458.0" layoutY="314.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
+      <Button fx:id="newAdminButton" layoutX="108.0" layoutY="91.0" mnemonicParsing="false" onAction="#newAdminButtonPressed" text="New Admin" />
+   </children>
+</AnchorPane>
