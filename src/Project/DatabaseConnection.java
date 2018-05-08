@@ -211,4 +211,8 @@ public class DatabaseConnection {
 
         return "NO MATCH";
     }
+
+    //Metod som ändrar dina currentStatistics updateAccountinfo.
+    //Metod som hämtar dina currentStatistics
+
 }
