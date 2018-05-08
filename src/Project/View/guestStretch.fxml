@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.GuestStretchController">
+    <children>
+        <Button layoutX="160.0" layoutY="38.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="280.0" text="FULL BODY">
+            <font>
+                <Font size="34.0" />
+            </font>
+        </Button>
+        <Button layoutX="160.0" layoutY="145.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="280.0" style="-fx-background-color: grey;" text="UPPER BODY">
+            <font>
+                <Font size="34.0" />
+            </font>
+        </Button>
+        <Button layoutX="160.0" layoutY="252.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="280.0" style="-fx-background-color: grey;" text="LOWER BODY">
+            <font>
+                <Font size="34.0" />
+            </font>
+        </Button>
+        <ImageView fx:id="hkrlogo" fitHeight="23.0" fitWidth="81.0" layoutX="260.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true" />
+        <Button layoutX="25.0" layoutY="349.0" mnemonicParsing="false" onAction="#guestPressedBack" text="&lt;&lt; back" />
+    </children>
+</AnchorPane>

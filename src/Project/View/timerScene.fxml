@@ -6,43 +6,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.TimerController">
+<AnchorPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.TimerController">
    <children>
-      <ImageView fx:id="timerLogo" fitHeight="219.0" fitWidth="1025.0" layoutX="166.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="145.0" layoutY="238.0" prefHeight="223.0" prefWidth="324.0" text="00:">
-         <font>
-            <Font size="250.0" />
-         </font>
-      </Label>
-      <Label layoutX="469.0" layoutY="238.0" prefHeight="223.0" prefWidth="324.0" text="00:">
-         <font>
-            <Font size="250.0" />
-         </font>
-      </Label>
-      <Label layoutX="793.0" layoutY="238.0" prefHeight="223.0" prefWidth="324.0" text="00:">
-         <font>
-            <Font size="250.0" />
-         </font>
-      </Label>
-      <Label layoutX="1117.0" layoutY="347.0" text="00">
+      <ImageView fx:id="timerLogo" fitHeight="63.0" fitWidth="153.0" layoutX="459.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="" layoutX="173.0" layoutY="157.0" text="00: ">
          <font>
             <Font size="150.0" />
          </font>
       </Label>
-      <Button layoutX="179.0" layoutY="524.0" mnemonicParsing="false" text="Start">
+      <Button layoutX="190.0" layoutY="420.0" mnemonicParsing="false" onAction="#startStopWatch" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: green;" text="START">
          <font>
-            <Font size="80.0" />
+            <Font size="42.0" />
          </font>
       </Button>
-      <Button layoutX="929.0" layoutY="535.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="266.0" text="Reset">
+      <Button layoutX="734.0" layoutY="426.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="230.0" text="RESET">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
+      <Button layoutX="425.0" layoutY="423.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: red;" text="STOP">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Button>
+      <Label fx:id="" layoutX="425.0" layoutY="157.0" text="00: ">
+         <font>
+            <Font size="150.0" />
+         </font>
+      </Label>
+      <Label fx:id="" layoutX="707.0" layoutY="226.0" text="00: ">
          <font>
             <Font size="70.0" />
          </font>
-      </Button>
-      <Button layoutX="504.0" layoutY="524.0" mnemonicParsing="false" text="Stop">
-         <font>
-            <Font size="80.0" />
-         </font>
-      </Button>
+      </Label>
+      <Button layoutX="34.0" layoutY="550.0" mnemonicParsing="false" onAction="#guestPressedBack" text="&lt;&lt; back" />
    </children>
 </AnchorPane>

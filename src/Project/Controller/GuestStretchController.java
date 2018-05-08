@@ -8,20 +8,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GuestExercisesController implements Initializable {
+public class GuestStretchController implements Initializable {
 
-    @FXML
-    private ImageView hkrlogo;
-    @FXML private ImageView body;
-
-
+    @FXML private javafx.scene.image.ImageView hkrlogo;
 
     @FXML
     void guestPressedBack(ActionEvent event) {
@@ -39,12 +34,9 @@ public class GuestExercisesController implements Initializable {
         }
     }
 
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Image image1 = new Image(getClass().getResourceAsStream("/Resources/hkrlogo.png"));
         hkrlogo.setImage(image1);
-
     }
 }

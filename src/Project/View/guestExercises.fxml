@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.GuestExercisesController">
+    <children>
+        <Button layoutX="50.0" layoutY="33.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" text="Biceps" />
+        <Button layoutX="50.0" layoutY="77.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" text="Triceps" />
+        <Button layoutX="50.0" layoutY="124.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" text="Chest" />
+        <Button layoutX="50.0" layoutY="173.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: darkgrey;" text="Core" />
+        <Button layoutX="50.0" layoutY="219.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: darkgrey;" text="Back" />
+        <Button layoutX="50.0" layoutY="268.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: darkgrey;" text="Lower body" />
+        <Button layoutX="50.0" layoutY="314.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: darkgrey;" text="Shoulders" />
+        <ImageView fx:id="hkrlogo" fitHeight="27.0" fitWidth="68.0" layoutX="141.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="image2" fitHeight="280.0" fitWidth="250.0" layoutX="328.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
+        <Button layoutX="519.0" layoutY="359.0" mnemonicParsing="false" onAction="#guestPressedBack" text="&lt;&lt; back" />
+    </children>
+</AnchorPane>
