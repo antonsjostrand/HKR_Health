@@ -10,7 +10,7 @@ public class Admin extends Person {
     public Admin(String firstName, String lastName, String password, String email, String SSN, int age) {
         super(firstName, lastName, password, email, SSN, age);
         try{
-            this.adminID = DatabaseConnection.getInstance().retrieveBiggestID("adminID","admin");
+            this.adminID = DatabaseConnection.getInstance().retrieveBiggestID("adminID","admin") + 1;
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Admin");

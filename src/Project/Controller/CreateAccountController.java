@@ -290,6 +290,7 @@ public class CreateAccountController implements Initializable {
     }
 
     //Kontrollerar så att förnamnet endast består av bokstäver.
+    //Kollar också så att man inte använder sig av felmeddelandet som namn.
     public void checkFirstNameFormat(String firstName){
         for(int i = 0; i < numbers.length; i++){
             if (firstName.contains(String.valueOf(numbers[i]))){
@@ -299,9 +300,24 @@ public class CreateAccountController implements Initializable {
                 throw new InputMismatchException();
             }
         }
-    }
+
+            if (firstName.trim().length() == 0){
+                firstNameTF.clear();
+                firstNameTF.setText("Enter a proper firstname.");
+                firstNameTF.requestFocus();
+                throw new InputMismatchException();
+            }
+
+            if (firstName.equals("Enter a proper firstname.")){
+                firstNameTF.clear();
+                firstNameTF.setText("Enter a proper firstname.");
+                firstNameTF.requestFocus();
+                throw new InputMismatchException();
+            }
+        }
 
     //Kontrollerar så att efternamnet endast består av bokstäver.
+    //Kollar också så att man inte använder sig av felmeddelandet som namn.
     public void checkLastNameFormat(String lastName){
         for(int i = 0; i < numbers.length; i++){
             if (lastName.contains(String.valueOf(numbers[i]))){
@@ -311,7 +327,22 @@ public class CreateAccountController implements Initializable {
                 throw new InputMismatchException();
             }
         }
-    }
+
+            if (lastName.trim().length() == 0){
+                lastNameTF.clear();
+                lastNameTF.setText("Enter a proper lastname.");
+                lastNameTF.requestFocus();
+                throw new InputMismatchException();
+            }
+
+            if (lastName.equals("Enter a proper lastname.")){
+                lastNameTF.clear();
+                lastNameTF.setText("Enter a proper lastname.");
+                lastNameTF.requestFocus();
+                throw new InputMismatchException();
+            }
+        }
+
 
     //Skapa metod för att kontrollera email på något sätt
     public void checkEmailFormat(String email){

@@ -83,19 +83,39 @@ public class DatabaseConnection {
         }
     }
 
+    //Metod som används för att lägga till nya övningar i databasen.
     public void addExerciseToDB(Exercise exercise) throws Exception {
+        String[] muscleGroup = exercise.getMuscleGroup();
+        int numberOfMuscleGroups = muscleGroup.length;
+
         st.executeUpdate("INSERT INTO exercise (exerciseID, typeOfExercise, instruction, name, imagePath) " +
-                              "VALUES ('" + exercise.getExerciseID() + "', '" + exercise.getTypeOfExercise() + "', '" +
+                              "VALUES (" + exercise.getExerciseID() + ", '" + exercise.getTypeOfExercise() + "', '" +
                                exercise.getInstruction() + "', '" + exercise.getName() + "', '" + exercise.getImagePath() + "');");
-    }
 
-    public void addNutritionToDB(Nutrition nutrition) {
-
-    }
-
-    public void addAdminToDB(Admin admin) {
+        for (int i = 0; i < numberOfMuscleGroups; i++){
+            st.executeUpdate("INSERT INTO musclegroup (muscleGroup, Exercise_exerciseID) " +
+                    "VALUES ('" + muscleGroup[i] + "', " + exercise.getExerciseID() + ");");
+        }
 
     }
+
+    //Metod som används för att lägga till nya råvaror i databasen.
+    public void addNutritionToDB(Nutrition nutrition) throws Exception {
+        st.executeUpdate("INSERT INTO nutrition (nutritionID, name, kcal, protein, fat, carbs) " +
+                "VALUES (" + nutrition.getNutritionID() + ", '" + nutrition.getName() + "', '" + nutrition.getKcalPer100() + "', '" +
+                nutrition.getProteinAmount() + "', '" + nutrition.getFatAmount() + "', '" + nutrition.getCarbohydratesAmount() + "');");
+    }
+
+    //Metod som används för att "promota" en användare till en admin.
+    public void addAdminToDB(String userSSN) throws Exception{
+        int newAdminID;
+        newAdminID = retrieveBiggestID("adminID", "admin") + 1;
+
+        st.executeUpdate("INSERT INTO admin (adminID, Person_SSN) VALUES (" + newAdminID + ", '" + userSSN + "');");
+
+    }
+
+    //skapa en metod som hämtar alla användare i databasen?
 
     //Kontrollerar att man använder sig av ett användarnamn och lösenord som hör ihop.
     public boolean handleUserLogin(String username, String password) throws Exception {
@@ -212,12 +232,12 @@ public class DatabaseConnection {
         return "NO MATCH";
     }
 
-    //Metod som hämtar dina current statistics med hjälp av SSN som PK.
-    public AccountInfo retrieveCurrentStatistics(String SSN) throws Exception{
+    //Metod som hämtar dina current statistics med hjälp av SSN som PK. Datumet måste vara i formattet: 5/4-18. Alltså d/m-år.
+    public AccountInfo retrieveCurrentStatistics(String SSN, String date) throws Exception{
         int retrievedHeight, retrievedAge, retrievedWeight;
 
         ResultSet rs = st.executeQuery("SELECT currentWeight, currentHeight, currentAge FROM current_statistics" +
-                " WHERE User_Person_SSN = '" + SSN + "'");
+                " WHERE User_Person_SSN = '" + SSN + "' AND timeOfCreation = STR_TO_DATE('" + date + "', '%d/%m-%Y');");
 
             if (rs.next()){
                 retrievedWeight = rs.getInt(1);
