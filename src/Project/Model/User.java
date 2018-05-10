@@ -50,4 +50,6 @@ public class User extends Person implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+    public void test(){}
 }

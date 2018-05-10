@@ -9,7 +9,6 @@ public class Exercise {
 
     private String name, typeOfExercise, instruction, imagePath;
     private String[] muscleGroup;
-    private int exerciseID;
 
     //Skapa en mapp som kommer innehålla alla bilder! Sen sparar vi en övnings bilds path (imagePath)
     //till det övningsobjektet den tillhör så det kan lagras i DB
@@ -22,7 +21,6 @@ public class Exercise {
                 this.instruction = instruction;
                 this.imagePath = imagePath;
                 this.muscleGroup = muscleGroup;
-                this.exerciseID = DatabaseConnection.getInstance().retrieveBiggestID("exerciseID", "exercise") + 1;
             }else{
                 throw new InputMismatchException();
             }
@@ -74,15 +72,15 @@ public class Exercise {
         this.instruction = instruction;
     }
 
-    public int getExerciseID() {
-        return exerciseID;
-    }
-
     public String getImagePath() {
         return imagePath;
     }
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public void test(){
+
     }
 }

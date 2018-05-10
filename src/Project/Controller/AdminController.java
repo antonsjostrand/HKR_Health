@@ -54,7 +54,11 @@ public class AdminController implements Initializable {
 
     @FXML
     void newAdminButtonPressed(ActionEvent event){
-
+        try{
+            changeScene("addAdminScene", event);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

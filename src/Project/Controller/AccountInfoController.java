@@ -72,6 +72,8 @@ public class AccountInfoController implements Initializable {
             //Fixa error handling
         }
     }
+
+    
 }
 
 

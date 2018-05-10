@@ -5,7 +5,7 @@ import Project.DatabaseConnection;
 public class Nutrition {
 
     private String name;
-    private int kcalPer100, nutritionID, proteinAmount, fatAmount, carbohydratesAmount;
+    private int kcalPer100, proteinAmount, fatAmount, carbohydratesAmount;
 
     public Nutrition(String name, int kcalPer100, int proteinAmount, int fatAmount, int carbohydratesAmount){
             try {
@@ -14,7 +14,6 @@ public class Nutrition {
                 this.proteinAmount = proteinAmount;
                 this.fatAmount = fatAmount;
                 this.carbohydratesAmount = carbohydratesAmount;
-                this.nutritionID = DatabaseConnection.getInstance().retrieveBiggestID("nutritionID", "nutrition") + 1;
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -34,14 +33,6 @@ public class Nutrition {
 
     public void setKcalPer100(int kcalPer100) {
         this.kcalPer100 = kcalPer100;
-    }
-
-    public int getNutritionID() {
-        return nutritionID;
-    }
-
-    public void setNutritionID(int nutritionID) {
-        this.nutritionID = nutritionID;
     }
 
     public int getProteinAmount() {

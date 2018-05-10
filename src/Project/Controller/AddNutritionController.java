@@ -2,7 +2,6 @@ package Project.Controller;
 
 import Project.DatabaseConnection;
 import Project.Model.Nutrition;
-import com.mysql.jdbc.StringUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -67,6 +66,8 @@ public class AddNutritionController {
     @FXML
     void createButtonPressed(ActionEvent event){
         try{
+            Boolean checkName;
+
             checkIfInputEmpty();
             checkNameFormat(nameTF.getText());
             checkKcalFormat(kcalTF.getText());
@@ -74,7 +75,9 @@ public class AddNutritionController {
             checkCarbsFormat(carbohydratesTF.getText());
             checkFatFormat(fatTF.getText());
 
-            createNutrition();
+            checkName = DatabaseConnection.getInstance().checkNutritionName(nameTF.getText());
+
+            createNutrition(checkName);
 
         }catch (NullPointerException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -97,7 +100,6 @@ public class AddNutritionController {
             alert.setContentText("Make sure you have only entered digits where it's needed.");
             alert.showAndWait();
 
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -111,7 +113,8 @@ public class AddNutritionController {
         }
     }
 
-    //Kollar formattet på name så det är korrekt. Kollar också så att man inte använder sig av felmeddelandet som namn.
+    //Kollar formattet på name så det är korrekt.
+    //Kollar också så att man inte använder sig av felmeddelandet som namn.
     public void checkNameFormat(String name){
         for (int i = 0; i < numbers.length; i++) {
             if (name.contains(String.valueOf(numbers[i]))) {
@@ -186,23 +189,35 @@ public class AddNutritionController {
     }
 
     //Skapar ett nutrition objekt som sedan lagras i databasen
-    public void createNutrition() throws Exception{
-        Nutrition newNutrition = new Nutrition(nameTF.getText(), Integer.parseInt(kcalTF.getText()), Integer.parseInt(proteinTF.getText()),
-                                                Integer.parseInt(fatTF.getText()), Integer.parseInt(carbohydratesTF.getText()));
+    public void createNutrition(Boolean checkStatus) throws Exception {
+        if (checkStatus == false) {
+            Nutrition newNutrition = new Nutrition(nameTF.getText(), Integer.parseInt(kcalTF.getText()), Integer.parseInt(proteinTF.getText()),
+                    Integer.parseInt(fatTF.getText()), Integer.parseInt(carbohydratesTF.getText()));
 
-        DatabaseConnection.getInstance().addNutritionToDB(newNutrition);
+            DatabaseConnection.getInstance().addNutritionToDB(newNutrition);
 
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Nutrition");
-        alert.setHeaderText("Nutrition creation.");
-        alert.setContentText("Nutrition created and stored in the database.");
-        alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Nutrition");
+            alert.setHeaderText("Nutrition creation.");
+            alert.setContentText("Nutrition created and stored in the database.");
+            alert.showAndWait();
 
-        nameTF.clear();
-        kcalTF.clear();
-        proteinTF.clear();
-        fatTF.clear();
-        carbohydratesTF.clear();
+            nameTF.clear();
+            kcalTF.clear();
+            proteinTF.clear();
+            fatTF.clear();
+            carbohydratesTF.clear();
+        }else{
+            nameTF.clear();
+            nameTF.setText("Nutrition already exists.");
+            nameTF.requestFocus();
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Nutrition");
+            alert.setContentText("Nutrition already exists.");
+            alert.showAndWait();
+        }
     }
 
 }

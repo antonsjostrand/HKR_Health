@@ -2,6 +2,7 @@ package Project.Controller;
 
 import Project.DatabaseConnection;
 import Project.Model.Exercise;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -50,13 +51,18 @@ public class AddExerciseController {
     @FXML
     void createButtonPressed(ActionEvent event){
         try {
+            Boolean checkName;
+
             checkIfInputEmtpy();
             checkNameFormat(nameTF.getText());
             checkTypeFormat(typeTF.getText());
             checkMuscleGroupFormat(muscleOneTF.getText(), muscleTwoTF.getText(), muscleThreeTF.getText(), muscleFourTF.getText());
             checkInstructionFormat(instructionTA.getText());
 
-            createExercise();
+            checkName = DatabaseConnection.getInstance().checkExerciseName(nameTF.getText());
+
+
+            createExercise(checkName);
 
         }catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -210,43 +216,55 @@ public class AddExerciseController {
     }
 
     //Metod som skapar ett exercise objekt.
-    public void createExercise() throws Exception{
-        if (muscleTwoTF.getText().isEmpty() && muscleThreeTF.getText().isEmpty() && muscleFourTF.getText().isEmpty()){
-            Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
-                    muscleOneTF.getText());
+    public void createExercise(Boolean nameStatus) throws Exception{
+        if (nameStatus == false) {
+            if (muscleTwoTF.getText().isEmpty() && muscleThreeTF.getText().isEmpty() && muscleFourTF.getText().isEmpty()) {
+                Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
+                        muscleOneTF.getText());
 
-            DatabaseConnection.getInstance().addExerciseToDB(newExercise);
-        }else if (muscleThreeTF.getText().isEmpty() && muscleFourTF.getText().isEmpty()){
-            Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
-                    muscleOneTF.getText(), muscleTwoTF.getText());
+                DatabaseConnection.getInstance().addExerciseToDB(newExercise);
+            } else if (muscleThreeTF.getText().isEmpty() && muscleFourTF.getText().isEmpty()) {
+                Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
+                        muscleOneTF.getText(), muscleTwoTF.getText());
 
-            DatabaseConnection.getInstance().addExerciseToDB(newExercise);
-        }else if (muscleFourTF.getText().isEmpty()){
-            Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
-                    muscleOneTF.getText(), muscleTwoTF.getText(), muscleThreeTF.getText());
+                DatabaseConnection.getInstance().addExerciseToDB(newExercise);
+            } else if (muscleFourTF.getText().isEmpty()) {
+                Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
+                        muscleOneTF.getText(), muscleTwoTF.getText(), muscleThreeTF.getText());
 
-            DatabaseConnection.getInstance().addExerciseToDB(newExercise);
+                DatabaseConnection.getInstance().addExerciseToDB(newExercise);
+            } else {
+                Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
+                        muscleOneTF.getText(), muscleTwoTF.getText(), muscleThreeTF.getText(), muscleFourTF.getText());
+
+                DatabaseConnection.getInstance().addExerciseToDB(newExercise);
+            }
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Exercise.");
+            alert.setHeaderText("Exercise creation.");
+            alert.setContentText("Exercise created and stored in the database.");
+            alert.showAndWait();
+
+            nameTF.clear();
+            typeTF.clear();
+            instructionTA.clear();
+            pathTF.clear();
+            muscleOneTF.clear();
+            muscleTwoTF.clear();
+            muscleThreeTF.clear();
+            muscleFourTF.clear();
         }else{
-            Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
-                    muscleOneTF.getText(), muscleTwoTF.getText(), muscleThreeTF.getText(), muscleFourTF.getText());
+            nameTF.clear();
+            nameTF.setText("Exercise already exists.");
+            nameTF.requestFocus();
 
-            DatabaseConnection.getInstance().addExerciseToDB(newExercise);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Exercise");
+            alert.setContentText("Exercise already exists.");
+            alert.showAndWait();
         }
-
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Exercise.");
-        alert.setHeaderText("Exercise creation.");
-        alert.setContentText("Exercise created and stored in the database.");
-        alert.showAndWait();
-
-        nameTF.clear();
-        typeTF.clear();
-        instructionTA.clear();
-        pathTF.clear();
-        muscleOneTF.clear();
-        muscleTwoTF.clear();
-        muscleThreeTF.clear();
-        muscleFourTF.clear();
     }
 
 

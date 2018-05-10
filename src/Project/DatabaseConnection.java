@@ -4,6 +4,7 @@ import Project.Model.*;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 public class DatabaseConnection {
@@ -88,21 +89,50 @@ public class DatabaseConnection {
         String[] muscleGroup = exercise.getMuscleGroup();
         int numberOfMuscleGroups = muscleGroup.length;
 
-        st.executeUpdate("INSERT INTO exercise (exerciseID, typeOfExercise, instruction, name, imagePath) " +
-                              "VALUES (" + exercise.getExerciseID() + ", '" + exercise.getTypeOfExercise() + "', '" +
-                               exercise.getInstruction() + "', '" + exercise.getName() + "', '" + exercise.getImagePath() + "');");
+        st.executeUpdate("INSERT INTO exercise (name, typeOfExercise, instruction, imagePath) " +
+                              "VALUES ('" + exercise.getName() + "', '" + exercise.getTypeOfExercise() + "', '" +
+                               exercise.getInstruction() + "', '" + exercise.getImagePath() + "');");
 
         for (int i = 0; i < numberOfMuscleGroups; i++){
-            st.executeUpdate("INSERT INTO musclegroup (muscleGroup, Exercise_exerciseID) " +
-                    "VALUES ('" + muscleGroup[i] + "', " + exercise.getExerciseID() + ");");
+            st.executeUpdate("INSERT INTO musclegroup (muscleGroup, Exercise_name) " +
+                    "VALUES ('" + muscleGroup[i] + "', '" + exercise.getName() + "');");
         }
 
     }
 
+    //Skapa metod som kollar ifall en övning redan finns.
+    public boolean checkExerciseName(String exerciseName) throws Exception{
+        ResultSet rs = st.executeQuery("SELECT name FROM exercise WHERE name = '" + exerciseName + "'");
+        if (rs.next()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //Skapa en metod som kollar ifall en nutrition redan finns.
+    public boolean checkNutritionName(String nutritionName) throws Exception {
+        ResultSet rs = st.executeQuery("SELECT name FROM nutrition WHERE name = '" + nutritionName + "'");
+        if (rs.next()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //Metod som kollar om en person redan är admin.
+    public boolean checkIfUserIsAdmin(String SSN) throws Exception{
+        ResultSet rs = st.executeQuery("SELECT adminID FROM admin WHERE Person_SSN = '" + SSN + "';");
+        if (rs.next()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     //Metod som används för att lägga till nya råvaror i databasen.
     public void addNutritionToDB(Nutrition nutrition) throws Exception {
-        st.executeUpdate("INSERT INTO nutrition (nutritionID, name, kcal, protein, fat, carbs) " +
-                "VALUES (" + nutrition.getNutritionID() + ", '" + nutrition.getName() + "', '" + nutrition.getKcalPer100() + "', '" +
+        st.executeUpdate("INSERT INTO nutrition ( name, kcal, protein, fat, carbs) " +
+                "VALUES ('" + nutrition.getName() + "', '" + nutrition.getKcalPer100() + "', '" +
                 nutrition.getProteinAmount() + "', '" + nutrition.getFatAmount() + "', '" + nutrition.getCarbohydratesAmount() + "');");
     }
 
@@ -116,6 +146,31 @@ public class DatabaseConnection {
     }
 
     //skapa en metod som hämtar alla användare i databasen?
+    public ArrayList<String> retrieveAllUsers() throws Exception{
+        int numberOfUsers;
+        ArrayList<String> userList = new ArrayList<>();
+
+        ResultSet rsOne = st.executeQuery("SELECT COUNT(SSN) FROM person;");
+        if (rsOne.next()) {
+
+            ResultSet rsTwo = st.executeQuery("SELECT SSN, firstName, lastName FROM person;");
+            if (!rsTwo.next()) {
+                return null;
+            }else {
+                do{
+                    for (int i = 1; i < 2; i++){
+                        userList.add(rsTwo.getString(i));
+                        userList.add(rsTwo.getString(i+1));
+                        userList.add(rsTwo.getString(i+2));
+                    }
+
+                }while(rsTwo.next());
+
+            return userList;
+            }
+        }
+        return null;
+    }
 
     //Kontrollerar att man använder sig av ett användarnamn och lösenord som hör ihop.
     public boolean handleUserLogin(String username, String password) throws Exception {
@@ -253,5 +308,9 @@ public class DatabaseConnection {
     public void updateCurrentStatistics(String SSN, String username, String date, int height, int weight, int age) throws Exception{
         st.executeUpdate("INSERT INTO current_statistics (currentWeight, currentHeight, currentAge, timeOfCreation, User_Person_SSN, User_username) " +
                 "VALUES ("+ weight + ", " + height + ", " + age + ", STR_TO_DATE('" + date + "', '%d/%m-%Y'), '" + SSN + "', '" + username + "');");
+    }
+
+    public void testError(){
+        System.out.println("FELET ÄR FETT KONSTIGT");
     }
 }
