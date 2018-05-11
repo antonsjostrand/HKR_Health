@@ -6,6 +6,7 @@ public class UserInformation {
 
     private static UserInformation ourUser;
     private String SSN, username;
+    private int diaryID;
 
     //Skapar ett objekt om det inte redan finns något när man man kallar på metoden.
     public static UserInformation getInstance() {
@@ -41,5 +42,13 @@ public class UserInformation {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getDiaryID() {
+        return diaryID;
+    }
+
+    public void setDiaryID(int diaryID) {
+        this.diaryID = diaryID;
     }
 }

@@ -250,8 +250,12 @@ public class DatabaseConnection {
         if (rs.next()) {
             retrievedID = rs.getString(1);
 
-            parsedID = Integer.parseInt(retrievedID);
-            return parsedID;
+            if (retrievedID == null){
+                return 0;
+            }else {
+                parsedID = Integer.parseInt(retrievedID);
+                return parsedID;
+            }
         }
         return 0;
     }
@@ -350,13 +354,46 @@ public class DatabaseConnection {
         }
     }
 
-    public void updateMeasurementStatistics(String SSN, int upperArmL, int upperArmR, int forearmL, int forearmR, int thighL, int thighR,
-                                            int calfL, int calfR, int waist, int shoulderWidth, int chestWidth) throws Exception {
-        st.executeUpdate("INSERT INTO Measurement (measurementID, upperArmL, upperArmR, forearmL, " +
-                "forearmR, thighL, thighR, calfL, calfR, waist, shoulderWidth, chestWidth) " +
-                "VALUES (" + SSN + ", " + upperArmL + ", " + upperArmR + ", " + forearmL + ", " + forearmR + ", " + thighL + ", " + thighR +
-                ", " + calfL + ", " + calfR + ", " + waist + ", " + shoulderWidth + ", " + chestWidth + " )");
+    //Metod som uppdaterar dina measurements
+    public void updateMeasurementStatistics(int upperArmL, int upperArmR, int forearmL, int forearmR, int thighL, int thighR,
+                        int calfL, int calfR, int waist, int shoulderWidth, int chestWidth, String date, String SSN, String username, int diaryID) throws Exception {
 
-                // STR_TO_DATE('" + date + "', '%d/%m-%Y'), '" + SSN + "', '" + username + "');");
+        int retrievedID;
+        retrievedID = DatabaseConnection.getInstance().retrieveBiggestID("measurementID", "measurement") + 1;
+
+        st.executeUpdate("INSERT INTO Measurement (measurementID, upperArmL, upperArmR, forearmL, " +
+                "forearmR, thighL, thighR, calfL, calfR, waist, shoulderWidth, chestWidth, dateOfCreation, " +
+                "training_diary_User_Person_SSN, training_diary_User_username, training_diary_diaryID) " +
+                "VALUES (" + retrievedID + ", " + upperArmL + ", " + upperArmR + ", " + forearmL + ", " + forearmR + ", " + thighL + ", " + thighR +
+                ", " + calfL + ", " + calfR + ", " + waist + ", " + shoulderWidth + ", " + chestWidth +
+                ", STR_TO_DATE('" + date + "', '%d/%m-%Y'), '" + SSN + "', '" + username + "', " + diaryID + ");");
+
+    }
+
+    //Metod som skapar en training diary i samband med att man skapar ett konto.
+    public void addDiaryToDB(String ssn, String username){
+        try {
+            int retrievedDiaryID;
+            retrievedDiaryID = retrieveBiggestID("diaryID", "training_diary") + 1;
+
+                st.executeUpdate("INSERT INTO training_diary (User_Person_SSN, User_username, diaryID) " +
+                        "VALUES ('" + ssn + "', '" + username + "', " + retrievedDiaryID + ");");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //Metod som hämtar ett trainingdiary ID.
+    public int retrieveDiaryID(String username)throws Exception{
+        int retrievedID;
+
+        ResultSet rs = st.executeQuery("SELECT diaryID FROM training_diary WHERE User_username = '" + username + "'");
+        if (rs.next()){
+            retrievedID = rs.getInt(1);
+            return retrievedID;
+        }else{
+            return Integer.parseInt(null);
+        }
     }
 }

@@ -200,6 +200,7 @@ public class CreateAccountController implements Initializable {
                     Integer.valueOf(heightTF.getText()));
 
             DatabaseConnection.getInstance().addUserToDB(newUser);
+            DatabaseConnection.getInstance().addDiaryToDB(ssnTF.getText(), usernameTF.getText());
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("INFORMATION");
