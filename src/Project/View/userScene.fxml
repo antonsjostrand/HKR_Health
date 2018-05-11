@@ -14,5 +14,7 @@
       <Button layoutX="92.0" layoutY="259.0" mnemonicParsing="false" onAction="#exerciseButton" prefHeight="111.0" prefWidth="191.0" text="Exercises" />
       <Button layoutX="826.0" layoutY="84.0" mnemonicParsing="false" onAction="#myAccountButton" prefHeight="59.0" prefWidth="101.0" text="My Account" />
       <Button layoutX="92.0" layoutY="402.0" mnemonicParsing="false" onAction="#diaryButton" prefHeight="111.0" prefWidth="191.0" text="Diary" />
+      <Button fx:id="feedbackButton" layoutX="851.0" layoutY="266.0" mnemonicParsing="false" onAction="#feedbackButtonPressed" prefHeight="84.0" prefWidth="112.0" text="Feedback" />
+      <Button fx:id="cancelButton" layoutX="901.0" layoutY="548.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
    </children>
 </AnchorPane>

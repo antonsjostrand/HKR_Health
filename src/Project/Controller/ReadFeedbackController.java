@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -57,7 +58,6 @@ public class ReadFeedbackController implements Initializable {
 
         try{
             chosenFeedback = DatabaseConnection.getInstance().retrieveChosenFeedback(feedbackIDTF.getText());
-
             chosenFeedbackTA.setText(chosenFeedback);
 
 
@@ -69,17 +69,23 @@ public class ReadFeedbackController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ArrayList<String> feedbackList;
-        try{
+        try {
             allFeedbacksTA.setText("|      ID      |                   Header                   |                            Written by user                            |");
             allFeedbacksTA.appendText("\n-------------------------------------------------------------------------------------------------------");
 
             feedbackList = DatabaseConnection.getInstance().retrieveFeedbacksAndWriters();
 
-            for (int i = 0; i < feedbackList.size(); i = i + 6){
-                allFeedbacksTA.appendText(" \n  " + feedbackList.get(i) + "              " + feedbackList.get(i+2) + "                            "
-                        + feedbackList.get(i+3) + "   -   " + feedbackList.get(i+4) + " " + feedbackList.get(i+5));
+            for (int i = 0; i < feedbackList.size(); i = i + 6) {
+                allFeedbacksTA.appendText(" \n  " + feedbackList.get(i) + "              " + feedbackList.get(i + 2) + "                            "
+                        + feedbackList.get(i + 3) + "   -   " + feedbackList.get(i + 4) + " " + feedbackList.get(i + 5));
             }
 
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("No feedback");
+            alert.setContentText("Currently there is no feedbacks to read.");
+            alert.showAndWait();
 
         }catch (Exception e){
             e.printStackTrace();
