@@ -1,5 +1,6 @@
 package Project.Controller;
 
+import Project.DatabaseConnection;
 import Project.Model.Diary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

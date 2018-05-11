@@ -90,10 +90,10 @@ public class DatabaseConnection {
         int numberOfMuscleGroups = muscleGroup.length;
 
         st.executeUpdate("INSERT INTO exercise (name, typeOfExercise, instruction, imagePath) " +
-                              "VALUES ('" + exercise.getName() + "', '" + exercise.getTypeOfExercise() + "', '" +
-                               exercise.getInstruction() + "', '" + exercise.getImagePath() + "');");
+                "VALUES ('" + exercise.getName() + "', '" + exercise.getTypeOfExercise() + "', '" +
+                exercise.getInstruction() + "', '" + exercise.getImagePath() + "');");
 
-        for (int i = 0; i < numberOfMuscleGroups; i++){
+        for (int i = 0; i < numberOfMuscleGroups; i++) {
             st.executeUpdate("INSERT INTO musclegroup (muscleGroup, Exercise_name) " +
                     "VALUES ('" + muscleGroup[i] + "', '" + exercise.getName() + "');");
         }
@@ -101,7 +101,7 @@ public class DatabaseConnection {
     }
 
     //Skapa metod som kollar ifall en övning redan finns.
-    public boolean checkExerciseName(String exerciseName) throws Exception{
+    public boolean checkExerciseName(String exerciseName) throws Exception {
         ResultSet rs = st.executeQuery("SELECT name FROM exercise WHERE name = '" + exerciseName + "'");
         if (rs.next()) {
             return true;
@@ -109,6 +109,7 @@ public class DatabaseConnection {
             return false;
         }
     }
+
     //Skapa en metod som kollar ifall en nutrition redan finns.
     public boolean checkNutritionName(String nutritionName) throws Exception {
         ResultSet rs = st.executeQuery("SELECT name FROM nutrition WHERE name = '" + nutritionName + "'");
@@ -120,11 +121,11 @@ public class DatabaseConnection {
     }
 
     //Metod som kollar om en person redan är admin.
-    public boolean checkIfUserIsAdmin(String SSN) throws Exception{
+    public boolean checkIfUserIsAdmin(String SSN) throws Exception {
         ResultSet rs = st.executeQuery("SELECT adminID FROM admin WHERE Person_SSN = '" + SSN + "';");
-        if (rs.next()){
+        if (rs.next()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -137,7 +138,7 @@ public class DatabaseConnection {
     }
 
     //Metod som används för att "promota" en användare till en admin.
-    public void addAdminToDB(String userSSN) throws Exception{
+    public void addAdminToDB(String userSSN) throws Exception {
         int newAdminID;
         newAdminID = retrieveBiggestID("adminID", "admin") + 1;
 
@@ -146,7 +147,7 @@ public class DatabaseConnection {
     }
 
     //skapa en metod som hämtar alla användare i databasen?
-    public ArrayList<String> retrieveAllUsers() throws Exception{
+    public ArrayList<String> retrieveAllUsers() throws Exception {
         int numberOfUsers;
         ArrayList<String> userList = new ArrayList<>();
 
@@ -156,17 +157,17 @@ public class DatabaseConnection {
             ResultSet rsTwo = st.executeQuery("SELECT SSN, firstName, lastName FROM person;");
             if (!rsTwo.next()) {
                 return null;
-            }else {
-                do{
-                    for (int i = 1; i < 2; i++){
+            } else {
+                do {
+                    for (int i = 1; i < 2; i++) {
                         userList.add(rsTwo.getString(i));
-                        userList.add(rsTwo.getString(i+1));
-                        userList.add(rsTwo.getString(i+2));
+                        userList.add(rsTwo.getString(i + 1));
+                        userList.add(rsTwo.getString(i + 2));
                     }
 
-                }while(rsTwo.next());
+                } while (rsTwo.next());
 
-            return userList;
+                return userList;
             }
         }
         return null;
@@ -256,70 +257,71 @@ public class DatabaseConnection {
     }
 
     //Metod som hämtar alla värden för att kunna skapa ett AccountInfo objekt.
-    public AccountInfo retrieveAccountInfo(String SSN) throws Exception{
+    public AccountInfo retrieveAccountInfo(String SSN) throws Exception {
         int retrievedHeight, retrievedAge, retrievedWeight;
 
         ResultSet rs = st.executeQuery("SELECT Person.age, User.height, User.startWeight FROM person, user " +
-                "WHERE SSN = Person_SSN AND SSN = '" + SSN +"';");
+                "WHERE SSN = Person_SSN AND SSN = '" + SSN + "';");
 
-                if (rs.next()){
-                    retrievedAge = rs.getInt(1);
-                    retrievedHeight = rs.getInt(2);
-                    retrievedWeight = rs.getInt(3);
+        if (rs.next()) {
+            retrievedAge = rs.getInt(1);
+            retrievedHeight = rs.getInt(2);
+            retrievedWeight = rs.getInt(3);
 
-                    AccountInfo accInfo = new AccountInfo(retrievedHeight, retrievedWeight, retrievedAge);
-                    return accInfo;
-                }
+            AccountInfo accInfo = new AccountInfo(retrievedHeight, retrievedWeight, retrievedAge);
+            return accInfo;
+        }
 
         return null;
     }
 
     //Metod som hämtar en användares SSN.
-    public String retrieveUserSSN(String username) throws Exception{
+    public String retrieveUserSSN(String username) throws Exception {
         String retrievedSSN;
         ResultSet rs = st.executeQuery("SELECT Person_SSN FROM user WHERE username = '" + username + "'");
 
-            if (rs.next()){
-                retrievedSSN = rs.getString(1);
-                return retrievedSSN;
-            }
+        if (rs.next()) {
+            retrievedSSN = rs.getString(1);
+            return retrievedSSN;
+        }
 
         return "NO MATCH";
     }
 
     //Metod som hämtar dina current statistics med hjälp av SSN som PK. Datumet måste vara i formattet: 5/4-18. Alltså d/m-år.
-    public AccountInfo retrieveCurrentStatistics(String SSN, String date) throws Exception{
+    public AccountInfo retrieveCurrentStatistics(String SSN, String date) throws Exception {
         int retrievedHeight, retrievedAge, retrievedWeight;
 
         ResultSet rs = st.executeQuery("SELECT currentWeight, currentHeight, currentAge FROM current_statistics" +
                 " WHERE User_Person_SSN = '" + SSN + "' AND timeOfCreation = STR_TO_DATE('" + date + "', '%d/%m-%Y');");
 
-            if (rs.next()){
-                retrievedWeight = rs.getInt(1);
-                retrievedHeight = rs.getInt(2);
-                retrievedAge = rs.getInt(3);
+        if (rs.next()) {
+            retrievedWeight = rs.getInt(1);
+            retrievedHeight = rs.getInt(2);
+            retrievedAge = rs.getInt(3);
 
-                AccountInfo currentStats = new AccountInfo(retrievedHeight, retrievedWeight, retrievedAge);
-                return currentStats;
-            }
+            AccountInfo currentStats = new AccountInfo(retrievedHeight, retrievedWeight, retrievedAge);
+            return currentStats;
+        }
         return null;
     }
+
     //Metod som uppdaterar dina current statistics. Datumet måste vara i formattet: 5/4-18. Alltså d/m-år.
-    public void updateCurrentStatistics(String SSN, String username, String date, int height, int weight, int age) throws Exception{
+    public void updateCurrentStatistics(String SSN, String username, String date, int height, int weight, int age) throws Exception {
         st.executeUpdate("INSERT INTO current_statistics (currentWeight, currentHeight, currentAge, timeOfCreation, User_Person_SSN, User_username) " +
-                "VALUES ("+ weight + ", " + height + ", " + age + ", STR_TO_DATE('" + date + "', '%d/%m-%Y'), '" + SSN + "', '" + username + "');");
+                "VALUES (" + weight + ", " + height + ", " + age + ", STR_TO_DATE('" + date + "', '%d/%m-%Y'), '" + SSN + "', '" + username + "');");
     }
 
     //En metod som hämtar samtliga feedbacks och vem som skrev dom.
-    public ArrayList<String> retrieveFeedbacksAndWriters() throws Exception{
+    public ArrayList<String> retrieveFeedbacksAndWriters() throws Exception {
         ArrayList<String> feedbackList = new ArrayList<>();
 
         ResultSet rsOne = st.executeQuery("SELECT feedbackID, feedback, header, SSN, firstName, lastName FROM feedback, person WHERE User_Person_SSN = SSN;");
-        if (!rsOne.next()){
+        if (!rsOne.next()) {
             return null;
-        }else{
-            do{
-                for (int i = 1; i < 2; i++){
+        } else {
+            do {
+                for (int i = 1; i < 2; i++) {
                     feedbackList.add(rsOne.getString(1));
                     feedbackList.add(rsOne.getString(2));
                     feedbackList.add(rsOne.getString(3));
@@ -328,23 +330,33 @@ public class DatabaseConnection {
                     feedbackList.add(rsOne.getString(6));
                 }
 
-            }while (rsOne.next());
+            } while (rsOne.next());
 
             return feedbackList;
         }
     }
 
     //Hämtar en feedback.
-    public String retrieveChosenFeedback(String id)throws Exception{
+    public String retrieveChosenFeedback(String id) throws Exception {
         String feedback;
 
         ResultSet rs = st.executeQuery("SELECT feedback FROM feedback WHERE feedbackID = '" + id + "';");
-        if (rs.next()){
+        if (rs.next()) {
             feedback = rs.getString(1);
 
             return feedback;
-        }else {
+        } else {
             return null;
         }
+    }
+
+    public void updateMeasurementStatistics(String SSN, int upperArmL, int upperArmR, int forearmL, int forearmR, int thighL, int thighR,
+                                            int calfL, int calfR, int waist, int shoulderWidth, int chestWidth) throws Exception {
+        st.executeUpdate("INSERT INTO Measurement (measurementID, upperArmL, upperArmR, forearmL, " +
+                "forearmR, thighL, thighR, calfL, calfR, waist, shoulderWidth, chestWidth) " +
+                "VALUES (" + SSN + ", " + upperArmL + ", " + upperArmR + ", " + forearmL + ", " + forearmR + ", " + thighL + ", " + thighR +
+                ", " + calfL + ", " + calfR + ", " + waist + ", " + shoulderWidth + ", " + chestWidth + " )");
+
+                // STR_TO_DATE('" + date + "', '%d/%m-%Y'), '" + SSN + "', '" + username + "');");
     }
 }

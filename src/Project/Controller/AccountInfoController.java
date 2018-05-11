@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -26,7 +27,11 @@ import static java.sql.Connection.*;
 public class AccountInfoController implements Initializable {
 
     @FXML
-   private TextField updateHeight, updateWeight, updateAge, curHeight, curWeight, curAge, firstHeight, firstWeight, firstAge;;
+   private TextField updateHeight, updateWeight, updateAge, updateDate,
+            searchDate, firstHeight, firstWeight, firstAge;;
+
+   @FXML
+   private TextArea textArea1, textArea2;
 
 
    private AccountInfo accInfo;
@@ -39,6 +44,9 @@ public class AccountInfoController implements Initializable {
             firstHeight.setText(String.valueOf(accInfo.getHeight()));
             firstWeight.setText(String.valueOf(accInfo.getWeight()));
             firstAge.setText(String.valueOf(accInfo.getAge()));
+
+            accInfo = DatabaseConnection.getInstance().retrieveCurrentStatistics(UserInformation.getInstance().getSSN(), updateDate.getText());
+            textArea1.setText(updateDate.getText());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,18 +70,32 @@ public class AccountInfoController implements Initializable {
     @FXML
     void saveButtonPressed () {
         try {
-            accInfo = DatabaseConnection.getInstance().retrieveAccountInfo(UserInformation.getInstance().getSSN());
-            curHeight.setText(String.valueOf(updateHeight.getText()));
-            curWeight.setText(String.valueOf(updateWeight.getText()));
-            curAge.setText(String.valueOf(updateAge.getText()));
+
+            DatabaseConnection.getInstance().updateCurrentStatistics(UserInformation.getInstance().getSSN(),
+                    UserInformation.getInstance().getUsername(),
+                    updateDate.getText(),
+                    Integer.parseInt(updateHeight.getText()),
+                    Integer.parseInt(updateWeight.getText()),
+                    Integer.parseInt(updateAge.getText()));
 
 
         } catch (Exception e) {
             //Fixa error handling
         }
     }
+    @FXML
+    void searchButtonPressed() {
+        try {
 
-    
+      //  accInfo = DatabaseConnection.getInstance().retrieveCurrentStatistics(UserInformation.getInstance().getSSN(), updateDate.getText());
+
+       //     textArea2.setText(String.valueOf()
+
+        } catch (Exception e) {
+            //Fixa error handling
+        }
+    }
+
 }
 
 
