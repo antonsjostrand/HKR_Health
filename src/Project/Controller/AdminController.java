@@ -49,7 +49,11 @@ public class AdminController implements Initializable {
 
     @FXML
     void feedbackButtonPressed(ActionEvent event) {
-
+        try{
+            changeScene("readFeedbacksScene", event);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

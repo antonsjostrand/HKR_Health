@@ -310,7 +310,41 @@ public class DatabaseConnection {
                 "VALUES ("+ weight + ", " + height + ", " + age + ", STR_TO_DATE('" + date + "', '%d/%m-%Y'), '" + SSN + "', '" + username + "');");
     }
 
-    public void testError(){
-        System.out.println("FELET ÄR FETT KONSTIGT");
+    //En metod som hämtar samtliga feedbacks och vem som skrev dom.
+    public ArrayList<String> retrieveFeedbacksAndWriters() throws Exception{
+        ArrayList<String> feedbackList = new ArrayList<>();
+
+        ResultSet rsOne = st.executeQuery("SELECT feedbackID, feedback, header, SSN, firstName, lastName FROM feedback, person WHERE User_Person_SSN = SSN;");
+        if (!rsOne.next()){
+            return null;
+        }else{
+            do{
+                for (int i = 1; i < 2; i++){
+                    feedbackList.add(rsOne.getString(1));
+                    feedbackList.add(rsOne.getString(2));
+                    feedbackList.add(rsOne.getString(3));
+                    feedbackList.add(rsOne.getString(4));
+                    feedbackList.add(rsOne.getString(5));
+                    feedbackList.add(rsOne.getString(6));
+                }
+
+            }while (rsOne.next());
+
+            return feedbackList;
+        }
+    }
+
+    //Hämtar en feedback.
+    public String retrieveChosenFeedback(String id)throws Exception{
+        String feedback;
+
+        ResultSet rs = st.executeQuery("SELECT feedback FROM feedback WHERE feedbackID = '" + id + "';");
+        if (rs.next()){
+            feedback = rs.getString(1);
+
+            return feedback;
+        }else {
+            return null;
+        }
     }
 }
