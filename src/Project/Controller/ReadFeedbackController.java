@@ -27,7 +27,13 @@ public class ReadFeedbackController implements Initializable {
     private Button readFeedbackButton;
 
     @FXML
-    private TextArea allFeedbacksTA;
+    private TextArea idFeedbackTA;
+
+    @FXML
+    private TextArea headerFeedbackTA;
+
+    @FXML
+    private TextArea writerTA;
 
     @FXML
     private TextArea chosenFeedbackTA;
@@ -70,14 +76,21 @@ public class ReadFeedbackController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ArrayList<String> feedbackList;
         try {
-            allFeedbacksTA.setText("|      ID      |                   Header                   |                            Written by user                            |");
-            allFeedbacksTA.appendText("\n-------------------------------------------------------------------------------------------------------");
+            idFeedbackTA.setText("  ID  ");
+            idFeedbackTA.appendText("\n---------");
+            headerFeedbackTA.setText("     HEADER     ");
+            headerFeedbackTA.appendText("\n--------------------------------------");
+            writerTA.setText("            USER            ");
+            writerTA.appendText("\n-------------------------------------------------");
 
             feedbackList = DatabaseConnection.getInstance().retrieveFeedbacksAndWriters();
 
             for (int i = 0; i < feedbackList.size(); i = i + 6) {
-                allFeedbacksTA.appendText(" \n  " + feedbackList.get(i) + "              " + feedbackList.get(i + 2) + "                            "
-                        + feedbackList.get(i + 3) + "   -   " + feedbackList.get(i + 4) + " " + feedbackList.get(i + 5));
+
+                idFeedbackTA.appendText("\n" + feedbackList.get(i));
+                headerFeedbackTA.appendText("\n" + feedbackList.get(i + 2));
+                writerTA.appendText("\n"+ feedbackList.get(i + 3) + "   -   " + feedbackList.get(i + 4) + " " + feedbackList.get(i + 5));
+
             }
 
         }catch (NullPointerException e){

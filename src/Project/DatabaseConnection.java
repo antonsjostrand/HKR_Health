@@ -396,4 +396,16 @@ public class DatabaseConnection {
             return Integer.parseInt(null);
         }
     }
+
+    //Metod som skapar en ny feedback
+    public void addFeedbackToDB(String ssn, String username, String header, String content){
+        try{
+
+            int retrievedID = DatabaseConnection.getInstance().retrieveBiggestID("feedbackID", "feedback") + 1;
+            st.executeUpdate("INSERT INTO feedback (feedbackID, feedback, header, User_Person_SSN, User_username) " +
+                    "VALUES (" + retrievedID + ", '" + content + "', '" + header + "', '" + ssn + "', '" + username + "');");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
