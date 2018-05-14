@@ -41,7 +41,7 @@ public class UserController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e){
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
 
