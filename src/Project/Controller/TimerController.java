@@ -101,7 +101,6 @@ public class TimerController extends java.lang.Thread implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Image image = new Image(getClass().getResourceAsStream("/Resources/hkrlogo.png"));
-        timerLogo.setImage(image);
+        
     }
 }

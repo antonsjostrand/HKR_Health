@@ -1,20 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.GuestExercisesController">
-    <children>
-        <Button layoutX="50.0" layoutY="33.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" text="Biceps" />
-        <Button layoutX="50.0" layoutY="77.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" text="Triceps" />
-        <Button layoutX="50.0" layoutY="124.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" text="Chest" />
-        <Button layoutX="50.0" layoutY="173.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: darkgrey;" text="Core" />
-        <Button layoutX="50.0" layoutY="219.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: darkgrey;" text="Back" />
-        <Button layoutX="50.0" layoutY="268.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: darkgrey;" text="Lower body" />
-        <Button layoutX="50.0" layoutY="314.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: darkgrey;" text="Shoulders" />
-        <ImageView fx:id="hkrlogo" fitHeight="27.0" fitWidth="68.0" layoutX="141.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="image2" fitHeight="280.0" fitWidth="250.0" layoutX="328.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
-        <Button layoutX="519.0" layoutY="359.0" mnemonicParsing="false" onAction="#guestPressedBack" text="&lt;&lt; back" />
-    </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.GuestExercisesController">
+   <children>
+      <Label layoutX="-3.0" layoutY="-3.0" prefHeight="112.0" prefWidth="195.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f;" text="  GUEST" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Neue Light" size="44.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="exercise" fitHeight="81.0" fitWidth="81.0" layoutX="73.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/biceps.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="stretch" fitHeight="102.0" fitWidth="84.0" layoutX="66.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/stretch.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="stopwatch" fitHeight="85.0" fitWidth="81.0" layoutX="65.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/stopwatch.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="51.0" layoutY="686.0" mnemonicParsing="false" onAction="#guestPressedBack" prefHeight="34.0" prefWidth="101.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f;" text="&lt;&lt;" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <AnchorPane layoutX="190.0" layoutY="110.0" prefHeight="650.0" prefWidth="1170.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f;">
+         <children>
+            <ImageView fitHeight="700.0" fitWidth="1156.0" layoutX="-10.0" layoutY="-24.0" opacity="0.03" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/guestBackground.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="140.0" layoutY="90.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: #65a631;" text="Shoulders" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="140.0" layoutY="160.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: #65a631;" text="Abs" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="141.0" layoutY="230.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: #65a631;" text="Biceps" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="140.0" layoutY="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: #CDCDCD#CDCDCD;" text="Triceps" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="140.0" layoutY="370.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: #CDCDCD#CDCDCD;" text="Lower body" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="140.0" layoutY="440.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: #CDCDCD#CDCDCD;" text="Back" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="140.0" layoutY="510.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: #CDCDCD;" text="Chest" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

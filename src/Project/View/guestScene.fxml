@@ -1,33 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.GuestController">
-    <children>
-        <Button layoutX="203.0" layoutY="358.0" mnemonicParsing="false" onAction="#guestPressedExercisesButton" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: lightgreen;" text="Exercises">
-            <font>
-                <Font size="30.0" />
-            </font>
-        </Button>
-        <Button layoutX="601.0" layoutY="361.0" mnemonicParsing="false" onAction="#guestPressedStretchButton" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: lightgreen;" text="Stretching">
-            <font>
-                <Font size="30.0" />
-            </font>
-        </Button>
-        <Button layoutX="995.0" layoutY="361.0" mnemonicParsing="false" onAction="#guestPressedTimerButton" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: lightgreen;" text="Timer">
-            <font>
-                <Font size="30.0" />
-            </font>
-        </Button>
-        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="583.0" layoutY="656.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../Resources/hkrlogo.png" />
-            </image>
-        </ImageView>
-      <Button layoutX="357.0" layoutY="111.0" mnemonicParsing="false" onAction="#guestPressedBack" prefHeight="27.0" prefWidth="259.0" text="&lt;&lt;" />
-    </children>
+   <children>
+      <Label layoutX="-3.0" layoutY="-1.0" prefHeight="112.0" prefWidth="195.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f;" text="  GUEST" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Neue Light" size="44.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="exercise" fitHeight="81.0" fitWidth="81.0" layoutX="63.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/biceps.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="stretch" fitHeight="102.0" fitWidth="84.0" layoutX="56.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/stretch.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="stopwatch" fitHeight="85.0" fitWidth="81.0" layoutX="55.0" layoutY="542.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/stopwatch.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="191.0" layoutY="110.0" prefHeight="650.0" prefWidth="1170.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f;">
+         <children>
+            <ImageView fitHeight="680.0" fitWidth="1156.0" layoutX="-11.0" layoutY="-20.0" opacity="0.03" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/guestBackground.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Button layoutX="51.0" layoutY="686.0" mnemonicParsing="false" onAction="#guestPressedBack" prefHeight="34.0" prefWidth="101.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f #83e76f#83e76f;" text="&lt;&lt;" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="guestStretch" layoutX="149.0" layoutY="396.0" mnemonicParsing="false" onAction="#guestPressedStretchButton" text="&gt;" />
+      <Button fx:id="guestTimer" layoutX="149.0" layoutY="569.0" mnemonicParsing="false" onAction="#guestPressedTimerButton" text="&gt;" />
+      <Button fx:id="guestExercises" layoutX="150.0" layoutY="231.0" mnemonicParsing="false" onAction="#guestPressedExercisesButton" text="&gt;" />
+   </children>
 </AnchorPane>

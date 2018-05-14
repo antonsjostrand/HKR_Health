@@ -43,8 +43,6 @@ public class GuestExercisesController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Image image1 = new Image(getClass().getResourceAsStream("/Resources/hkrlogo.png"));
-        hkrlogo.setImage(image1);
 
     }
 }
