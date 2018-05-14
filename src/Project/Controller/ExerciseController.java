@@ -2,28 +2,21 @@ package Project.Controller;
 
 import Project.DatabaseConnection;
 import Project.Model.Exercise;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-public class ExerciseController implements Initializable {
+public class ExerciseController {
 
-    private ArrayList<Exercise> exerciseList = new ArrayList<>();
     private Exercise retrievedExercise;
-    private String exerciseName;
 
     @FXML
     private MenuButton muscleGroupMenu;
@@ -59,30 +52,123 @@ public class ExerciseController implements Initializable {
     private Button cancelButton;
 
     @FXML
-    private TextArea exerciseTA;
+    private Label exerciseNameLabel;
 
     @FXML
-    private TextField chosenExerciseTF;
+    private ImageView imageIV;
+
+    @FXML
+    private Label instructionLabel;
+
+    @FXML
+    private Label muscleGroupLabel;
+
+    @FXML
+    private ListView<Exercise> exerciseLV;
 
     @FXML
     void backMenuPressed(ActionEvent event) {
+        try {
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Back");
+            exerciseLV.getItems().clear();
+            exerciseLV.getItems().addAll(exerciseList);
 
+            exerciseLV.setOnMouseClicked(e -> {
+                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
+                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
+
+                viewExercises(retrievedExercise);
+
+            });
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Empty exercise register.");
+            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.showAndWait();
+            e.printStackTrace();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
+
 
     @FXML
     void bicepsMenuPressed(ActionEvent event) {
+        try {
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Biceps");
+            exerciseLV.getItems().clear();
+            exerciseLV.getItems().addAll(exerciseList);
 
+            exerciseLV.setOnMouseClicked(e ->{
+                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
+                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
+
+                viewExercises(retrievedExercise);
+
+            });
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Empty exercise register.");
+            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.showAndWait();
+            e.printStackTrace();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void calvesMenuPressed(ActionEvent event) {
+        try {
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Calves");
+            exerciseLV.getItems().clear();
+            exerciseLV.getItems().addAll(exerciseList);
 
+            exerciseLV.setOnMouseClicked(e ->{
+                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
+                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
+
+                viewExercises(retrievedExercise);
+
+            });
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Empty exercise register.");
+            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.showAndWait();
+            e.printStackTrace();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void chestMenuPressed(ActionEvent event) {
-        try{
-            viewExercises("Chest");
+        try {
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Chest");
+            exerciseLV.getItems().clear();
+            exerciseLV.getItems().addAll(exerciseList);
+
+            exerciseLV.setOnMouseClicked(e ->{
+                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
+                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
+
+                viewExercises(retrievedExercise);
+
+            });
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Empty exercise register.");
+            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.showAndWait();
+            e.printStackTrace();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -91,12 +177,56 @@ public class ExerciseController implements Initializable {
 
     @FXML
     void gluteusMenuPressed(ActionEvent event) {
+        try {
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Gluteus");
+            exerciseLV.getItems().clear();
+            exerciseLV.getItems().addAll(exerciseList);
 
+            exerciseLV.setOnMouseClicked(e ->{
+                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
+                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
+
+                viewExercises(retrievedExercise);
+
+            });
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Empty exercise register.");
+            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.showAndWait();
+            e.printStackTrace();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void hamstringMenuPressed(ActionEvent event) {
+        try {
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Hamstrings");
+            exerciseLV.getItems().clear();
+            exerciseLV.getItems().addAll(exerciseList);
 
+            exerciseLV.setOnMouseClicked(e ->{
+                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
+                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
+
+                viewExercises(retrievedExercise);
+
+            });
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Empty exercise register.");
+            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.showAndWait();
+            e.printStackTrace();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -106,18 +236,85 @@ public class ExerciseController implements Initializable {
 
     @FXML
     void quadMenuPressed(ActionEvent event) {
+        try {
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Quadriceps");
+            exerciseLV.getItems().clear();
+            exerciseLV.getItems().addAll(exerciseList);
 
+            exerciseLV.setOnMouseClicked(e ->{
+                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
+                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
+
+                viewExercises(retrievedExercise);
+
+            });
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Empty exercise register.");
+            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.showAndWait();
+            e.printStackTrace();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void shouldersMenuPressed(ActionEvent event) {
+        try {
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Shoulders");
+            exerciseLV.getItems().clear();
+            exerciseLV.getItems().addAll(exerciseList);
 
+            exerciseLV.setOnMouseClicked(e ->{
+                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
+                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
+
+                viewExercises(retrievedExercise);
+
+            });
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Empty exercise register.");
+            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.showAndWait();
+            e.printStackTrace();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void tricepsMenuPressed(ActionEvent event) {
+        try {
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Triceps");
+            exerciseLV.getItems().clear();
+            exerciseLV.getItems().addAll(exerciseList);
 
+            exerciseLV.setOnMouseClicked(e ->{
+                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
+                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
+
+                viewExercises(retrievedExercise);
+
+            });
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Empty exercise register.");
+            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.showAndWait();
+            e.printStackTrace();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
+
     @FXML
     void cancelButtonPressed(ActionEvent event){
         try {
@@ -135,25 +332,22 @@ public class ExerciseController implements Initializable {
         }
     }
 
-    @FXML
-    void viewButtonPressed(ActionEvent event){
 
-    }
+    public void viewExercises(Exercise exercise) {
+        exerciseNameLabel.setText(exercise.getName());
+        instructionLabel.setText("Instruction: " + exercise.getInstruction());
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        exerciseTA.setText("|          Exercise          |");
-        exerciseTA.appendText("\n------------------------------");
-    }
+        String[] muscleGroups = exercise.getMuscleGroup();
+        String muscleGroupSentence = "";
 
-    public void viewExercises(String musclegroup) throws Exception{
-        exerciseList = DatabaseConnection.getInstance().retrieveExercise(musclegroup);
+            for (int i = 0; i < muscleGroups.length; i++) {
+                if (muscleGroups[i] == null) {
+                    break;
+                } else {
+                    muscleGroupSentence = muscleGroupSentence + muscleGroups[i] + ", ";
+                }
+            }
 
-        for (int i = 0; i < exerciseList.size(); i++){
-            retrievedExercise = exerciseList.get(i);
-            exerciseName = retrievedExercise.getName();
-
-            exerciseTA.appendText("\n" + exerciseName);
-        }
+        muscleGroupLabel.setText("Musclegroups: " + muscleGroupSentence);
     }
 }

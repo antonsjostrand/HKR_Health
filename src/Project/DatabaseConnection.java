@@ -437,4 +437,41 @@ public class DatabaseConnection {
         }
     }
 
+    //Hämtar en specifik övning
+    public Exercise retrieveSpecificExercise(String name){
+        try{
+            Exercise retrievedExercise;
+            String retrievedName, type, instruction, image;
+            String[] muscleGroup = new String[4];
+            int counter = 0;
+
+            ResultSet rs = st.executeQuery("SELECT name, typeOfExercise, instruction, imagePath FROM exercise WHERE name = '" + name + "';");
+            if (rs.next()){
+                retrievedName = rs.getString(1);
+                type = rs.getString(2);
+                instruction = rs.getString(3);
+                image = rs.getString(4);
+
+                ResultSet rsTwo = st.executeQuery("SELECT muscleGroup FROM musclegroup WHERE Exercise_name = '" + name + "';");
+                if (!rsTwo.next()){
+                    return null;
+                }else {
+                    do {
+                        muscleGroup[counter] = rsTwo.getString(1);
+                        counter = counter + 1;
+                    }while (rsTwo.next());
+
+                    retrievedExercise = new Exercise(retrievedName, type, instruction, image);
+                    retrievedExercise.setMuscleGroup(muscleGroup);
+
+                    return retrievedExercise;
+                }
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

@@ -3,6 +3,8 @@ package Project.Model;
 import Project.DatabaseConnection;
 import javafx.scene.control.Alert;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class Exercise {
@@ -13,7 +15,7 @@ public class Exercise {
     //Skapa en mapp som kommer innehålla alla bilder! Sen sparar vi en övnings bilds path (imagePath)
     //till det övningsobjektet den tillhör så det kan lagras i DB
 
-    public Exercise(String name, String typeOfExercise,String instruction, String imagePath, String... muscleGroup) {
+    public Exercise(String name, String typeOfExercise,String instruction, String imagePath,String... muscleGroup) {
         try {
             if (typeOfExercise.equals("Stretch") || typeOfExercise.equals("Strength")) {
                 this.name = name;
@@ -61,6 +63,7 @@ public class Exercise {
     }
 
     public void setMuscleGroup(String[] muscleGroup) {
+        this.muscleGroup = new String[4];
         this.muscleGroup = muscleGroup;
     }
 
@@ -80,7 +83,8 @@ public class Exercise {
         this.imagePath = imagePath;
     }
 
-    public void test(){
-
+    @Override
+    public String toString() {
+        return getName();
     }
 }

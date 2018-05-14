@@ -2,16 +2,17 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.ExerciseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.ExerciseController">
    <children>
-      <MenuButton fx:id="muscleGroupMenu" layoutX="51.0" layoutY="119.0" mnemonicParsing="false" onAction="#muscleGroupMenuPressed" text="Muscle Group">
+      <MenuButton fx:id="muscleGroupMenu" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#muscleGroupMenuPressed" text="Muscle Group">
         <items>
           <MenuItem fx:id="chestMenu" mnemonicParsing="false" onAction="#chestMenuPressed" text="Chest" />
           <MenuItem fx:id="shouldersMenu" mnemonicParsing="false" onAction="#shouldersMenuPressed" text="Shoulders" />
@@ -24,11 +25,15 @@
             <MenuItem fx:id="calvesMenu" mnemonicParsing="false" onAction="#calvesMenuPressed" text="Calves" />
         </items>
       </MenuButton>
-      <Button fx:id="cancelButton" layoutX="505.0" layoutY="344.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
-      <TextArea fx:id="exerciseTA" layoutX="318.0" layoutY="51.0" prefHeight="200.0" prefWidth="200.0" />
-      <TextField fx:id="chosenExerciseTF" layoutX="318.0" layoutY="296.0" />
-      <Label layoutX="318.0" layoutY="34.0" text="Exercises" />
-      <Label layoutX="318.0" layoutY="279.0" text="Exercise to see" />
-      <Button fx:id="viewButton" layoutX="316.0" layoutY="344.0" mnemonicParsing="false" onAction="#viewButtonPressed" text="View exercise" />
+      <Button fx:id="cancelButton" layoutX="14.0" layoutY="561.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
+      <ListView fx:id="exerciseLV" layoutX="14.0" layoutY="58.0" prefHeight="500.0" prefWidth="250.0" />
+      <Label fx:id="exerciseNameLabel" layoutX="323.0" layoutY="23.0" text="Exercise name">
+         <font>
+            <Font size="49.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imageIV" fitHeight="336.0" fitWidth="600.0" layoutX="323.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="instructionLabel" layoutX="323.0" layoutY="470.0" text="Instruction" />
+      <Label fx:id="muscleGroupLabel" layoutX="323.0" layoutY="447.0" text="Musclegroups" />
    </children>
 </AnchorPane>
