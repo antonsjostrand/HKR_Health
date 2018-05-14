@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
@@ -332,10 +333,11 @@ public class ExerciseController {
         }
     }
 
-
+    //Metod som skriver ut informationen om övningen på scenen.
     public void viewExercises(Exercise exercise) {
         exerciseNameLabel.setText(exercise.getName());
         instructionLabel.setText("Instruction: " + exercise.getInstruction());
+        imageIV.setImage(new Image(exercise.getImagePath()));
 
         String[] muscleGroups = exercise.getMuscleGroup();
         String muscleGroupSentence = "";

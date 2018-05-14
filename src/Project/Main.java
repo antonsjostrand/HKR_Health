@@ -16,9 +16,6 @@ public class Main extends Application {
         //Connectar till databasen.
         DatabaseConnection.getInstance().connectToDB();
 
-        //Skapar ikonen
-
-
         Parent root = FXMLLoader.load(getClass().getResource("View/loginScene.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("HKR Health");
