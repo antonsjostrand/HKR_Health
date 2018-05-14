@@ -1,6 +1,7 @@
 package Project;
 
 import Project.Model.*;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
@@ -250,9 +251,9 @@ public class DatabaseConnection {
         if (rs.next()) {
             retrievedID = rs.getString(1);
 
-            if (retrievedID == null){
+            if (retrievedID == null) {
                 return 0;
-            }else {
+            } else {
                 parsedID = Integer.parseInt(retrievedID);
                 return parsedID;
             }
@@ -356,7 +357,7 @@ public class DatabaseConnection {
 
     //Metod som uppdaterar dina measurements
     public void updateMeasurementStatistics(int upperArmL, int upperArmR, int forearmL, int forearmR, int thighL, int thighR,
-                        int calfL, int calfR, int waist, int shoulderWidth, int chestWidth, String date, String SSN, String username, int diaryID) throws Exception {
+                                            int calfL, int calfR, int waist, int shoulderWidth, int chestWidth, String date, String SSN, String username, int diaryID) throws Exception {
 
         int retrievedID;
         retrievedID = DatabaseConnection.getInstance().retrieveBiggestID("measurementID", "measurement") + 1;
@@ -371,41 +372,69 @@ public class DatabaseConnection {
     }
 
     //Metod som skapar en training diary i samband med att man skapar ett konto.
-    public void addDiaryToDB(String ssn, String username){
+    public void addDiaryToDB(String ssn, String username) {
         try {
             int retrievedDiaryID;
             retrievedDiaryID = retrieveBiggestID("diaryID", "training_diary") + 1;
 
-                st.executeUpdate("INSERT INTO training_diary (User_Person_SSN, User_username, diaryID) " +
-                        "VALUES ('" + ssn + "', '" + username + "', " + retrievedDiaryID + ");");
+            st.executeUpdate("INSERT INTO training_diary (User_Person_SSN, User_username, diaryID) " +
+                    "VALUES ('" + ssn + "', '" + username + "', " + retrievedDiaryID + ");");
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     //Metod som hämtar ett trainingdiary ID.
-    public int retrieveDiaryID(String username)throws Exception{
+    public int retrieveDiaryID(String username) throws Exception {
         int retrievedID;
 
         ResultSet rs = st.executeQuery("SELECT diaryID FROM training_diary WHERE User_username = '" + username + "'");
-        if (rs.next()){
+        if (rs.next()) {
             retrievedID = rs.getInt(1);
             return retrievedID;
-        }else{
+        } else {
             return Integer.parseInt(null);
         }
     }
 
     //Metod som skapar en ny feedback
-    public void addFeedbackToDB(String ssn, String username, String header, String content){
-        try{
+    public void addFeedbackToDB(String ssn, String username, String header, String content) {
+        try {
 
             int retrievedID = DatabaseConnection.getInstance().retrieveBiggestID("feedbackID", "feedback") + 1;
             st.executeUpdate("INSERT INTO feedback (feedbackID, feedback, header, User_Person_SSN, User_username) " +
                     "VALUES (" + retrievedID + ", '" + content + "', '" + header + "', '" + ssn + "', '" + username + "');");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    //Metod som hämtar samtliga exercises utan muskelgrupperna.
+    public ArrayList<Exercise> retrieveExercise(String musclegroup) throws Exception {
+        ArrayList<Exercise> exerciseList = new ArrayList<>();
+        Exercise exercise;
+        String name, type, instruction, imagePath;
+
+        ResultSet rs = st.executeQuery("SELECT name, typeOfExercise, instruction, imagePath FROM exercise, musclegroup " +
+                "WHERE name = Exercise_name AND muscleGroup = '" + musclegroup + "';");
+
+        if (!rs.next()) {
+            return null;
+        } else {
+            do {
+                name = rs.getString(1);
+                type = rs.getString(2);
+                instruction = rs.getString(3);
+                imagePath = rs.getString(4);
+
+                exercise = new Exercise(name, type, instruction, imagePath);
+                exerciseList.add(exercise);
+
+            } while (rs.next());
+
+            return exerciseList;
+        }
+    }
+
 }
