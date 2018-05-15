@@ -177,6 +177,8 @@ public class NutritionController implements Initializable{
                 kcalTC.setCellValueFactory(new PropertyValueFactory<NutritionTable, String>("kcal"));
 
                 tableTW.setItems(nutritionData);
+
+
             } else {
                 throw new ArrayIndexOutOfBoundsException();
             }
