@@ -1,5 +1,8 @@
 package Project.Controller;
 
+import Project.DatabaseConnection;
+import Project.Model.AccountInfo;
+import Project.UserInformation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,10 +11,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,18 +25,64 @@ import java.util.ResourceBundle;
 public class UserController implements Initializable {
 
     @FXML
-    private ImageView userLogo;
+    private ImageView buttonPressed;
+    @FXML private Button myAccountButton;
+    @FXML private Button homeButton;
+    @FXML private Button exercisesButton;
+    @FXML private Button stretchButton;
+    @FXML private Button diaryButton;
+    @FXML private Button timerButton;
+    @FXML private Button nutritionButton;
+    @FXML private Button feedbackButton;
+    @FXML private Button backButton;
+    @FXML
+    private TextField updateHeight, updateWeight, updateAge, updateDate,
+            searchDate, firstHeight, firstWeight, firstAge;;
+
+    @FXML
+    private TextArea textArea1, textArea2;
+
+    private AccountInfo accInfo;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Image image = new Image(getClass().getResourceAsStream("/Resources/hkrlogo.png"));
-        userLogo.setImage(image);
 
+        try {
+            accInfo = DatabaseConnection.getInstance().retrieveAccountInfo(UserInformation.getInstance().getSSN());
+            firstHeight.setText(String.valueOf(accInfo.getHeight()));
+            firstWeight.setText(String.valueOf(accInfo.getWeight()));
+            firstAge.setText(String.valueOf(accInfo.getAge()));
+
+            accInfo = DatabaseConnection.getInstance().retrieveCurrentStatistics(UserInformation.getInstance().getSSN(), updateDate.getText());
+            textArea1.setText(updateDate.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+   @FXML
+    void mousePressedTimerButton() {
+        //Image image = new Image(getClass().getResourceAsStream("/Resources/hkrlogo.png"));
+        //buttonPressed.setImage(image);
 
-    @FXML void exerciseButton(ActionEvent event) {
+    }
+    @FXML void homeButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/userScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML void exerciseButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -45,7 +97,7 @@ public class UserController implements Initializable {
         }
     }
 
-    @FXML void stretchButton(ActionEvent event) {
+    @FXML void stretchButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -60,7 +112,7 @@ public class UserController implements Initializable {
         }
     }
 
-    @FXML void timerButton(ActionEvent event) {
+    @FXML void timerButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -75,7 +127,7 @@ public class UserController implements Initializable {
         }
     }
 
-    @FXML void diaryButton(ActionEvent event) {
+    @FXML void diaryButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -90,7 +142,7 @@ public class UserController implements Initializable {
         }
     }
 
-    @FXML void nutritionButton(ActionEvent event) {
+    @FXML void nutritionButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -120,7 +172,7 @@ public class UserController implements Initializable {
         }
     }
 
-    @FXML void myAccountButton(ActionEvent event) {
+    @FXML void myAccountButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -161,6 +213,50 @@ public class UserController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e){
+            //Fixa error handling
+        }
+    }
+    @FXML
+    void goBack (ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/userScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            //Fixa error handling
+        }
+    }
+
+    @FXML
+    void saveButtonPressed () {
+        try {
+
+            DatabaseConnection.getInstance().updateCurrentStatistics(UserInformation.getInstance().getSSN(),
+                    UserInformation.getInstance().getUsername(),
+                    updateDate.getText(),
+                    Integer.parseInt(updateHeight.getText()),
+                    Integer.parseInt(updateWeight.getText()),
+                    Integer.parseInt(updateAge.getText()));
+
+
+        } catch (Exception e) {
+            //Fixa error handling
+        }
+    }
+    @FXML
+    void searchButtonPressed() {
+        try {
+
+            //  accInfo = DatabaseConnection.getInstance().retrieveCurrentStatistics(UserInformation.getInstance().getSSN(), updateDate.getText());
+
+            //     textArea2.setText(String.valueOf()
+
+        } catch (Exception e) {
             //Fixa error handling
         }
     }

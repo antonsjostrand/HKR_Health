@@ -2,15 +2,60 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.UserController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.StretchController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="855.0">
+         <children>
+            <ImageView fitHeight="501.0" fitWidth="853.0" layoutX="1.0" layoutY="107.0" opacity="0.05" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/guestBackground.png" />
+               </image>
+            </ImageView>
+            <MenuButton fx:id="muscleGroupMenu" layoutX="40.0" layoutY="207.0" mnemonicParsing="false" onAction="#muscleGroupMenuPressed" prefHeight="44.0" prefWidth="250.0" style="-fx-background-color: #92C94A #92C94A;" text="Muscle Group" textFill="WHITE">
+               <items>
+                  <MenuItem fx:id="chestMenu" mnemonicParsing="false" onAction="#chestMenuPressed" text="Chest" />
+                  <MenuItem fx:id="shouldersMenu" mnemonicParsing="false" onAction="#shouldersMenuPressed" text="Shoulders" />
+                  <MenuItem fx:id="backMenu" mnemonicParsing="false" onAction="#backMenuPressed" text="Back" />
+                  <MenuItem fx:id="bicepsMenu" mnemonicParsing="false" onAction="#bicepsMenuPressed" text="Biceps" />
+                  <MenuItem fx:id="tricepsMenu" mnemonicParsing="false" onAction="#tricepsMenuPressed" text="Triceps" />
+                  <MenuItem fx:id="gluteusMenu" mnemonicParsing="false" onAction="#gluteusMenuPressed" text="Gluteus" />
+                  <MenuItem fx:id="quadMenu" mnemonicParsing="false" onAction="#quadMenuPressed" text="Quadriceps" />
+                  <MenuItem fx:id="hamstringMenu" mnemonicParsing="false" onAction="#hamstringMenuPressed" text="Hamstrings" />
+                  <MenuItem fx:id="calvesMenu" mnemonicParsing="false" onAction="#calvesMenuPressed" text="Calves" />
+               </items>
+            </MenuButton>
+            <ListView fx:id="exerciseLV" layoutX="40.0" layoutY="265.0" prefHeight="171.0" prefWidth="251.0" />
+            <ImageView fx:id="imageIV" fitHeight="233.0" fitWidth="383.0" layoutX="389.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="instructionLabel" layoutX="43.0" layoutY="475.0" text="Instruction" />
+            <Label fx:id="muscleGroupLabel" layoutX="43.0" layoutY="448.0" text="Musclegroups" />
+            <AnchorPane prefHeight="106.0" prefWidth="855.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A;">
+               <children>
+                  <Label fx:id="exerciseNameLabel" layoutX="209.0" layoutY="27.0" text="Stretch" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Neue Light" size="41.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="88.0" fitWidth="123.0" layoutX="753.0" layoutY="9.0" opacity="0.19" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-yoga.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
    <left>
-      <AnchorPane prefHeight="602.0" prefWidth="145.0" style="-fx-background-color: #68A731;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="600.0" prefWidth="145.0" style="-fx-background-color: #68A731;" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="homeButton" layoutX="-1.0" layoutY="100.0" mnemonicParsing="false" onAction="#homeButtonPressed" prefHeight="42.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Home      " textFill="WHITE">
                <graphic>
@@ -48,7 +93,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="timerButton" layoutX="-1.0" layoutY="290.0" mnemonicParsing="false" onAction="#timerButtonPressed" onMousePressed="#mousePressedTimerButton" prefHeight="32.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Timer      " textFill="WHITE">
+            <Button fx:id="timerButton" layoutX="-1.0" layoutY="290.0" mnemonicParsing="false" onAction="#timerButtonPressed" prefHeight="32.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Timer      " textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="16.0" />
                </font>
@@ -104,59 +149,4 @@
          </children>
       </AnchorPane>
    </left>
-   <center>
-      <AnchorPane prefHeight="522.0" prefWidth="859.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="574.0" fitWidth="849.0" layoutX="3.0" layoutY="97.0" opacity="0.05" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Resources/guestBackground.png" />
-               </image>
-            </ImageView>
-            <AnchorPane layoutX="1.0" prefHeight="106.0" prefWidth="850.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A;">
-               <children>
-                  <ImageView fitHeight="83.0" fitWidth="83.0" layoutX="749.0" layoutY="12.0" opacity="0.19" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Resources/icons8-hourglass.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="exerciseNameLabel" layoutX="374.0" layoutY="27.0" text="Timer" textFill="WHITE">
-                     <font>
-                        <Font name="Helvetica Neue Light" size="41.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <Label layoutX="253.0" layoutY="199.0" text="00:">
-               <font>
-                  <Font name="Helvetica Neue Light" size="78.0" />
-               </font>
-            </Label>
-            <Label layoutX="384.0" layoutY="201.0" text="00:">
-               <font>
-                  <Font name="Helvetica Neue Light" size="78.0" />
-               </font>
-            </Label>
-            <Label layoutX="523.0" layoutY="228.0" text="00:">
-               <font>
-                  <Font name="Helvetica Neue Light" size="48.0" />
-               </font>
-            </Label>
-            <Button layoutX="232.0" layoutY="344.0" mnemonicParsing="false" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Start" textFill="WHITE">
-               <font>
-                  <Font name="Helvetica Neue Light" size="55.0" />
-               </font>
-            </Button>
-            <Button layoutX="456.0" layoutY="345.0" mnemonicParsing="false" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Stop" textFill="#d75757">
-               <font>
-                  <Font name="Helvetica Neue Light" size="55.0" />
-               </font>
-            </Button>
-            <Button layoutX="363.0" layoutY="469.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Reset">
-               <font>
-                  <Font name="Helvetica Neue Light" size="28.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-   </center>
 </BorderPane>

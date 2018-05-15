@@ -89,7 +89,7 @@ public class TimerController extends java.lang.Thread implements Initializable{
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/guestScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/userScene.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

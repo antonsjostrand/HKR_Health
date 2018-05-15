@@ -5,35 +5,149 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.ExerciseController">
-   <children>
-      <MenuButton fx:id="muscleGroupMenu" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#muscleGroupMenuPressed" text="Muscle Group">
-        <items>
-          <MenuItem fx:id="chestMenu" mnemonicParsing="false" onAction="#chestMenuPressed" text="Chest" />
-          <MenuItem fx:id="shouldersMenu" mnemonicParsing="false" onAction="#shouldersMenuPressed" text="Shoulders" />
-            <MenuItem fx:id="backMenu" mnemonicParsing="false" onAction="#backMenuPressed" text="Back" />
-            <MenuItem fx:id="bicepsMenu" mnemonicParsing="false" onAction="#bicepsMenuPressed" text="Biceps" />
-            <MenuItem fx:id="tricepsMenu" mnemonicParsing="false" onAction="#tricepsMenuPressed" text="Triceps" />
-            <MenuItem fx:id="gluteusMenu" mnemonicParsing="false" onAction="#gluteusMenuPressed" text="Gluteus" />
-            <MenuItem fx:id="quadMenu" mnemonicParsing="false" onAction="#quadMenuPressed" text="Quadriceps" />
-            <MenuItem fx:id="hamstringMenu" mnemonicParsing="false" onAction="#hamstringMenuPressed" text="Hamstrings" />
-            <MenuItem fx:id="calvesMenu" mnemonicParsing="false" onAction="#calvesMenuPressed" text="Calves" />
-        </items>
-      </MenuButton>
-      <Button fx:id="cancelButton" layoutX="14.0" layoutY="561.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
-      <ListView fx:id="exerciseLV" layoutX="14.0" layoutY="58.0" prefHeight="500.0" prefWidth="250.0" />
-      <Label fx:id="exerciseNameLabel" layoutX="323.0" layoutY="23.0" text="Exercise name">
-         <font>
-            <Font size="49.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="imageIV" fitHeight="336.0" fitWidth="600.0" layoutX="323.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="instructionLabel" layoutX="323.0" layoutY="470.0" text="Instruction" />
-      <Label fx:id="muscleGroupLabel" layoutX="323.0" layoutY="447.0" text="Musclegroups" />
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.ExerciseController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="855.0">
+         <children>
+            <ImageView fitHeight="501.0" fitWidth="853.0" layoutX="1.0" layoutY="107.0" opacity="0.05" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/guestBackground.png" />
+               </image>
+            </ImageView>
+            <MenuButton fx:id="muscleGroupMenu" layoutX="40.0" layoutY="207.0" mnemonicParsing="false" onAction="#muscleGroupMenuPressed" prefHeight="44.0" prefWidth="250.0" style="-fx-background-color: #92C94A #92C94A;" text="Muscle Group" textFill="WHITE">
+              <items>
+                <MenuItem fx:id="chestMenu" mnemonicParsing="false" onAction="#chestMenuPressed" text="Chest" />
+                <MenuItem fx:id="shouldersMenu" mnemonicParsing="false" onAction="#shouldersMenuPressed" text="Shoulders" />
+                  <MenuItem fx:id="backMenu" mnemonicParsing="false" onAction="#backMenuPressed" text="Back" />
+                  <MenuItem fx:id="bicepsMenu" mnemonicParsing="false" onAction="#bicepsMenuPressed" text="Biceps" />
+                  <MenuItem fx:id="tricepsMenu" mnemonicParsing="false" onAction="#tricepsMenuPressed" text="Triceps" />
+                  <MenuItem fx:id="gluteusMenu" mnemonicParsing="false" onAction="#gluteusMenuPressed" text="Gluteus" />
+                  <MenuItem fx:id="quadMenu" mnemonicParsing="false" onAction="#quadMenuPressed" text="Quadriceps" />
+                  <MenuItem fx:id="hamstringMenu" mnemonicParsing="false" onAction="#hamstringMenuPressed" text="Hamstrings" />
+                  <MenuItem fx:id="calvesMenu" mnemonicParsing="false" onAction="#calvesMenuPressed" text="Calves" />
+              </items>
+            </MenuButton>
+            <ListView fx:id="exerciseLV" layoutX="40.0" layoutY="265.0" prefHeight="171.0" prefWidth="251.0" />
+            <ImageView fx:id="imageIV" fitHeight="233.0" fitWidth="383.0" layoutX="389.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="instructionLabel" layoutX="43.0" layoutY="475.0" text="Instruction" />
+            <Label fx:id="muscleGroupLabel" layoutX="43.0" layoutY="448.0" text="Musclegroups" />
+            <AnchorPane prefHeight="106.0" prefWidth="855.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A;">
+               <children>
+                  <Label fx:id="exerciseNameLabel" layoutX="209.0" layoutY="27.0" text="Exercises" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Neue Light" size="41.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="88.0" fitWidth="123.0" layoutX="745.0" layoutY="7.0" opacity="0.19" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-weightlift.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="600.0" prefWidth="145.0" style="-fx-background-color: #68A731;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="homeButton" layoutX="-1.0" layoutY="100.0" mnemonicParsing="false" onAction="#homeButtonPressed" prefHeight="42.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Home      " textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="exercisesButton" layoutY="200.0" mnemonicParsing="false" onAction="#exerciseButtonPressed" prefHeight="32.0" prefWidth="145.0" style="-fx-background-color: #68A731 #68A731;" text=" Exercises" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-weightlift.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="stretchButton" layoutX="-2.0" layoutY="245.0" mnemonicParsing="false" onAction="#stretchButtonPressed" prefHeight="32.0" prefWidth="149.0" style="-fx-background-color: #68A731 #68A731;" text=" Stretch    " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-yoga.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="timerButton" layoutX="-1.0" layoutY="290.0" mnemonicParsing="false" onAction="#timerButtonPressed" prefHeight="32.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Timer      " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/hourglass-small.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="diaryButton" layoutX="-3.0" layoutY="335.0" mnemonicParsing="false" onAction="#diaryButtonPressed" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #68A731 #68A731;" text=" Diary      " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-calendar_10.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="nutritionButton" layoutX="1.0" layoutY="380.0" mnemonicParsing="false" onAction="#nutritionButtonPressed" prefHeight="32.0" prefWidth="144.0" style="-fx-background-color: #68A731 #68A731;" text=" Nutrition " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-restaurant.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="feedbackButton" layoutX="-4.0" layoutY="510.0" mnemonicParsing="false" onAction="#feedbackButtonPressed" prefHeight="42.0" prefWidth="153.0" style="-fx-background-color: #68A731 #68A731;" text="Feedback" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-star.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="backButton" layoutY="563.0" mnemonicParsing="false" onAction="#cancelButtonPressed" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #68A731 #68A731;" text="&lt;&lt;" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>
