@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.UserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.UserController">
    <left>
       <AnchorPane prefHeight="602.0" prefWidth="145.0" style="-fx-background-color: #68A731;" BorderPane.alignment="CENTER">
          <children>
@@ -27,6 +28,7 @@
                   <Font name="Helvetica Neue Light" size="16.0" />
                </font>
             </Button>
+            <Separator layoutX="-2.0" layoutY="100.0" orientation="VERTICAL" prefHeight="42.0" prefWidth="10.0" />
             <Button fx:id="exercisesButton" layoutY="200.0" mnemonicParsing="false" onAction="#exerciseButtonPressed" prefHeight="32.0" prefWidth="145.0" style="-fx-background-color: #68A731 #68A731;" text=" Exercises" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="16.0" />
@@ -129,11 +131,6 @@
                   </Label>
                </children>
             </AnchorPane>
-            <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="312.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Resources/icons8-gender_neutral_user.png" />
-               </image>
-            </ImageView>
             <Label layoutX="41.0" layoutY="182.0" prefHeight="53.0" prefWidth="229.0" text="First day with HKR Health" textFill="#92c94a">
                <font>
                   <Font name="Helvetica Neue Medium" size="18.0" />
@@ -196,13 +193,22 @@
             <TextField fx:id="updateAge" layoutX="555.0" layoutY="329.0" prefHeight="25.0" prefWidth="230.0" style="-fx-background-radius: 5em;" />
             <TextField fx:id="updateDate" layoutX="552.0" layoutY="373.0" prefHeight="25.0" prefWidth="230.0" promptText="example: 5/4-18" style="-fx-background-radius: 5em;" />
             <TextArea fx:id="textArea2" layoutX="101.0" layoutY="441.0" prefHeight="125.0" prefWidth="230.0" />
-            <Label layoutX="376.0" layoutY="118.0" text="Account info" textFill="#68a731" underline="true">
+            <AnchorPane layoutX="334.0" layoutY="106.0" prefHeight="91.0" prefWidth="188.0" style="-fx-background-color: lightgrey;" />
+            <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="342.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/icons8-gender_neutral_user.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="406.0" layoutY="118.0" text="Account info" textFill="#68a731" underline="true">
                <font>
-                  <Font name="Helvetica Neue" size="15.0" />
+                  <Font name="Helvetica Neue Light" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="nameLabel" layoutX="376.0" layoutY="139.0" text="Name" />
-            <Label fx:id="ssnLabel" layoutX="381.0" layoutY="160.0" text="SSN" />
+            <Label fx:id="nameLabel" layoutX="405.0" layoutY="141.0" text="Name">
+               <font>
+                  <Font name="Helvetica Neue Light" size="13.0" />
+               </font></Label>
+            <Label fx:id="ssnLabel" layoutX="406.0" layoutY="159.0" text="SSN" />
          </children>
       </AnchorPane>
    </center>

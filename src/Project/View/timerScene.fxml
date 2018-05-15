@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -60,6 +61,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Separator layoutX="-2.0" layoutY="290.0" orientation="VERTICAL" prefHeight="42.0" prefWidth="10.0" />
             <Button fx:id="diaryButton" layoutX="-3.0" layoutY="335.0" mnemonicParsing="false" onAction="#diaryButtonPressed" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #68A731 #68A731;" text=" Diary      " textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="16.0" />
