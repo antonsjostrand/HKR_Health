@@ -8,12 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
 import java.util.InputMismatchException;
 
@@ -31,6 +28,140 @@ public class AddExerciseController {
     @FXML private TextField muscleFourTF;
     @FXML private TextArea instructionTA;
     @FXML private TextField pathTF;
+    @FXML
+    private MenuButton muscleGroupMenu;
+
+    @FXML
+    private MenuItem chestMenuOne;
+
+    @FXML
+    private MenuItem shouldersMenuOne;
+
+    @FXML
+    private MenuItem backMenuOne;
+
+    @FXML
+    private MenuItem bicepsMenuOne;
+
+    @FXML
+    private MenuItem tricepsMenuOne;
+
+    @FXML
+    private MenuItem gluteusMenuOne;
+
+    @FXML
+    private MenuItem quadricepsMenuOne;
+
+    @FXML
+    private MenuItem hamstringsMenuOne;
+
+    @FXML
+    private MenuItem calvesMenuOne;
+
+    @FXML
+    private MenuItem absMenuOne;
+    @FXML
+    private Label muscleGroupOneLabel;
+
+    @FXML
+    private Label muscleGroupTwoLabel;
+
+    @FXML
+    private Label muscleGroupThreeLabel;
+
+    @FXML
+    private Label muscleGroupFourLabel;
+
+    @FXML
+    void absMenuOnePressed(ActionEvent event) {
+        try{
+            fillMusclegroupLabels("Abs");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void backMenuOnePressed(ActionEvent event) {
+        try{
+            fillMusclegroupLabels("Back");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void bicepsMenuOnePressed(ActionEvent event) {
+        try{
+            fillMusclegroupLabels("Biceps");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void calvesMenuOnePressed(ActionEvent event) {
+        try{
+            fillMusclegroupLabels("Calves");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void chestMenuOnePressed(ActionEvent event) {
+        try{
+            fillMusclegroupLabels("Chest");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    void gluteusMenuOnePressed(ActionEvent event) {
+        try{
+            fillMusclegroupLabels("Gluteus");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void hamstringsMenuOnePressed(ActionEvent event) {
+        try{
+            fillMusclegroupLabels("Hamstrings");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void quadricepsMenuOnePressed(ActionEvent event) {
+        try{
+            fillMusclegroupLabels("Quadriceps");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void shouldersMenuOnePressed(ActionEvent event) {
+        try{
+            fillMusclegroupLabels("Shoulders");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void tricepsMenuOnePressed(ActionEvent event) {
+        try{
+            fillMusclegroupLabels("Triceps");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void cancelButtonPressed(ActionEvent event) {
@@ -56,7 +187,6 @@ public class AddExerciseController {
             checkIfInputEmtpy();
             checkNameFormat(nameTF.getText());
             checkTypeFormat(typeTF.getText());
-            checkMuscleGroupFormat(muscleOneTF.getText(), muscleTwoTF.getText(), muscleThreeTF.getText(), muscleFourTF.getText());
             checkInstructionFormat(instructionTA.getText());
 
             checkName = DatabaseConnection.getInstance().checkExerciseName(nameTF.getText());
@@ -123,77 +253,6 @@ public class AddExerciseController {
         }
     }
 
-    //Metod som kollar så att muskelgrupperna man angett har ett korrekt format.
-    //Kollar också så att man inte använder sig av felmeddelandet som namn.
-    public void checkMuscleGroupFormat(String muscleOne, String muscleTwo, String muscleThree, String muscleFour){
-        for (int i = 0; i < numbers.length; i++) {
-            if (muscleOne.contains(String.valueOf(numbers[i]))) {
-                muscleOneTF.clear();
-                muscleOneTF.setText("Enter a proper musclegroup.");
-                muscleOneTF.requestFocus();
-                throw new InputMismatchException();
-            }else if (muscleTwo.contains(String.valueOf(numbers[i]))){
-                muscleTwoTF.clear();
-                muscleTwoTF.setText("Enter a proper musclegroup.");
-                muscleTwoTF.requestFocus();
-                throw new InputMismatchException();
-            }else if (muscleThree.contains(String.valueOf(numbers[i]))){
-                muscleThreeTF.clear();
-                muscleThreeTF.setText("Enter a proper musclegroup.");
-                muscleThreeTF.requestFocus();
-                throw new InputMismatchException();
-            }else if (muscleFour.contains(String.valueOf(numbers[i]))){
-                muscleFourTF.clear();
-                muscleFourTF.setText("Enter a proper musclegroup.");
-                muscleFourTF.requestFocus();
-                throw new InputMismatchException();
-            }
-        }
-
-        if (muscleOne.trim().length() == 0){
-            muscleOneTF.clear();
-            muscleOneTF.setText("Enter a proper muscle group.");
-            muscleOneTF.requestFocus();
-            throw new InputMismatchException();
-        }
-        if (muscleTwo.trim().length() == 0){
-            muscleTwoTF.clear();
-
-        }
-        if (muscleThree.trim().length() == 0){
-            muscleThreeTF.clear();
-
-        }
-        if (muscleFour.trim().length() == 0){
-            muscleFourTF.clear();
-
-        }
-        if (muscleTwo.equals("Enter a proper muscle group.")){
-            muscleTwoTF.clear();
-            muscleTwoTF.setText("Enter a proper muscle group.");
-            muscleTwoTF.requestFocus();
-            throw new InputMismatchException();
-        }
-        if (muscleThree.equals("Enter a proper muscle group.")){
-            muscleThreeTF.clear();
-            muscleThreeTF.setText("Enter a proper muscle group.");
-            muscleThreeTF.requestFocus();
-            throw new InputMismatchException();
-        }
-        if (muscleFour.equals("Enter a proper muscle group.")){
-            muscleFourTF.clear();
-            muscleFourTF.setText("Enter a proper muscle group.");
-            muscleFourTF.requestFocus();
-            throw new InputMismatchException();
-        }
-        if (muscleOne.equals("Enter a proper muscle group.")){
-            muscleOneTF.clear();
-            muscleOneTF.setText("Enter a proper muscle group.");
-            muscleOneTF.requestFocus();
-            throw new InputMismatchException();
-        }
-        }
-
 
     //Metod som kollar så att storleken på instruktionen inte är för stor för att sparas i DB.
     public void checkInstructionFormat(String instruction){
@@ -210,7 +269,7 @@ public class AddExerciseController {
     //Metod som kollar så att inputen inte är tom.
     //De enda som får vara tomma är muskelgrupp 2, 3 och 4 då det inte alltid behövs.
     public void checkIfInputEmtpy(){
-        if (nameTF.getText().isEmpty() || typeTF.getText().isEmpty() || muscleOneTF.getText().isEmpty() || instructionTA.getText().isEmpty() || pathTF.getText().isEmpty()){
+        if (nameTF.getText().isEmpty() || typeTF.getText().isEmpty() || muscleGroupOneLabel.getText().isEmpty() || instructionTA.getText().isEmpty() || pathTF.getText().isEmpty()){
             throw new NullPointerException();
         }
     }
@@ -218,30 +277,33 @@ public class AddExerciseController {
     //Metod som skapar ett exercise objekt.
     public void createExercise(Boolean nameStatus) throws Exception{
         if (nameStatus == false) {
-            if (muscleTwoTF.getText().isEmpty() && muscleThreeTF.getText().isEmpty() && muscleFourTF.getText().isEmpty()) {
+            if (muscleGroupTwoLabel.getText().isEmpty() && muscleGroupThreeLabel.getText().isEmpty() && muscleGroupFourLabel.getText().isEmpty()) {
+
                 Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
-                        muscleOneTF.getText());
+                        muscleGroupOneLabel.getText());
+                DatabaseConnection.getInstance().addExerciseToDB(newExercise);
+
+            } else if (muscleGroupThreeLabel.getText().isEmpty() && muscleGroupFourLabel.getText().isEmpty()) {
+
+                Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
+                        muscleGroupOneLabel.getText(), muscleGroupTwoLabel.getText());
+                DatabaseConnection.getInstance().addExerciseToDB(newExercise);
+
+            } else if (muscleGroupFourLabel.getText().isEmpty()) {
+                Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
+                        muscleGroupOneLabel.getText(), muscleGroupTwoLabel.getText(), muscleGroupThreeLabel.getText());
 
                 DatabaseConnection.getInstance().addExerciseToDB(newExercise);
-            } else if (muscleThreeTF.getText().isEmpty() && muscleFourTF.getText().isEmpty()) {
-                Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
-                        muscleOneTF.getText(), muscleTwoTF.getText());
 
-                DatabaseConnection.getInstance().addExerciseToDB(newExercise);
-            } else if (muscleFourTF.getText().isEmpty()) {
-                Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
-                        muscleOneTF.getText(), muscleTwoTF.getText(), muscleThreeTF.getText());
-
-                DatabaseConnection.getInstance().addExerciseToDB(newExercise);
             } else {
                 Exercise newExercise = new Exercise(nameTF.getText(), typeTF.getText(), instructionTA.getText(), pathTF.getText(),
-                        muscleOneTF.getText(), muscleTwoTF.getText(), muscleThreeTF.getText(), muscleFourTF.getText());
+                        muscleGroupOneLabel.getText(), muscleGroupTwoLabel.getText(), muscleGroupThreeLabel.getText(), muscleGroupFourLabel.getText());
 
                 DatabaseConnection.getInstance().addExerciseToDB(newExercise);
             }
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Exercise.");
+            alert.setTitle("INFORMATION");
             alert.setHeaderText("Exercise creation.");
             alert.setContentText("Exercise created and stored in the database.");
             alert.showAndWait();
@@ -250,10 +312,10 @@ public class AddExerciseController {
             typeTF.clear();
             instructionTA.clear();
             pathTF.clear();
-            muscleOneTF.clear();
-            muscleTwoTF.clear();
-            muscleThreeTF.clear();
-            muscleFourTF.clear();
+            muscleGroupOneLabel.setText("");
+            muscleGroupTwoLabel.setText("");
+            muscleGroupThreeLabel.setText("");
+            muscleGroupFourLabel.setText("");
         }else{
             nameTF.clear();
             nameTF.setText("Exercise already exists.");
@@ -267,5 +329,17 @@ public class AddExerciseController {
         }
     }
 
+    //Metod som fyller ut musclegroup labels
+    public void fillMusclegroupLabels(String muscle){
+        if (muscleGroupOneLabel.getText().isEmpty()){
+            muscleGroupOneLabel.setText(muscle);
+        } else if (muscleGroupTwoLabel.getText().isEmpty()){
+            muscleGroupTwoLabel.setText(muscle);
+        } else if (muscleGroupThreeLabel.getText().isEmpty()){
+            muscleGroupThreeLabel.setText(muscle);
+        } else if (muscleGroupFourLabel.getText().isEmpty()){
+            muscleGroupFourLabel.setText(muscle);
+        }
+    }
 
 }

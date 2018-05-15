@@ -1,6 +1,7 @@
 package Project;
 
 import Project.Model.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
@@ -293,6 +294,23 @@ public class DatabaseConnection {
         return "NO MATCH";
     }
 
+    //metod som hämtar en användares namn.
+    public String retrieveUserCompleteName(String username) throws Exception{
+        String retrievedName, firstName, lastName;
+
+        ResultSet rs = st.executeQuery("SELECT firstName, lastName FROM person, user WHERE SSN = Person_SSN AND username = '" + username + "';");
+
+        if (rs.next()){
+            firstName = rs.getString(1);
+            lastName = rs.getString(2);
+
+            retrievedName = firstName + " " + lastName;
+
+            return retrievedName;
+        }
+        return null;
+    }
+
     //Metod som hämtar dina current statistics med hjälp av SSN som PK. Datumet måste vara i formattet: 5/4-18. Alltså d/m-år.
     public AccountInfo retrieveCurrentStatistics(String SSN, String date) throws Exception {
         int retrievedHeight, retrievedAge, retrievedWeight;
@@ -474,4 +492,48 @@ public class DatabaseConnection {
         return null;
     }
 
+    //Metod som hämtar samtliga råvaror.
+    public ArrayList<String> retrieveAllNutritions() throws Exception{
+       ArrayList<String> retrievedNutrition = new ArrayList<>();
+
+        ResultSet rs = st.executeQuery("SELECT name, protein, carbs, fat, kcal FROM nutrition;");
+            if (!rs.next()){
+                return null;
+            }else{
+                do {
+                    retrievedNutrition.add(rs.getString(1));
+                    retrievedNutrition.add(rs.getString(2));
+                    retrievedNutrition.add(rs.getString(3));
+                    retrievedNutrition.add(rs.getString(4));
+                    retrievedNutrition.add(rs.getString(5));
+
+                }while (rs.next());
+                return retrievedNutrition;
+            }
+    }
+
+    //Metod som hämtar en lista med specifika råvaror.
+    public ArrayList<String> retrieveSpecificNutrions(String macro, String from, String to) throws Exception{
+        ArrayList<String> retrievedNutrition = new ArrayList<>();
+
+        ResultSet rs = st.executeQuery("SELECT name, protein, carbs, fat, kcal FROM nutrition WHERE " + macro + " >= " + from + " AND " + macro + " <= " + to + ";");
+
+            if (!rs.next()){
+                return null;
+            }else{
+                do {
+                    retrievedNutrition.add(rs.getString(1));
+                    retrievedNutrition.add(rs.getString(2));
+                    retrievedNutrition.add(rs.getString(3));
+                    retrievedNutrition.add(rs.getString(4));
+                    retrievedNutrition.add(rs.getString(5));
+                }while (rs.next());
+                return retrievedNutrition;
+            }
+    }
+
+    //Metod som raderar en feedback
+    public void deleteFeedbackFromDB(String id) throws Exception{
+        st.executeUpdate("DELETE FROM feedback WHERE feedbackID = " + Integer.parseInt(id) + ";");
+    }
 }

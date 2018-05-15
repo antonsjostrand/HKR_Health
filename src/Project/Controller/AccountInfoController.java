@@ -90,10 +90,6 @@ public class AccountInfoController implements Initializable {
     void searchButtonPressed() {
         try {
 
-      //  accInfo = DatabaseConnection.getInstance().retrieveCurrentStatistics(UserInformation.getInstance().getSSN(), updateDate.getText());
-
-       //     textArea2.setText(String.valueOf()
-
         } catch (Exception e) {
             //Fixa error handling
         }

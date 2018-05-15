@@ -122,7 +122,7 @@ public class AddAdminController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Admin.");
             alert.setHeaderText("Admin added.");
-            alert.setContentText("The person with SSN " + ssnPromoteTF.getText() + "is now an admin.");
+            alert.setContentText("The person with SSN " + ssnPromoteTF.getText() + " is now an admin.");
             alert.showAndWait();
 
             ssnPromoteTF.clear();

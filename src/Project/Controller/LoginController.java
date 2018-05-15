@@ -90,6 +90,7 @@ public class LoginController implements Initializable {
                 UserInformation.getInstance().setSSN(DatabaseConnection.getInstance().retrieveUserSSN(userNameTF.getText()));
                 UserInformation.getInstance().setUsername(userNameTF.getText());
                 UserInformation.getInstance().setDiaryID(DatabaseConnection.getInstance().retrieveDiaryID(userNameTF.getText()));
+                UserInformation.getInstance().setCompleteName(DatabaseConnection.getInstance().retrieveUserCompleteName(userNameTF.getText()));
                 changeScene("userScene", event);
 
             } else if (loginStatus == false) {

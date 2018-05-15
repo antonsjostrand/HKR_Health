@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.ExerciseController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.ExerciseController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="855.0">
          <children>
@@ -32,6 +31,7 @@
                   <MenuItem fx:id="quadMenu" mnemonicParsing="false" onAction="#quadMenuPressed" text="Quadriceps" />
                   <MenuItem fx:id="hamstringMenu" mnemonicParsing="false" onAction="#hamstringMenuPressed" text="Hamstrings" />
                   <MenuItem fx:id="calvesMenu" mnemonicParsing="false" onAction="#calvesMenuPressed" text="Calves" />
+                  <MenuItem fx:id="absMenu" mnemonicParsing="false" onAction="#absMenuPressed" text="Abs" />
               </items>
             </MenuButton>
             <ListView fx:id="exerciseLV" layoutX="40.0" layoutY="265.0" prefHeight="171.0" prefWidth="251.0" />

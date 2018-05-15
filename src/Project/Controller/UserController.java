@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -24,9 +25,7 @@ import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
 
-    @FXML
-    private ImageView buttonPressed;
-    @FXML private Button myAccountButton;
+    @FXML private ImageView buttonPressed;
     @FXML private Button homeButton;
     @FXML private Button exercisesButton;
     @FXML private Button stretchButton;
@@ -35,6 +34,10 @@ public class UserController implements Initializable {
     @FXML private Button nutritionButton;
     @FXML private Button feedbackButton;
     @FXML private Button backButton;
+    @FXML private Button saveButton;
+
+    @FXML private Label nameLabel, ssnLabel;
+
     @FXML
     private TextField updateHeight, updateWeight, updateAge, updateDate,
             searchDate, firstHeight, firstWeight, firstAge;;
@@ -49,6 +52,9 @@ public class UserController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
+            nameLabel.setText(UserInformation.getInstance().getCompleteName());
+            ssnLabel.setText(UserInformation.getInstance().getSSN());
+
             accInfo = DatabaseConnection.getInstance().retrieveAccountInfo(UserInformation.getInstance().getSSN());
             firstHeight.setText(String.valueOf(accInfo.getHeight()));
             firstWeight.setText(String.valueOf(accInfo.getWeight()));
@@ -153,7 +159,7 @@ public class UserController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e){
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
 
@@ -233,9 +239,8 @@ public class UserController implements Initializable {
     }
 
     @FXML
-    void saveButtonPressed () {
+    void saveButtonPressed(ActionEvent event) {
         try {
-
             DatabaseConnection.getInstance().updateCurrentStatistics(UserInformation.getInstance().getSSN(),
                     UserInformation.getInstance().getUsername(),
                     updateDate.getText(),
@@ -244,7 +249,10 @@ public class UserController implements Initializable {
                     Integer.parseInt(updateAge.getText()));
 
 
+
+
         } catch (Exception e) {
+            e.printStackTrace();
             //Fixa error handling
         }
     }
@@ -252,9 +260,6 @@ public class UserController implements Initializable {
     void searchButtonPressed() {
         try {
 
-            //  accInfo = DatabaseConnection.getInstance().retrieveCurrentStatistics(UserInformation.getInstance().getSSN(), updateDate.getText());
-
-            //     textArea2.setText(String.valueOf()
 
         } catch (Exception e) {
             //Fixa error handling

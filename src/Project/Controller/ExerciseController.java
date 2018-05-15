@@ -332,6 +332,33 @@ public class ExerciseController {
     }
 
     @FXML
+    void absMenuPressed(ActionEvent event) {
+        try {
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Abs");
+            exerciseLV.getItems().clear();
+            exerciseLV.getItems().addAll(exerciseList);
+
+            exerciseLV.setOnMouseClicked(e -> {
+                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
+                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
+
+                viewExercises(retrievedExercise);
+
+            });
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Empty exercise register.");
+            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.showAndWait();
+            e.printStackTrace();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void cancelButtonPressed(ActionEvent event){
         try {
             Node node = (Node) event.getSource();
@@ -346,26 +373,6 @@ public class ExerciseController {
         }catch (Exception e){
             e.printStackTrace();
         }
-    }
-
-    //Metod som skriver ut informationen om övningen på scenen.
-    public void viewExercises(Exercise exercise) {
-        exerciseNameLabel.setText(exercise.getName());
-        instructionLabel.setText("Instruction: " + exercise.getInstruction());
-        imageIV.setImage(new Image(exercise.getImagePath()));
-
-        String[] muscleGroups = exercise.getMuscleGroup();
-        String muscleGroupSentence = "";
-
-            for (int i = 0; i < muscleGroups.length; i++) {
-                if (muscleGroups[i] == null) {
-                    break;
-                } else {
-                    muscleGroupSentence = muscleGroupSentence + muscleGroups[i] + ", ";
-                }
-            }
-
-        muscleGroupLabel.setText("Musclegroups: " + muscleGroupSentence);
     }
 
     @FXML void exerciseButtonPressed(ActionEvent event) {
@@ -439,27 +446,9 @@ public class ExerciseController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e){
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
-
-
-
-    @FXML void myAccountButtonPressed(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/accountInfoScene.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-        } catch (IOException e){
-            //Fixa error handling
-        }
-    }
-
 
 
     @FXML void feedbackButtonPressed(ActionEvent event){
@@ -476,4 +465,25 @@ public class ExerciseController {
             //Fixa error handling
         }
     }
+
+    //Metod som skriver ut informationen om övningen på scenen.
+    public void viewExercises(Exercise exercise) {
+        exerciseNameLabel.setText(exercise.getName());
+        instructionLabel.setText("Instruction: " + exercise.getInstruction());
+        imageIV.setImage(new Image(exercise.getImagePath()));
+
+        String[] muscleGroups = exercise.getMuscleGroup();
+        String muscleGroupSentence = "";
+
+            for (int i = 0; i < muscleGroups.length; i++) {
+                if (muscleGroups[i] == null) {
+                    break;
+                } else {
+                    muscleGroupSentence = muscleGroupSentence + muscleGroups[i] + ", ";
+                }
+            }
+
+        muscleGroupLabel.setText("Musclegroups: " + muscleGroupSentence);
+    }
+
 }

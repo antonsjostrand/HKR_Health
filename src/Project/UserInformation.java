@@ -5,7 +5,7 @@ import javafx.scene.control.Alert;
 public class UserInformation {
 
     private static UserInformation ourUser;
-    private String SSN, username;
+    private String SSN, username, completeName;
     private int diaryID;
 
     //Skapar ett objekt om det inte redan finns något när man man kallar på metoden.
@@ -50,5 +50,13 @@ public class UserInformation {
 
     public void setDiaryID(int diaryID) {
         this.diaryID = diaryID;
+    }
+
+    public String getCompleteName() {
+        return completeName;
+    }
+
+    public void setCompleteName(String completeName) {
+        this.completeName = completeName;
     }
 }
