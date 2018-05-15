@@ -45,8 +45,11 @@ public class AccountInfoController implements Initializable {
             firstWeight.setText(String.valueOf(accInfo.getWeight()));
             firstAge.setText(String.valueOf(accInfo.getAge()));
 
-            accInfo = DatabaseConnection.getInstance().retrieveCurrentStatistics(UserInformation.getInstance().getSSN(), updateDate.getText());
-            textArea1.setText(updateDate.getText());
+            accInfo = DatabaseConnection.getInstance().retrieveCurrentStatistics(
+                    UserInformation.getInstance().getSSN(), updateDate.getText());
+
+            textArea1.setText(" ");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
