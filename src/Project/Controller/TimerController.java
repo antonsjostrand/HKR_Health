@@ -1,90 +1,208 @@
 package Project.Controller;
 
+
+import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TimerController extends java.lang.Thread implements Initializable{
+public class TimerController implements Initializable {
+
+    private AnimationTimer timer;
+    private int seconds, minute;
 
     @FXML
-    private ImageView timerLogo;
+    private Label secondLabel;
+
     @FXML
-    private Button start;
+    private Label minuteLabel;
+
     @FXML
-    private Button stop;
+    private Button homeButton;
+
     @FXML
-    private Button reset;
+    private Button exercisesButton;
+
     @FXML
-    private int minutes;
+    private Button stretchButton;
+
     @FXML
-    private int seconds;
+    private Button timerButton;
+
     @FXML
-    private int milliseconds;
+    private Button diaryButton;
 
-    private boolean state = true;
+    @FXML
+    private Button nutritionButton;
 
-    //Använd timeline animation!
+    @FXML
+    private Button feedbackButton;
 
-    @FXML void startStopWatch() {
-        state = true;
+    @FXML
+    private Button backButton;
 
-        java.lang.Thread t = new java.lang.Thread();
+    @FXML
+    private Label exerciseNameLabel;
 
-        for(;;) {
+    @FXML
+    private Button startStopwatchButton;
 
-            if (state == true) {
-                try {
-                    sleep(1);
+    @FXML
+    private Button stopStopwatchButton;
 
-                    if(milliseconds>1000){
-                        milliseconds = 0;
-                        seconds++;
-                    }
-                    if(seconds>60){
-                        milliseconds = 0;
-                        seconds = 0;
-                        minutes++;
-                    }
-                    milliseconds++;
+    @FXML
+    private Button resetStopwatchButton;
 
-                } catch (Exception e) {
+    @FXML
+    void resetStopwatchButtonPressed(ActionEvent event) {
+        try{
+            secondLabel.setText("00");
+            minuteLabel.setText("00");
 
-                }
-            }
-            else {
-                break;
-            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        t.start();
-    }
-
-    @FXML void stopWatch() {
-        state = false;
-    }
-    @FXML void resetWatch() {
-        state = false;
-
-        minutes = 0;
-        seconds = 0;
-        milliseconds = 0;
-
     }
 
     @FXML
-    void guestPressedBack(javafx.event.ActionEvent event) {
+    void startStopwatchButtonPressed(ActionEvent event) {
+        try {
+            timer.start();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void stopStopwatchButtonPressed(ActionEvent event) {
+        timer.stop();
+    }
+
+    @FXML
+    void cancelButtonPressed(ActionEvent event){
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/userScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML void exerciseButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/exerciseScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML void stretchButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/stretchScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            //Fixa error handling
+        }
+    }
+
+    @FXML void timerButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/timerScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            //Fixa error handling
+        }
+    }
+
+    @FXML void diaryButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/diaryScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            //Fixa error handling
+        }
+    }
+
+    @FXML void nutritionButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/nutritionScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML void feedbackButtonPressed(ActionEvent event){
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/feedbackScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            //Fixa error handling
+        }
+    }
+
+    @FXML void homeButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -95,12 +213,56 @@ public class TimerController extends java.lang.Thread implements Initializable{
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e){
-            // Error handling
+            e.printStackTrace();
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        timer = new AnimationTimer() {
+
+            private long lastTime = 0;
+
+            @Override
+            public void handle(long now) {
+                if (lastTime != 0) {
+                    if (now > lastTime + 1_000_000_000) {
+                        seconds++;
+                        if (seconds < 10){
+                            secondLabel.setText("0" + Integer.toString(seconds));
+                            lastTime = now;
+                        }else {
+                            secondLabel.setText(Integer.toString(seconds));
+                            lastTime = now;
+                        }
+                        if (seconds == 60) {
+                            minute++;
+                            seconds = 0;
+                            if (minute < 10) {
+                                minuteLabel.setText("0" + Integer.toString(minute));
+                                secondLabel.setText("00");
+                                lastTime = now;
+                            } else {
+                                minuteLabel.setText(Integer.toString(minute));
+                                secondLabel.setText("00");
+                                lastTime = now;
+                            }
+                        }
+                    }
+                } else {
+                    lastTime = now;
+
+                }
+            }
+
+            @Override
+            public void stop() {
+                super.stop();
+                lastTime = 0;
+                seconds = 0;
+            }
+        };
     }
+
+
 }

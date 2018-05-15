@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.UserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.TimerController">
    <left>
       <AnchorPane prefHeight="602.0" prefWidth="145.0" style="-fx-background-color: #68A731;" BorderPane.alignment="CENTER">
          <children>
@@ -49,7 +49,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="timerButton" layoutX="-1.0" layoutY="290.0" mnemonicParsing="false" onAction="#timerButtonPressed" onMousePressed="#mousePressedTimerButton" prefHeight="32.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Timer      " textFill="WHITE">
+            <Button fx:id="timerButton" layoutX="-1.0" layoutY="290.0" mnemonicParsing="false" onAction="#timerButtonPressed" prefHeight="32.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Timer      " textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="16.0" />
                </font>
@@ -128,36 +128,36 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Label layoutX="253.0" layoutY="199.0" text="00:">
-               <font>
-                  <Font name="Helvetica Neue Light" size="78.0" />
-               </font>
-            </Label>
-            <Label layoutX="384.0" layoutY="201.0" text="00:">
-               <font>
-                  <Font name="Helvetica Neue Light" size="78.0" />
-               </font>
-            </Label>
-            <Label layoutX="523.0" layoutY="228.0" text="00:">
-               <font>
-                  <Font name="Helvetica Neue Light" size="48.0" />
-               </font>
-            </Label>
-            <Button layoutX="232.0" layoutY="344.0" mnemonicParsing="false" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Start" textFill="WHITE">
+            <Button fx:id="startStopwatchButton" layoutX="232.0" layoutY="344.0" mnemonicParsing="false" onAction="#startStopwatchButtonPressed" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Start" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="55.0" />
                </font>
             </Button>
-            <Button layoutX="456.0" layoutY="345.0" mnemonicParsing="false" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Stop" textFill="#d75757">
+            <Button fx:id="stopStopwatchButton" layoutX="456.0" layoutY="345.0" mnemonicParsing="false" onAction="#stopStopwatchButtonPressed" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Stop" textFill="#d75757">
                <font>
                   <Font name="Helvetica Neue Light" size="55.0" />
                </font>
             </Button>
-            <Button layoutX="363.0" layoutY="469.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Reset">
+            <Button fx:id="resetStopwatchButton" layoutX="363.0" layoutY="469.0" mnemonicParsing="false" onAction="#resetStopwatchButtonPressed" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Reset">
                <font>
                   <Font name="Helvetica Neue Light" size="28.0" />
                </font>
             </Button>
+            <Label fx:id="secondLabel" layoutX="443.0" layoutY="235.0" text="00">
+               <font>
+                  <Font size="62.0" />
+               </font>
+            </Label>
+            <Label fx:id="minuteLabel" layoutX="343.0" layoutY="235.0" text="00">
+               <font>
+                  <Font size="62.0" />
+               </font>
+            </Label>
+            <Label layoutX="419.0" layoutY="235.0" text=":">
+               <font>
+                  <Font size="62.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>
