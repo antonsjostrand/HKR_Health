@@ -29,7 +29,7 @@ public class DiaryController implements Initializable {
             changeScene("measurementScene", event);
 
         }catch (IOException e){
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
 
@@ -38,14 +38,14 @@ public class DiaryController implements Initializable {
             changeScene("measurementHistoryScene", event);
 
         }catch (IOException e){
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
 
 
     @FXML void goBack(ActionEvent event) {
         try {
-            changeScene("userScene", event);
+            changeScene("loginScene", event);
 
         }catch (IOException e){
             //Fixa error handling
@@ -69,7 +69,7 @@ public class DiaryController implements Initializable {
             changeScene("notebookScene", event);
 
         }catch (IOException e){
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
 

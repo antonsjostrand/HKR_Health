@@ -1,104 +1,226 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.MeasurementController">
-   <children>
-      <AnchorPane prefHeight="600.0" prefWidth="1000.0">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.NotebookHistoryController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="855.0">
          <children>
-            <TextField fx:id="forearmRTF" layoutX="310.0" layoutY="156.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="thighRTF" layoutX="310.0" layoutY="220.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="calfRTF" layoutX="310.0" layoutY="279.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="waistTF" layoutX="411.0" layoutY="369.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="shoulderWidthTF" layoutX="411.0" layoutY="436.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="chestWidthTF" layoutX="411.0" layoutY="479.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="upperArmRTF" layoutX="310.0" layoutY="94.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <Text layoutX="133.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upper arm: " wrappingWidth="111.7578125">
+            <ImageView fitHeight="501.0" fitWidth="853.0" layoutX="1.0" layoutY="107.0" opacity="0.05" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/guestBackground.png" />
+               </image>
+            </ImageView>
+            <AnchorPane prefHeight="106.0" prefWidth="855.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A;">
+               <children>
+                  <Label fx:id="exerciseNameLabel" layoutX="209.0" layoutY="27.0" text="Diary" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Neue Light" size="41.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="88.0" fitWidth="123.0" layoutX="745.0" layoutY="7.0" opacity="0.19" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-calendar_10.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <TextField fx:id="forearmRTF" layoutX="642.0" layoutY="239.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="thighRTF" layoutX="641.0" layoutY="277.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="calfRTF" layoutX="641.0" layoutY="313.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="waistTF" layoutX="242.0" layoutY="415.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="shoulderWidthTF" layoutX="241.0" layoutY="458.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="chestWidthTF" layoutX="241.0" layoutY="501.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="upperArmRTF" layoutX="231.0" layoutY="240.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <Text fill="#92c94a" layoutX="93.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upper arm: " wrappingWidth="111.7578125">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Helvetica Neue Light" size="17.0" />
                </font>
             </Text>
-            <Text layoutX="133.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forearm: " wrappingWidth="111.7578125">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <Text layoutX="244.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shoulder width:" wrappingWidth="111.7578125">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <Text layoutX="246.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chest circumference:" wrappingWidth="148.7578125">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <Text layoutX="246.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Waist:" wrappingWidth="127.00000405311584">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <Text layoutX="133.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thigh:" wrappingWidth="111.7578125">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <Text layoutX="133.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calf:" wrappingWidth="111.7578125">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <Text layoutX="572.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upper arm: " wrappingWidth="111.7578125">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <Text layoutX="572.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forearm:" wrappingWidth="111.7578125">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <TextField fx:id="upperArmLTF" layoutX="747.0" layoutY="94.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <Text layoutX="572.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thigh:" wrappingWidth="111.7578125">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <Text layoutX="572.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calf:" wrappingWidth="111.7578125">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <TextField fx:id="forearmLTF" layoutX="747.0" layoutY="156.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="thighLTF" layoutX="747.0" layoutY="220.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="calfLTF" layoutX="747.0" layoutY="279.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <Button fx:id="saveMeasurementButton" layoutX="703.0" layoutY="460.0" mnemonicParsing="false" onAction="#saveMeasurementButtonPressed" prefHeight="47.0" prefWidth="160.0" text="Save Measurements">
+            <TextField fx:id="upperArmLTF" layoutX="229.0" layoutY="202.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="forearmLTF" layoutX="644.0" layoutY="200.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="thighLTF" layoutX="230.0" layoutY="276.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="calfLTF" layoutX="229.0" layoutY="314.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <Button fx:id="saveMeasurementButton" layoutX="518.0" layoutY="482.0" mnemonicParsing="false" onAction="#saveMeasurementButtonPressed" prefHeight="47.0" prefWidth="191.0" style="-fx-background-color: #92c94a#92c94a; -fx-background-radius: 5em;" text="Save Measurements" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="cancelButton" layoutX="75.0" layoutY="537.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="&lt;&lt;" />
-            <Text layoutX="221.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Right side">
+            <Text fill="#68a731" layoutX="169.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left side">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Helvetica Neue Medium" size="24.0" />
                </font>
             </Text>
-            <Text layoutX="655.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Left side">
+            <TextField fx:id="dateTF" layoutX="560.0" layoutY="433.0" prefHeight="29.0" prefWidth="112.0" promptText="Ex. 31/12 -18" />
+            <Text fill="#92c94a" layoutX="581.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Todays date:">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Helvetica Neue Light" size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="dateTF" layoutX="647.0" layoutY="398.0" prefHeight="29.0" prefWidth="112.0" promptText="Ex. 31/12 -18" />
-            <Text layoutX="670.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Todays date:">
+            <Text fill="#68a731" layoutX="600.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Right side">
                <font>
-                  <Font size="12.0" />
+                  <Font name="Helvetica Neue Medium" size="24.0" />
                </font>
             </Text>
+            <Text fill="#92c94a" layoutX="91.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forearm:" wrappingWidth="111.7578125">
+               <font>
+                  <Font name="Helvetica Neue Light" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#92c94a" layoutX="91.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thigh:" wrappingWidth="111.7578125">
+               <font>
+                  <Font name="Helvetica Neue Light" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#92c94a" layoutX="92.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calf:" wrappingWidth="77.04144287109375">
+               <font>
+                  <Font name="Helvetica Neue Light" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#92c94a" layoutX="506.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upper arm: " wrappingWidth="111.7578125">
+               <font>
+                  <Font name="Helvetica Neue Light" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#92c94a" layoutX="504.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forearm:" wrappingWidth="111.7578125">
+               <font>
+                  <Font name="Helvetica Neue Light" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#92c94a" layoutX="504.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thigh:" wrappingWidth="111.7578125">
+               <font>
+                  <Font name="Helvetica Neue Light" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#92c94a" layoutX="505.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calf:" wrappingWidth="77.04144287109375">
+               <font>
+                  <Font name="Helvetica Neue Light" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#92c94a" layoutX="153.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Waist:" wrappingWidth="73.60650634765625">
+               <font>
+                  <Font name="Helvetica Neue Light" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#92c94a" layoutX="87.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shoulder width:" wrappingWidth="126.0645751953125">
+               <font>
+                  <Font name="Helvetica Neue Light" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#92c94a" layoutX="53.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chest circumference:" wrappingWidth="159.44696044921875">
+               <font>
+                  <Font name="Helvetica Neue Light" size="17.0" />
+               </font>
+            </Text>
+            <Separator layoutX="425.0" layoutY="153.0" orientation="VERTICAL" prefHeight="200.0" />
+            <Separator layoutX="78.0" layoutY="378.0" prefWidth="700.0" />
+            <Separator layoutX="425.0" layoutY="398.0" orientation="VERTICAL" prefHeight="150.0" />
          </children>
       </AnchorPane>
-   </children>
-</AnchorPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="600.0" prefWidth="145.0" style="-fx-background-color: #68A731;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="homeButton" layoutX="-1.0" layoutY="100.0" mnemonicParsing="false" onAction="#homeButtonPressed" prefHeight="42.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Home      " textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="exercisesButton" layoutY="200.0" mnemonicParsing="false" onAction="#exerciseButtonPressed" prefHeight="32.0" prefWidth="145.0" style="-fx-background-color: #68A731 #68A731;" text=" Exercises" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-weightlift.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="stretchButton" layoutX="-2.0" layoutY="245.0" mnemonicParsing="false" onAction="#stretchButtonPressed" prefHeight="32.0" prefWidth="149.0" style="-fx-background-color: #68A731 #68A731;" text=" Stretch    " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-yoga.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="timerButton" layoutX="-1.0" layoutY="290.0" mnemonicParsing="false" onAction="#timerButtonPressed" prefHeight="32.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Timer      " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/hourglass-small.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="diaryButton" layoutX="-3.0" layoutY="335.0" mnemonicParsing="false" onAction="#diaryButtonPressed" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #68A731 #68A731;" text=" Diary      " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-calendar_10.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutX="-1.0" layoutY="335.0" orientation="VERTICAL" prefHeight="42.0" prefWidth="8.0" />
+            <Button fx:id="nutritionButton" layoutX="1.0" layoutY="380.0" mnemonicParsing="false" onAction="#nutritionButtonPressed" prefHeight="32.0" prefWidth="144.0" style="-fx-background-color: #68A731 #68A731;" text=" Nutrition " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-restaurant.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="feedbackButton" layoutX="-4.0" layoutY="510.0" mnemonicParsing="false" onAction="#feedbackButtonPressed" prefHeight="42.0" prefWidth="153.0" style="-fx-background-color: #68A731 #68A731;" text="Feedback" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-star.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="backButton" layoutY="563.0" mnemonicParsing="false" onAction="#goBack" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #68A731 #68A731;" text="&lt;&lt;" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

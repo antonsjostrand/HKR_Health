@@ -158,35 +158,7 @@ public class UserController implements Initializable {
         }
     }
 
-    @FXML void sleepButton(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/sleepScene.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-        } catch (IOException e){
-            //Fixa error handling
-        }
-    }
-
-    @FXML void myAccountButtonPressed(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/accountInfoScene.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-        } catch (IOException e){
-            //Fixa error handling
-        }
-    }
 
     @FXML void cancelButtonPressed(ActionEvent event){
         try {
@@ -229,6 +201,36 @@ public class UserController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e) {
+            //Fixa error handling
+        }
+    }
+
+    @FXML void myAccountButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/accountInfoScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            //Fixa error handling
+        }
+    }
+
+    @FXML void sleepButton(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/sleepScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
             //Fixa error handling
         }
     }
