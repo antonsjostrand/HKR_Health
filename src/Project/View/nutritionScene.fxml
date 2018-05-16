@@ -2,46 +2,164 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.NutritionController">
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.NutritionController">
+   <left>
+      <AnchorPane prefHeight="602.0" prefWidth="145.0" style="-fx-background-color: #68A731;" BorderPane.alignment="CENTER">
          <children>
-            <SplitPane dividerPositions="0.24242424242424243" orientation="VERTICAL" prefHeight="600.0" prefWidth="855.0">
+            <Button fx:id="homeButton" layoutX="-1.0" layoutY="100.0" mnemonicParsing="false" onAction="#homeButtonPressed" prefHeight="42.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Home      " textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="exercisesButton" layoutY="200.0" mnemonicParsing="false" onAction="#exerciseButtonPressed" prefHeight="32.0" prefWidth="145.0" style="-fx-background-color: #68A731 #68A731;" text=" Exercises" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-weightlift.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="stretchButton" layoutX="-2.0" layoutY="245.0" mnemonicParsing="false" onAction="#stretchButtonPressed" prefHeight="32.0" prefWidth="149.0" style="-fx-background-color: #68A731 #68A731;" text=" Stretch    " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-yoga.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="timerButton" layoutX="-1.0" layoutY="290.0" mnemonicParsing="false" onAction="#timerButtonPressed" prefHeight="32.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Timer      " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/hourglass-small.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="diaryButton" layoutX="-3.0" layoutY="335.0" mnemonicParsing="false" onAction="#diaryButtonPressed" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #68A731 #68A731;" text=" Diary      " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-calendar_10.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="nutritionButton" layoutX="1.0" layoutY="380.0" mnemonicParsing="false" onAction="#nutritionButtonPressed" prefHeight="32.0" prefWidth="144.0" style="-fx-background-color: #68A731 #68A731;" text=" Nutrition " textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-restaurant.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutX="-2.0" layoutY="380.0" orientation="VERTICAL" prefHeight="42.0" prefWidth="10.0" />
+            <Button fx:id="feedbackButton" layoutX="-4.0" layoutY="510.0" mnemonicParsing="false" onAction="#feedbackButtonPressed" prefHeight="42.0" prefWidth="153.0" style="-fx-background-color: #68A731 #68A731;" text="Feedback" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-star.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="backButton" layoutY="563.0" mnemonicParsing="false" onAction="#cancelButtonPressed" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #68A731 #68A731;" text="&lt;&lt;" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="522.0" prefWidth="859.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="574.0" fitWidth="849.0" layoutX="3.0" layoutY="97.0" opacity="0.05" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/guestBackground.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="1.0" prefHeight="106.0" prefWidth="850.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A;">
+               <children>
+                  <ImageView fitHeight="83.0" fitWidth="83.0" layoutX="749.0" layoutY="12.0" opacity="0.19" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-restaurant.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="exerciseNameLabel" layoutX="374.0" layoutY="27.0" text="Nutrition" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Neue Light" size="41.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <SplitPane dividerPositions="0.28830645161290325" layoutX="1.0" layoutY="104.0" orientation="VERTICAL" prefHeight="498.0" prefWidth="851.0">
                <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <Button fx:id="cancelButton" layoutX="412.0" layoutY="27.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
-                        <Label layoutX="14.0" layoutY="111.0" text="ALL NUTRITION" />
-                        <Label layoutX="509.0" layoutY="111.0" text="NUTRITIONS you searched for" />
+                        <Button fx:id="cancelButton" layoutX="396.0" layoutY="26.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
+                        <Label layoutX="47.0" layoutY="88.0" text="ALL NUTRITION" />
+                        <Label layoutX="506.0" layoutY="104.0" text="NUTRITIONS you searched for" />
                         <TextField fx:id="macroTF" layoutX="499.0" layoutY="27.0" />
                         <TextField fx:id="valueFromTF" layoutX="499.0" layoutY="72.0" />
                         <TextField fx:id="valueToTF" layoutX="661.0" layoutY="72.0" />
-                        <Label layoutX="495.0" layoutY="14.0" text="Macro" />
+                        <Label layoutX="503.0" layoutY="5.0" text="Macro" />
                         <Label layoutX="498.0" layoutY="52.0" text="From" />
                         <Label layoutX="661.0" layoutY="52.0" text="To" />
-                        <Button fx:id="searchButton" layoutX="412.0" layoutY="72.0" mnemonicParsing="false" onAction="#searchButtonPressed" text="Search" />
+                        <Button fx:id="searchButton" layoutX="397.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchButtonPressed" text="Search" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="254.0" prefWidth="201.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="851.0">
                      <children>
-                        <TableView fx:id="tableTW" prefHeight="450.0" prefWidth="410.0">
+                        <TableView fx:id="tableTW" prefHeight="310.0" prefWidth="416.0">
                            <columns>
-                              <TableColumn fx:id="nameTC" prefWidth="150.0" text="Name" />
-                              <TableColumn fx:id="proteinTC" prefWidth="60.0" text="Protein" />
+                              <TableColumn fx:id="nameTC" prefWidth="141.66616821289062" text="Name" />
+                              <TableColumn fx:id="proteinTC" prefWidth="68.33383178710938" text="Protein" />
                               <TableColumn fx:id="carbTC" prefWidth="60.0" text="Carbs" />
                               <TableColumn fx:id="fatTC" prefWidth="60.0" text="Fat" />
                               <TableColumn fx:id="kcalTC" text="Kcal" />
                            </columns>
                         </TableView>
-                        <TableView fx:id="searchedTableTW" layoutX="443.0" prefHeight="450.0" prefWidth="410.0">
+                        <TableView fx:id="searchedTableTW" layoutX="443.0" prefHeight="310.0" prefWidth="405.0">
                            <columns>
                               <TableColumn fx:id="searchedNameTC" prefWidth="150.0" text="Name" />
                               <TableColumn fx:id="searchedProteinTC" prefWidth="60.0" text="Protein" />
@@ -57,7 +175,4 @@
          </children>
       </AnchorPane>
    </center>
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="145.0" BorderPane.alignment="CENTER" />
-   </left>
 </BorderPane>
