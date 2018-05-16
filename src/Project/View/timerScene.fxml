@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.TimerController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.TimerController">
    <left>
       <AnchorPane prefHeight="602.0" prefWidth="145.0" style="-fx-background-color: #68A731;" BorderPane.alignment="CENTER">
          <children>
@@ -128,34 +128,34 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="startStopwatchButton" layoutX="232.0" layoutY="344.0" mnemonicParsing="false" onAction="#startStopwatchButtonPressed" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Start" textFill="WHITE">
+            <Button fx:id="startStopwatchButton" layoutX="216.0" layoutY="162.0" mnemonicParsing="false" onAction="#startStopwatchButtonPressed" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Start" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="55.0" />
                </font>
             </Button>
-            <Button fx:id="stopStopwatchButton" layoutX="456.0" layoutY="345.0" mnemonicParsing="false" onAction="#stopStopwatchButtonPressed" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Stop" textFill="#d75757">
+            <Button fx:id="stopStopwatchButton" layoutX="433.0" layoutY="164.0" mnemonicParsing="false" onAction="#stopStopwatchButtonPressed" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Stop" textFill="#d75757">
                <font>
                   <Font name="Helvetica Neue Light" size="55.0" />
                </font>
             </Button>
-            <Button fx:id="resetStopwatchButton" layoutX="363.0" layoutY="469.0" mnemonicParsing="false" onAction="#resetStopwatchButtonPressed" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Reset">
+            <Button fx:id="resetStopwatchButton" layoutX="356.0" layoutY="448.0" mnemonicParsing="false" onAction="#resetStopwatchButtonPressed" prefHeight="51.0" prefWidth="123.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Reset">
                <font>
                   <Font name="Helvetica Neue Light" size="28.0" />
                </font>
             </Button>
-            <Label fx:id="secondLabel" layoutX="443.0" layoutY="235.0" text="00">
+            <Label fx:id="secondLabel" layoutX="438.0" layoutY="279.0" text="00" textFill="#92c94a">
                <font>
-                  <Font size="62.0" />
+                  <Font size="120.0" />
                </font>
             </Label>
-            <Label fx:id="minuteLabel" layoutX="343.0" layoutY="235.0" text="00">
+            <Label fx:id="minuteLabel" layoutX="243.0" layoutY="280.0" text="00" textFill="#92c94a">
                <font>
-                  <Font size="62.0" />
+                  <Font size="120.0" />
                </font>
             </Label>
-            <Label layoutX="419.0" layoutY="235.0" text=":">
+            <Label layoutX="396.0" layoutY="279.0" text=":" textFill="#92c94a">
                <font>
-                  <Font size="62.0" />
+                  <Font size="120.0" />
                </font>
             </Label>
          </children>

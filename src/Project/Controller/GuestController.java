@@ -57,32 +57,54 @@ public class GuestController implements Initializable {
     @FXML
     private Button lostPasswordButton;
 
-   /* @FXML
-    void adminButtonPressed(ActionEvent event) {
+    /* @FXML
+     void adminButtonPressed(ActionEvent event) {
+         try {
+             loginStatus = DatabaseConnection.getInstance().handleAdminLogin(userNameTF.getText(), passwordTF.getText());
+
+             if (loginStatus == true) {
+                 changeScene("adminScene", event);
+
+             } else if (loginStatus == false) {
+                 userNameTF.clear();
+                 passwordTF.clear();
+                 userNameTF.requestFocus();
+                 throw new InputMismatchException();
+             }
+
+         } catch (InputMismatchException e) {
+             Alert alert = new Alert(Alert.AlertType.ERROR);
+             alert.setTitle("Error");
+             alert.setHeaderText("Admin login failed.");
+             alert.setContentText("Username or password is not correct or you might not be an admin.");
+             alert.showAndWait();
+
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+     }*/
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+
+    @FXML
+    void guestButtonPressed(ActionEvent event) {
         try {
-            loginStatus = DatabaseConnection.getInstance().handleAdminLogin(userNameTF.getText(), passwordTF.getText());
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
 
-            if (loginStatus == true) {
-                changeScene("adminScene", event);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/guestScene.fxml"));
+            Parent root = loader.load();
 
-            } else if (loginStatus == false) {
-                userNameTF.clear();
-                passwordTF.clear();
-                userNameTF.requestFocus();
-                throw new InputMismatchException();
-            }
-
-        } catch (InputMismatchException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Admin login failed.");
-            alert.setContentText("Username or password is not correct or you might not be an admin.");
-            alert.showAndWait();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            //Fixa error handling
         }
-    }*/
+    }
 
     @FXML
     void guestPressedExercisesButton(ActionEvent event) {
@@ -136,13 +158,13 @@ public class GuestController implements Initializable {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/timerScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/guestTimer.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e) {
-            // Error handling
+            e.printStackTrace();
         }
     }
 
@@ -160,7 +182,7 @@ public class GuestController implements Initializable {
         } catch (IOException e) {
             // Error handling
         }
-    }
+
 
    /* @FXML void loginButtonPressed(ActionEvent event) {
         try {
@@ -190,11 +212,6 @@ public class GuestController implements Initializable {
     }
 */
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
-}
 
 
    /* public void changeScene(String resource, ActionEvent event) throws IOException{
@@ -209,3 +226,5 @@ public class GuestController implements Initializable {
     }
 
 }*/
+    }
+}

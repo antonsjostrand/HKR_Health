@@ -22,8 +22,6 @@ public class DiaryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Image image = new Image(getClass().getResourceAsStream("/Resources/hkrlogo.png"));
-        diaryLogo.setImage(image);
 
     }
     @FXML void measurementUpdate(ActionEvent event) {
@@ -82,6 +80,110 @@ public class DiaryController implements Initializable {
             changeScene("notebookHistoryScene", event);
 
         }catch (IOException e){
+            //Fixa error handling
+        }
+    }
+
+    @FXML void exerciseButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/exerciseScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML void stretchButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/stretchScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            //Fixa error handling
+        }
+    }
+
+    @FXML void timerButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/timerScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML void diaryButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/diaryScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML void nutritionButtonPressed(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/nutritionScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    @FXML void cancelButtonPressed(ActionEvent event){
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/loginScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            //Fixa error handling
+        }
+    }
+
+    @FXML void feedbackButtonPressed(ActionEvent event){
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/feedbackScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
             //Fixa error handling
         }
     }

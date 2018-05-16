@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.GuestController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.GuestTimerController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="855.0">
          <children>
@@ -21,36 +21,54 @@
             <ImageView fx:id="imageIV" fitHeight="233.0" fitWidth="383.0" layoutX="389.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" />
             <AnchorPane prefHeight="106.0" prefWidth="855.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A;">
                <children>
-                  <Label fx:id="exerciseNameLabel" layoutX="209.0" layoutY="27.0" text="Guest" textFill="WHITE">
+                  <Label fx:id="exerciseNameLabel" layoutX="209.0" layoutY="27.0" text="Guest Timer" textFill="WHITE">
                      <font>
                         <Font name="Helvetica Neue Light" size="41.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="88.0" fitWidth="123.0" layoutX="745.0" layoutY="7.0" opacity="0.19" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/icons8-name.png" />
+                        <Image url="@../../Resources/icons8-hourglass.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
+            <Button fx:id="startStopwatchButton" layoutX="195.0" layoutY="198.0" mnemonicParsing="false" onAction="#startStopwatchButtonPressed" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Start" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="55.0" />
+               </font>
+            </Button>
+            <Button fx:id="stopStopwatchButton" layoutX="412.0" layoutY="200.0" mnemonicParsing="false" onAction="#stopStopwatchButtonPressed" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Stop" textFill="#d75757">
+               <font>
+                  <Font name="Helvetica Neue Light" size="55.0" />
+               </font>
+            </Button>
+            <Button fx:id="resetStopwatchButton" layoutX="335.0" layoutY="484.0" mnemonicParsing="false" onAction="#resetStopwatchButtonPressed" prefHeight="51.0" prefWidth="123.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A;" text="Reset">
+               <font>
+                  <Font name="Helvetica Neue Light" size="28.0" />
+               </font>
+            </Button>
+            <Label fx:id="secondLabel" layoutX="417.0" layoutY="315.0" text="00" textFill="#92c94a">
+               <font>
+                  <Font size="120.0" />
+               </font>
+            </Label>
+            <Label fx:id="minuteLabel" layoutX="222.0" layoutY="316.0" text="00" textFill="#92c94a">
+               <font>
+                  <Font size="120.0" />
+               </font>
+            </Label>
+            <Label layoutX="375.0" layoutY="315.0" text=":" textFill="#92c94a">
+               <font>
+                  <Font size="120.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="145.0" style="-fx-background-color: #68A731;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="homeButton" layoutX="-1.0" layoutY="100.0" mnemonicParsing="false" onAction="#guestButtonPressed" prefHeight="42.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Guest    " textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Resources/icons8-name.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Helvetica Neue Light" size="16.0" />
-               </font>
-            </Button>
             <Button fx:id="exercisesButton" layoutY="200.0" mnemonicParsing="false" onAction="#guestPressedExercisesButton" prefHeight="32.0" prefWidth="145.0" style="-fx-background-color: #68A731 #68A731;" text=" Exercises" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="16.0" />
@@ -63,7 +81,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Separator layoutX="-1.0" layoutY="100.0" orientation="VERTICAL" prefHeight="42.0" prefWidth="8.0" />
             <Button fx:id="stretchButton" layoutX="-2.0" layoutY="245.0" mnemonicParsing="false" onAction="#guestPressedStretchButton" prefHeight="32.0" prefWidth="149.0" style="-fx-background-color: #68A731 #68A731;" text=" Stretch    " textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="16.0" />
@@ -88,7 +105,20 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Separator layoutX="-1.0" layoutY="290.0" orientation="VERTICAL" prefHeight="42.0" prefWidth="8.0" />
             <Button fx:id="backButton" layoutY="563.0" mnemonicParsing="false" onAction="#guestPressedBack" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #68A731 #68A731;" text="&lt;&lt;" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="homeButton1" layoutX="-1.0" layoutY="100.0" mnemonicParsing="false" onAction="#guestButtonPressed" prefHeight="42.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Guest    " textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/icons8-name.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <font>
                   <Font name="Helvetica Neue Light" size="16.0" />
                </font>

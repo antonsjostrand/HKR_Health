@@ -78,7 +78,7 @@ public class LoginController implements Initializable {
             changeScene("guestScene", event);
 
         } catch (IOException e){
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
 
