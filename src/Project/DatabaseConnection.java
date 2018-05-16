@@ -263,6 +263,7 @@ public class DatabaseConnection {
     }
 
     //Metod som hämtar alla värden för att kunna skapa ett AccountInfo objekt.
+    //Metoden hämtar de värden som skrevs in från början.
     public AccountInfo retrieveAccountInfo(String SSN) throws Exception {
         int retrievedHeight, retrievedAge, retrievedWeight;
 
@@ -327,6 +328,27 @@ public class DatabaseConnection {
             return currentStats;
         }
         return null;
+    }
+
+    //Metod som hämtar en persons samtliga currentstatistics från databasen
+    public ArrayList<AccountInfo> retrieveAllCurrentStatistics(String ssn) throws Exception{
+        ArrayList<AccountInfo> retrievedAccountInfoList = new ArrayList<>();
+        AccountInfo retrievedAccInfo;
+
+        ResultSet rs = st.executeQuery("SELECT currentHeight, currentWeight, currentAge FROM current_statistics" +
+                " WHERE User_Person_SSN = '" + ssn + "';");
+        if (!rs.next()){
+            return null;
+        }else{
+            do {
+                retrievedAccInfo = new AccountInfo(rs.getInt(1), rs.getInt(2),rs.getInt(3));
+                retrievedAccountInfoList.add(retrievedAccInfo);
+
+            }while (rs.next());
+
+            return retrievedAccountInfoList;
+        }
+
     }
 
     //Metod som uppdaterar dina current statistics. Datumet måste vara i formattet: 5/4-18. Alltså d/m-år.

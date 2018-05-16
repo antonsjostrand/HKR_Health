@@ -71,6 +71,8 @@ public class TimerController implements Initializable {
     @FXML
     void resetStopwatchButtonPressed(ActionEvent event) {
         try{
+            seconds = 0;
+            minute = 0;
             secondLabel.setText("00");
             minuteLabel.setText("00");
 
