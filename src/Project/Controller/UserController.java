@@ -19,28 +19,49 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
+
+    private char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+            'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö', 'a',
+            'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'å', 'ä', 'ö'};
 
     private AccountInfo accInfo, retrievedAccountInfo;
     private ArrayList<AccountInfo> accountInfoList = new ArrayList<>();
     private int[] accList = new int[3];
 
-    @FXML private ImageView buttonPressed;
-    @FXML private Button homeButton;
-    @FXML private Button exercisesButton;
-    @FXML private Button stretchButton;
-    @FXML private Button diaryButton;
-    @FXML private Button timerButton;
-    @FXML private Button nutritionButton;
-    @FXML private Button feedbackButton;
-    @FXML private Button backButton;
-    @FXML private Button saveButton;
-    @FXML private Label nameLabel, ssnLabel;
-    @FXML private TextField updateHeight, updateWeight, updateAge, updateDate, firstHeight, firstWeight, firstAge;;
-    @FXML private TextArea chosenInformationTA;
-    @FXML private ListView<AccountInfo> loadedInformationLV;
+    @FXML
+    private ImageView buttonPressed;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Button exercisesButton;
+    @FXML
+    private Button stretchButton;
+    @FXML
+    private Button diaryButton;
+    @FXML
+    private Button timerButton;
+    @FXML
+    private Button nutritionButton;
+    @FXML
+    private Button feedbackButton;
+    @FXML
+    private Button backButton;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Label nameLabel, ssnLabel;
+    @FXML
+    private TextField updateHeight, updateWeight, updateAge, updateDate, firstHeight, firstWeight, firstAge;
+    ;
+    @FXML
+    private TextArea chosenInformationTA;
+    @FXML
+    private ListView<AccountInfo> loadedInformationLV;
 
 
     @Override
@@ -59,13 +80,14 @@ public class UserController implements Initializable {
 
             refreshAndSetInformation();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    @FXML void homeButtonPressed(ActionEvent event) {
+    @FXML
+    void homeButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -75,12 +97,13 @@ public class UserController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void exerciseButtonPressed(ActionEvent event) {
+    @FXML
+    void exerciseButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -90,12 +113,13 @@ public class UserController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void stretchButtonPressed(ActionEvent event) {
+    @FXML
+    void stretchButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -105,12 +129,13 @@ public class UserController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             //Fixa error handling
         }
     }
 
-    @FXML void timerButtonPressed(ActionEvent event) {
+    @FXML
+    void timerButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -120,12 +145,13 @@ public class UserController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
 
         }
     }
 
-    @FXML void diaryButtonPressed(ActionEvent event) {
+    @FXML
+    void diaryButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -135,12 +161,13 @@ public class UserController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void nutritionButtonPressed(ActionEvent event) {
+    @FXML
+    void nutritionButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -150,14 +177,14 @@ public class UserController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-
-    @FXML void cancelButtonPressed(ActionEvent event){
+    @FXML
+    void cancelButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -167,12 +194,13 @@ public class UserController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             //Fixa error handling
         }
     }
 
-    @FXML void feedbackButtonPressed(ActionEvent event){
+    @FXML
+    void feedbackButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -182,12 +210,13 @@ public class UserController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
-    void goBack (ActionEvent event) {
+    void goBack(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -202,7 +231,8 @@ public class UserController implements Initializable {
         }
     }
 
-    @FXML void myAccountButtonPressed(ActionEvent event) {
+    @FXML
+    void myAccountButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -212,12 +242,13 @@ public class UserController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             //Fixa error handling
         }
     }
 
-    @FXML void sleepButton(ActionEvent event) {
+    @FXML
+    void sleepButton(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -227,7 +258,7 @@ public class UserController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             //Fixa error handling
         }
     }
@@ -235,6 +266,12 @@ public class UserController implements Initializable {
     @FXML
     void saveButtonPressed(ActionEvent event) {
         try {
+            checkIfInputIsEmpty();
+            checkDateFormat(updateDate.getText());
+            checkHeightFormat(updateHeight.getText());
+            checkWeightFormat(updateWeight.getText());
+            checkAgeFormat(updateAge.getText());
+
             DatabaseConnection.getInstance().updateCurrentStatistics(UserInformation.getInstance().getSSN(),
                     UserInformation.getInstance().getUsername(),
                     updateDate.getText(),
@@ -243,24 +280,37 @@ public class UserController implements Initializable {
                     Integer.parseInt(updateAge.getText()));
 
 
+        }catch (InputMismatchException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("The values entered is not following the rules.");
+            alert.showAndWait();
+
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("The textfields cannot be empty.");
+            alert.showAndWait();
+
         } catch (Exception e) {
             e.printStackTrace();
-            //Fixa error handling
         }
     }
 
     @FXML
     void refreshButtonPressed(ActionEvent event) {
-        try{
+        try {
             refreshAndSetInformation();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     //Metod som hämtar, uppdaterar och visar din account information i de olika fönsterna.
-    public void refreshAndSetInformation() throws Exception{
+    public void refreshAndSetInformation() throws Exception {
         loadedInformationLV.getItems().clear();
 
         accountInfoList = DatabaseConnection.getInstance().retrieveAllCurrentStatistics(UserInformation.getInstance().getSSN());
@@ -278,5 +328,78 @@ public class UserController implements Initializable {
 
             chosenInformationTA.appendText("\n" + allInformation);
         });
+    }
+
+    //Kollar så att ingen input är tom.
+    public void checkIfInputIsEmpty() {
+        if (updateHeight.getText().isEmpty() || updateWeight.getText().isEmpty() ||
+                updateDate.getText().isEmpty() || updateAge.getText().isEmpty()) {
+            throw new NullPointerException();
+        }
+    }
+
+    //Metod som kollar så att datumet är i korrekt format
+    public void checkDateFormat(String date) {
+        if (date.length() != 8) {
+            updateDate.clear();
+            updateDate.setText("DD/MM-YY");
+            updateDate.requestFocus();
+            throw new InputMismatchException();
+        }
+
+        for (int counter = 0; counter < letters.length; counter++) {
+            if (date.contains(String.valueOf(letters[counter]))) {
+                updateDate.clear();
+                updateDate.setText("DD/MM-YY");
+                updateDate.requestFocus();
+                throw new InputMismatchException();
+            }
+        }
+
+        if (date.charAt(2) == '/' || date.charAt(5) == '-') {
+            return;
+        } else {
+            updateDate.clear();
+            updateDate.setText("DD/MM-YY");
+            updateDate.requestFocus();
+            throw new InputMismatchException();
+        }
+    }
+
+         //Kollar så height är i rätt format.
+    public void checkHeightFormat(String height) {
+        for (int i = 0; i < letters.length; i++) {
+            if (height.contains(String.valueOf(letters[i]))) {
+                updateHeight.clear();
+                updateHeight.setText("Enter a valid digit.");
+                updateHeight.requestFocus();
+                throw new InputMismatchException();
+            }
+        }
+    }
+
+          //Kollar så weight är i rätt format.
+    public void checkWeightFormat(String weight) {
+        for (int i = 0; i < letters.length; i++) {
+            if (weight.contains(String.valueOf(letters[i]))) {
+                updateWeight.clear();
+                updateWeight.setText("Enter a valid digit.");
+                updateWeight.requestFocus();
+                throw new InputMismatchException();
+
+            }
+        }
+    }
+
+           //Kollar så att age är i rätt format.
+    public void checkAgeFormat(String age) {
+        for (int i = 0; i < letters.length; i++) {
+            if (age.contains(String.valueOf(letters[i]))) {
+                updateAge.clear();
+                updateAge.setText("Enter a valid digit.");
+                updateAge.requestFocus();
+                throw new InputMismatchException();
+            }
+        }
     }
 }

@@ -132,20 +132,29 @@
                   </Label>
                </children>
             </AnchorPane>
-            <SplitPane dividerPositions="0.28830645161290325" layoutX="1.0" layoutY="104.0" orientation="VERTICAL" prefHeight="498.0" prefWidth="851.0">
+            <SplitPane dividerPositions="0.3689516129032258" layoutX="1.0" layoutY="104.0" orientation="VERTICAL" prefHeight="498.0" prefWidth="851.0">
                <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <Button fx:id="cancelButton" layoutX="396.0" layoutY="26.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
-                        <Label layoutX="47.0" layoutY="88.0" text="ALL NUTRITION" />
-                        <Label layoutX="506.0" layoutY="104.0" text="NUTRITIONS you searched for" />
-                        <TextField fx:id="macroTF" layoutX="499.0" layoutY="27.0" />
-                        <TextField fx:id="valueFromTF" layoutX="499.0" layoutY="72.0" />
-                        <TextField fx:id="valueToTF" layoutX="661.0" layoutY="72.0" />
-                        <Label layoutX="503.0" layoutY="5.0" text="Macro" />
-                        <Label layoutX="498.0" layoutY="52.0" text="From" />
-                        <Label layoutX="661.0" layoutY="52.0" text="To" />
-                        <Button fx:id="searchButton" layoutX="397.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchButtonPressed" text="Search" />
+                        <Label layoutX="122.0" layoutY="141.0" text="ALL NUTRITION" textFill="#68a731">
+                           <font>
+                              <Font name="Helvetica Neue Light" size="20.0" />
+                           </font></Label>
+                        <Label layoutX="529.0" layoutY="143.0" text="NUTRITIONS you searched for" textFill="#68a731">
+                           <font>
+                              <Font name="Helvetica Neue Light" size="20.0" />
+                           </font></Label>
+                        <TextField fx:id="macroTF" layoutX="354.0" layoutY="54.0" />
+                        <TextField fx:id="valueFromTF" alignment="CENTER" layoutX="259.0" layoutY="103.0" promptText="From" />
+                        <TextField fx:id="valueToTF" alignment="CENTER" layoutX="443.0" layoutY="103.0" promptText="To" />
+                        <Label layoutX="229.0" layoutY="54.0" text="Enter macro:" textFill="#68a731">
+                           <font>
+                              <Font name="Helvetica Neue Light" size="20.0" />
+                           </font></Label>
+                        <Button fx:id="searchButton" layoutX="679.0" layoutY="67.0" mnemonicParsing="false" onAction="#searchButtonPressed" style="-fx-background-color: #68A731 #68A731; -fx-background-radius: 5em;" text="Search" textFill="WHITE">
+                           <font>
+                              <Font name="Helvetica Neue Light" size="23.0" />
+                           </font></Button>
                      </children>
                   </AnchorPane>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="851.0">
@@ -156,16 +165,16 @@
                               <TableColumn fx:id="proteinTC" prefWidth="68.33383178710938" text="Protein" />
                               <TableColumn fx:id="carbTC" prefWidth="60.0" text="Carbs" />
                               <TableColumn fx:id="fatTC" prefWidth="60.0" text="Fat" />
-                              <TableColumn fx:id="kcalTC" text="Kcal" />
+                              <TableColumn fx:id="kcalTC" prefWidth="84.5" text="Kcal" />
                            </columns>
                         </TableView>
-                        <TableView fx:id="searchedTableTW" layoutX="443.0" prefHeight="310.0" prefWidth="405.0">
+                        <TableView fx:id="searchedTableTW" layoutX="426.0" prefHeight="310.0" prefWidth="422.0">
                            <columns>
                               <TableColumn fx:id="searchedNameTC" prefWidth="150.0" text="Name" />
                               <TableColumn fx:id="searchedProteinTC" prefWidth="60.0" text="Protein" />
                               <TableColumn fx:id="searchedCarbsTC" prefWidth="60.0" text="Carbs" />
                               <TableColumn fx:id="searchedFatTC" prefWidth="60.0" text="Fat" />
-                              <TableColumn fx:id="searchedKcalTC" text="Kcal" />
+                              <TableColumn fx:id="searchedKcalTC" prefWidth="91.00006103515625" text="Kcal" />
                            </columns>
                         </TableView>
                      </children>
