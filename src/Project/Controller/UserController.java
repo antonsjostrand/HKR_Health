@@ -3,6 +3,7 @@ package Project.Controller;
 import Project.DatabaseConnection;
 import Project.Model.AccountInfo;
 import Project.UserInformation;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -293,6 +294,14 @@ public class UserController implements Initializable {
             alert.setHeaderText("Input incorrect");
             alert.setContentText("The textfields cannot be empty.");
             alert.showAndWait();
+
+        } catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Date already saved.");
+            alert.setContentText("You can only update once per date.");
+            alert.showAndWait();
+
 
         } catch (Exception e) {
             e.printStackTrace();
