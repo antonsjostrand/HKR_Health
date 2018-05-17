@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.DiaryController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.DiaryController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="855.0">
          <children>
@@ -38,24 +38,24 @@
                   <Font name="Helvetica Neue Light" size="28.0" />
                </font>
             </Text>
-            <Button layoutX="49.0" layoutY="288.0" mnemonicParsing="false" onAction="#dailyUpdate" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Daily Update" textFill="WHITE">
+            <Button fx:id="dailyUpdateButton" layoutX="49.0" layoutY="288.0" mnemonicParsing="false" onAction="#dailyUpdateButtonPressed" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Daily Update" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="47.0" layoutY="339.0" mnemonicParsing="false" onAction="#notebookHistory" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Notebook History" textFill="WHITE" />
+            <Button fx:id="notebookHistoryButton" layoutX="47.0" layoutY="339.0" mnemonicParsing="false" onAction="#notebookHistoryButtonPressed" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Notebook History" textFill="WHITE" />
             <Separator layoutX="209.0" layoutY="215.0" orientation="VERTICAL" prefHeight="224.0" prefWidth="13.0" />
             <Text fill="#92c94a" layoutX="237.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Measurements">
                <font>
                   <Font name="Helvetica Neue Light" size="28.0" />
                </font>
             </Text>
-            <Button layoutX="256.0" layoutY="288.0" mnemonicParsing="false" onAction="#measurementUpdate" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="New Measurement" textFill="WHITE">
+            <Button fx:id="measurementUpdateButton" layoutX="256.0" layoutY="288.0" mnemonicParsing="false" onAction="#measurementUpdateButtonPressed" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="New Measurement" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="256.0" layoutY="339.0" mnemonicParsing="false" onAction="#measurementHistory" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Measurement History" textFill="WHITE">
+            <Button fx:id="measurementHistoryButton" layoutX="256.0" layoutY="339.0" mnemonicParsing="false" onAction="#measurementHistoryButtonPressed" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Measurement History" textFill="WHITE">
                <font>
                   <Font size="12.0" />
                </font>
@@ -66,12 +66,12 @@
                   <Font name="Helvetica Neue Light" size="28.0" />
                </font>
             </Text>
-            <Button layoutX="476.0" layoutY="288.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Daily intake" textFill="WHITE">
+            <Button fx:id="dailyIntakeButton" layoutX="476.0" layoutY="288.0" mnemonicParsing="false" onAction="#dailyIntakeButtonPressed" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Daily intake" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="476.0" layoutY="339.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Nutrition History" textFill="WHITE">
+            <Button fx:id="intakeHistoryButton" layoutX="476.0" layoutY="339.0" mnemonicParsing="false" onAction="#intakeHistoryButtonPressed" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Nutrition History" textFill="WHITE">
                <font>
                   <Font size="12.0" />
                </font>
@@ -82,12 +82,12 @@
                   <Font name="Helvetica Neue Light" size="28.0" />
                </font>
             </Text>
-            <Button layoutX="691.0" layoutY="291.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Add latest workout" textFill="WHITE">
+            <Button fx:id="workoutButton" layoutX="691.0" layoutY="291.0" mnemonicParsing="false" onAction="#workoutButtonPressed" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Add latest workout" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="691.0" layoutY="342.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Workout History" textFill="WHITE">
+            <Button fx:id="workoutHistoryButton" layoutX="691.0" layoutY="342.0" mnemonicParsing="false" onAction="#workoutHistoryButtonPressed" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A #92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Workout History" textFill="WHITE">
                <font>
                   <Font size="12.0" />
                </font>

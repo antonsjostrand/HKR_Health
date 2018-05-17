@@ -156,7 +156,7 @@ public class MeasurementHistoryController implements Initializable{
             chosenMeasurementTV.getItems().clear();
             measurementTextList.clear();
             measurementData.clear();
-           
+
 
         }catch (Exception e){
             e.printStackTrace();

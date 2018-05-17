@@ -4,15 +4,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.MeasurementHistoryController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.DailyIntakeController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="855.0">
          <children>
@@ -35,31 +35,35 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <ListView fx:id="loadedMesurementLV" layoutX="14.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0" />
-            <TableView fx:id="chosenMeasurementTV" layoutX="14.0" layoutY="323.0" prefHeight="200.0" prefWidth="817.0">
-              <columns>
-                <TableColumn fx:id="dateTC" prefWidth="68.0" text="Date" />
-                <TableColumn fx:id="leftUpperArmTC" prefWidth="68.0" text="Upper arm (L)" />
-                  <TableColumn fx:id="rightUpperArmTC" prefWidth="68.0" text="Upper arm (R)" />
-                  <TableColumn fx:id="leftForearmTC" prefWidth="68.0" text="Forearm (L)" />
-                  <TableColumn fx:id="rightForearmTC" prefWidth="68.0" text="Forearm (R)" />
-                  <TableColumn fx:id="leftThighTC" prefWidth="68.0" text="Thigh (L)" />
-                  <TableColumn fx:id="rightThighTC" prefWidth="68.0" text="Thigh (R)" />
-                  <TableColumn fx:id="leftCalfTC" prefWidth="68.0" text="Calf (L)" />
-                  <TableColumn fx:id="rightCalfTC" prefWidth="68.0" text="Calf (R)" />
-                  <TableColumn fx:id="waistTC" prefWidth="68.0" text="Waist" />
-                  <TableColumn fx:id="shouldersTC" prefWidth="68.0" text="Shoulders" />
-                  <TableColumn fx:id="chestTC" prefWidth="68.0" text="Chest" />
-              </columns>
-            </TableView>
-            <Button fx:id="clearButton" layoutX="14.0" layoutY="542.0" mnemonicParsing="false" onAction="#clearButtonPressed" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #92C94A#92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Clear" textFill="WHITE" />
+            <ListView fx:id="loadedNutritionLV" layoutX="54.0" layoutY="261.0" prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="addButton" layoutX="54.0" layoutY="542.0" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #92C94A#92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Add" textFill="WHITE" />
+            <TextField fx:id="nutritionNameTF" layoutX="54.0" layoutY="163.0" prefHeight="25.0" prefWidth="230.0" promptText="Chicken" style="-fx-background-radius: 5em;" />
+            <Label layoutX="54.0" layoutY="143.0" text="Name or letter:" textFill="#92c94a">
+               <font>
+                  <Font name="Helvetica Neue Light" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="241.0" text="Products:" textFill="#92c94a">
+               <font>
+                  <Font name="Helvetica Neue Light" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="amountTF" layoutX="54.0" layoutY="503.0" prefHeight="25.0" prefWidth="230.0" promptText="200" style="-fx-background-radius: 5em;" />
+            <Label layoutX="54.0" layoutY="483.0" text="Amount (g)" textFill="#92c94a">
+               <font>
+                  <Font name="Helvetica Neue Light" size="14.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="intakeTotalTA" layoutX="490.0" layoutY="344.0" prefHeight="100.0" prefWidth="300.0" />
+            <TextArea fx:id="intakeTA" layoutX="390.0" layoutY="202.0" prefHeight="126.0" prefWidth="450.0" />
+            <Button fx:id="saveButton" layoutX="569.0" layoutY="503.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #92C94A#92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Save" textFill="WHITE" />
+            <Button fx:id="searchButton" layoutX="54.0" layoutY="202.0" mnemonicParsing="false" onAction="#searchButtonPressed" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #92C94A#92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Search" textFill="WHITE" />
          </children>
       </AnchorPane>
    </center>
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="145.0" style="-fx-background-color: #68A731;" BorderPane.alignment="CENTER">
          <children>
-           
             <Button fx:id="exercisesButton" layoutY="200.0" mnemonicParsing="false" onAction="#exerciseButtonPressed" prefHeight="32.0" prefWidth="145.0" style="-fx-background-color: #68A731 #68A731;" text=" Exercises" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="16.0" />
@@ -72,7 +76,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="stretchButton" layoutX="-2.0" layoutY="245.0" mnemonicParsing="false" onAction="#stretchButtonPressed" prefHeight="32.0" prefWidth="149.0" style="-fx-background-color: #68A731 #68A731;" text=" Stretch    " textFill="WHITE">
+            <Button fx:id="stretchButton" layoutX="-2.0" layoutY="248.0" mnemonicParsing="false" onAction="#stretchButtonPressed" prefHeight="32.0" prefWidth="149.0" style="-fx-background-color: #68A731 #68A731;" text=" Stretch    " textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="16.0" />
                </font>
@@ -109,7 +113,7 @@
                </graphic>
             </Button>
             <Separator layoutX="-1.0" layoutY="335.0" orientation="VERTICAL" prefHeight="42.0" prefWidth="8.0" />
-            <Button fx:id="nutritionButton" layoutX="1.0" layoutY="380.0" mnemonicParsing="false" onAction="#nutritionButtonPressed" prefHeight="32.0" prefWidth="144.0" style="-fx-background-color: #68A731 #68A731;" text=" Nutrition " textFill="WHITE">
+            <Button fx:id="nutritionButton" layoutX="1.0" layoutY="377.0" mnemonicParsing="false" onAction="#nutritionButtonPressed" prefHeight="32.0" prefWidth="144.0" style="-fx-background-color: #68A731 #68A731;" text=" Nutrition " textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Light" size="16.0" />
                </font>
@@ -138,7 +142,7 @@
                   <Font name="Helvetica Neue Light" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="homeButton" layoutX="-1.0" layoutY="99.0" mnemonicParsing="false" onAction="#homeButtonPressed" prefHeight="42.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Home      " textFill="WHITE">
+            <Button fx:id="homeButton" layoutX="5.0" layoutY="108.0" mnemonicParsing="false" onAction="#homeButtonPressed" prefHeight="42.0" prefWidth="147.0" style="-fx-background-color: #68A731 #68A731;" text=" Home      " textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
