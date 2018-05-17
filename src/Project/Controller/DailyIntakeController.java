@@ -1,9 +1,11 @@
 package Project.Controller;
 
+import Project.DatabaseConnection;
 import Project.Model.Nutrition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,9 +16,19 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class DailyIntakeController {
+public class DailyIntakeController implements Initializable{
+
+    private ArrayList<Nutrition> nutritionList;
+    private Nutrition retrievedNutrition;
+    private double protein, fat, carbs, kcal;
+    private double multiplier;
+    private String productName;
 
     @FXML
     private Label exerciseNameLabel;
@@ -40,10 +52,27 @@ public class DailyIntakeController {
     private TextArea intakeTA;
 
     @FXML
+    private TextArea fatTA;
+
+    @FXML
+    private TextArea proteinTA;
+
+    @FXML
+    private TextArea carbsTA;
+
+    @FXML
+    private TextArea nameTA;
+
+    @FXML
+    private TextArea kcalTA;
+
+    @FXML
     private Button saveButton;
 
     @FXML
     private Button homeButton;
+
+    @FXML private Button searchButton;
 
     @FXML
     private Button exercisesButton;
@@ -68,7 +97,39 @@ public class DailyIntakeController {
 
     @FXML
     void addButtonPressed(ActionEvent event) {
+        try{
+            loadedNutritionLV.setOnMouseClicked(e -> {
+                retrievedNutrition = loadedNutritionLV.getSelectionModel().getSelectedItem();
 
+                protein = retrievedNutrition.getProteinAmount();
+                carbs = retrievedNutrition.getCarbohydratesAmount();
+                fat = retrievedNutrition.getFatAmount();
+                kcal = retrievedNutrition.getKcalPer100();
+                productName = retrievedNutrition.getName();
+
+                multiplier = Double.parseDouble(amountTF.getText()) / 100;
+
+                protein = protein * multiplier;
+                carbs = carbs * multiplier;
+                fat = fat * multiplier;
+                kcal = kcal * multiplier;
+
+            });
+
+            if (nameTA.getText() != null) {
+                nameTA.appendText("\n" + productName);
+                proteinTA.appendText("\n" + String.valueOf(protein));
+                carbsTA.appendText("\n" + String.valueOf(carbs));
+                fatTA.appendText("\n" + String.valueOf(fat));
+                kcalTA.appendText("\n" + String.valueOf(kcal));
+            }else{
+                throw new NullPointerException();
+                //Skriv att man måste vara noga med att markera produkten man valt efter man skrivit in hur många gram man ätit
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -77,7 +138,15 @@ public class DailyIntakeController {
     }
 
     @FXML void searchButtonPressed(ActionEvent event){
+        try{
+            nutritionList = DatabaseConnection.getInstance().searchForNutrition(nutritionNameTF.getText());
 
+            loadedNutritionLV.getItems().clear();
+            loadedNutritionLV.getItems().addAll(nutritionList);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -201,4 +270,15 @@ public class DailyIntakeController {
         }
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try{
+            intakeTotalTA.setText("   KCAL   |   PROTEIN   |   CARBS   |   FAT   |");
+            intakeTotalTA.appendText("\n---------------------------------------------");
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

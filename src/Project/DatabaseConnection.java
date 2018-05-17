@@ -626,6 +626,27 @@ public class DatabaseConnection {
             }
     }
 
+    //Metod som söker upp nutrition object som innehåller ett ord eller en viss bokstav.
+    public ArrayList<Nutrition> searchForNutrition(String searchString) throws Exception{
+        ArrayList<Nutrition> nutritionList = new ArrayList<>();
+        Nutrition retrievedNutrition;
+
+        ResultSet rs = st.executeQuery("SELECT name, kcal, protein, fat, carbs FROM nutrition WHERE name LIKE '%" + searchString + "%'");
+
+        if (!rs.next()){
+            return null;
+        }else {
+            do {
+                retrievedNutrition = new Nutrition(rs.getString(1), rs.getInt(2), rs.getInt(3),
+                        rs.getInt(4), rs.getInt(5));
+
+                nutritionList.add(retrievedNutrition);
+
+            }while (rs.next());
+            return nutritionList;
+        }
+    }
+
     //Metod som raderar en feedback
     public void deleteFeedbackFromDB(String id) throws Exception{
         st.executeUpdate("DELETE FROM feedback WHERE feedbackID = " + Integer.parseInt(id) + ";");

@@ -58,4 +58,9 @@ public class Nutrition {
     public void setCarbohydratesAmount(int carbohydratesAmount) {
         this.carbohydratesAmount = carbohydratesAmount;
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }
