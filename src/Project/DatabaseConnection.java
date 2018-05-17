@@ -656,8 +656,6 @@ public class DatabaseConnection {
     public void addDailyIntakeToDB(DailyIntake dailyIntake, ArrayList<String> nutritionList)throws Exception{
         int dailyID = DatabaseConnection.getInstance().retrieveBiggestID("idDaily_intake", "daily_intake") + 1;
 
-        System.out.println(dailyIntake.getDate());
-
         st.executeUpdate("INSERT INTO daily_intake (idDaily_intake, training_diary_User_Person_SSN, training_diary_User_username, training_diary_diaryID," +
                 " totalKcal, totalProtein, totalCarbs, totalFat, dateOfCreation) VALUES (" + dailyID + ", '" + UserInformation.getInstance().getSSN() + "', '" + UserInformation.getInstance().getUsername() +
                 "', " + DatabaseConnection.getInstance().retrieveDiaryID(UserInformation.getInstance().getUsername()) + ", " + dailyIntake.getKcal() + ", " +

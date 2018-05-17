@@ -280,6 +280,8 @@ public class DailyIntakeController implements Initializable{
     @FXML
     void goBack (ActionEvent event) {
         try {
+            dailyIntakeNutrition.clear();
+
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
@@ -316,6 +318,20 @@ public class DailyIntakeController implements Initializable{
             alert.setHeaderText("Daily intake saved.");
             alert.setContentText("Daily intake has been saved to the database.");
             alert.showAndWait();
+
+            dateTF.clear();
+            proteinTA.clear();
+            kcalTA.clear();
+            carbsTA.clear();
+            fatTA.clear();
+            nameTA.clear();
+            gramTA.clear();
+            amountTF.clear();
+            intakeTotalTA.clear();
+
+            intakeTotalTA.setText("|     PROTEIN     |      CARBS      |      FAT      |      KCAL     |");
+            intakeTotalTA.appendText("\n---------------------------------------------------------------");
+
 
         } catch (Exception e) {
             e.printStackTrace();
