@@ -264,8 +264,9 @@ public class DatabaseConnection {
 
     //Metod som hämtar alla värden för att kunna skapa ett AccountInfo objekt.
     //Metoden hämtar de värden som skrevs in från början.
-    public AccountInfo retrieveAccountInfo(String SSN) throws Exception {
+    public int[] retrieveAccountInfo(String SSN) throws Exception {
         int retrievedHeight, retrievedAge, retrievedWeight;
+        int[] informationList = new int[3];
 
         ResultSet rs = st.executeQuery("SELECT Person.age, User.height, User.startWeight FROM person, user " +
                 "WHERE SSN = Person_SSN AND SSN = '" + SSN + "';");
@@ -275,8 +276,11 @@ public class DatabaseConnection {
             retrievedHeight = rs.getInt(2);
             retrievedWeight = rs.getInt(3);
 
-            AccountInfo accInfo = new AccountInfo(retrievedHeight, retrievedWeight, retrievedAge);
-            return accInfo;
+            informationList[0] = retrievedAge;
+            informationList[1] = retrievedHeight;
+            informationList[2] = retrievedWeight;
+
+            return informationList;
         }
 
         return null;
@@ -313,19 +317,25 @@ public class DatabaseConnection {
     }
 
     //Metod som hämtar dina current statistics med hjälp av SSN som PK. Datumet måste vara i formattet: 5/4-18. Alltså d/m-år.
-    public AccountInfo retrieveCurrentStatistics(String SSN, String date) throws Exception {
-        int retrievedHeight, retrievedAge, retrievedWeight;
+    public AccountInfo retrieveSpecificStatistics(String date) {
+        try {
+            int retrievedHeight, retrievedAge, retrievedWeight;
+            String retrievedDate;
 
-        ResultSet rs = st.executeQuery("SELECT currentWeight, currentHeight, currentAge FROM current_statistics" +
-                " WHERE User_Person_SSN = '" + SSN + "' AND timeOfCreation = STR_TO_DATE('" + date + "', '%d/%m-%Y');");
+            ResultSet rs = st.executeQuery("SELECT currentWeight, currentHeight, currentAge, timeOfCreation FROM current_statistics" +
+                    " WHERE timeOfCreation = STR_TO_DATE('" + date + "', '%Y-%m-%d');");
 
-        if (rs.next()) {
-            retrievedWeight = rs.getInt(1);
-            retrievedHeight = rs.getInt(2);
-            retrievedAge = rs.getInt(3);
+            if (rs.next()) {
+                retrievedWeight = rs.getInt(1);
+                retrievedHeight = rs.getInt(2);
+                retrievedAge = rs.getInt(3);
+                retrievedDate = rs.getString(4);
 
-            AccountInfo currentStats = new AccountInfo(retrievedHeight, retrievedWeight, retrievedAge);
-            return currentStats;
+                AccountInfo currentStats = new AccountInfo(retrievedHeight, retrievedWeight, retrievedAge, retrievedDate);
+                return currentStats;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -335,13 +345,13 @@ public class DatabaseConnection {
         ArrayList<AccountInfo> retrievedAccountInfoList = new ArrayList<>();
         AccountInfo retrievedAccInfo;
 
-        ResultSet rs = st.executeQuery("SELECT currentHeight, currentWeight, currentAge FROM current_statistics" +
+        ResultSet rs = st.executeQuery("SELECT currentHeight, currentWeight, currentAge, timeOfCreation FROM current_statistics" +
                 " WHERE User_Person_SSN = '" + ssn + "';");
         if (!rs.next()){
             return null;
         }else{
             do {
-                retrievedAccInfo = new AccountInfo(rs.getInt(1), rs.getInt(2),rs.getInt(3));
+                retrievedAccInfo = new AccountInfo(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getString(4));
                 retrievedAccountInfoList.add(retrievedAccInfo);
 
             }while (rs.next());

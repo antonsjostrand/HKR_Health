@@ -16,7 +16,7 @@
 
             <TextField fx:id="userNameTF" layoutX="108.0" layoutY="173.0" prefHeight="27.0" prefWidth="218.0" promptText="username" style="-fx-background-color: #65A631 #65A631;" />
             <PasswordField fx:id="passwordTF" layoutX="108.0" layoutY="227.0" prefHeight="27.0" prefWidth="218.0" promptText="password" style="-fx-background-color: #65A631 #65A631;" />
-             
+
 
             <Button fx:id="loginButton" layoutX="52.0" layoutY="319.0" mnemonicParsing="false" onAction="#loginButtonPressed" prefHeight="27.0" prefWidth="267.0" style="-fx-background-color: #83e76f#83e76f;" text="Log in" textFill="WHITE" />
             <ImageView fx:id="login" fitHeight="34.0" fitWidth="36.0" layoutX="61.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">

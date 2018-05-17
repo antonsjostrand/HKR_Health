@@ -26,29 +26,25 @@ import static java.sql.Connection.*;
 
 public class AccountInfoController implements Initializable {
 
-    @FXML
-   private TextField updateHeight, updateWeight, updateAge, updateDate,
+    @FXML private TextField updateHeight, updateWeight, updateAge, updateDate,
             searchDate, firstHeight, firstWeight, firstAge;;
 
-   @FXML
-   private TextArea textArea1, textArea2;
+   @FXML private TextArea textArea1, textArea2;
 
 
    private AccountInfo accInfo;
+   private int[] accList = new int[3];
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            accInfo = DatabaseConnection.getInstance().retrieveAccountInfo(UserInformation.getInstance().getSSN());
-            firstHeight.setText(String.valueOf(accInfo.getHeight()));
-            firstWeight.setText(String.valueOf(accInfo.getWeight()));
-            firstAge.setText(String.valueOf(accInfo.getAge()));
+            accList = DatabaseConnection.getInstance().retrieveAccountInfo(UserInformation.getInstance().getSSN());
+            firstHeight.setText(String.valueOf(accList[1]));
+            firstWeight.setText(String.valueOf(accList[2]));
+            firstAge.setText(String.valueOf(accList[0]));
 
-            accInfo = DatabaseConnection.getInstance().retrieveCurrentStatistics(
-                    UserInformation.getInstance().getSSN(), updateDate.getText());
 
-            textArea1.setText(" ");
 
         } catch (Exception e) {
             e.printStackTrace();

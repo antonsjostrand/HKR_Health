@@ -45,7 +45,7 @@ public class DiaryController implements Initializable {
 
     @FXML void goBack(ActionEvent event) {
         try {
-            changeScene("loginScene", event);
+            changeScene("userScene", event);
 
         }catch (IOException e){
             //Fixa error handling

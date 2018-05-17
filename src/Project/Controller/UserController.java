@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -21,9 +18,14 @@ import javafx.stage.Stage;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
+
+    private AccountInfo accInfo, retrievedAccountInfo;
+    private ArrayList<AccountInfo> accountInfoList = new ArrayList<>();
+    private int[] accList = new int[3];
 
     @FXML private ImageView buttonPressed;
     @FXML private Button homeButton;
@@ -35,34 +37,29 @@ public class UserController implements Initializable {
     @FXML private Button feedbackButton;
     @FXML private Button backButton;
     @FXML private Button saveButton;
-
     @FXML private Label nameLabel, ssnLabel;
-
-    @FXML
-    private TextField updateHeight, updateWeight, updateAge, updateDate,
-            searchDate, firstHeight, firstWeight, firstAge;;
-
-    @FXML
-    private TextArea textArea1, textArea2;
-
-    private AccountInfo accInfo;
+    @FXML private TextField updateHeight, updateWeight, updateAge, updateDate, firstHeight, firstWeight, firstAge;;
+    @FXML private TextArea chosenInformationTA;
+    @FXML private ListView<AccountInfo> loadedInformationLV;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         try {
             nameLabel.setText(UserInformation.getInstance().getCompleteName());
             ssnLabel.setText(UserInformation.getInstance().getSSN());
 
-            accInfo = DatabaseConnection.getInstance().retrieveAccountInfo(UserInformation.getInstance().getSSN());
-            firstHeight.setText(String.valueOf(accInfo.getHeight()));
-            firstWeight.setText(String.valueOf(accInfo.getWeight()));
-            firstAge.setText(String.valueOf(accInfo.getAge()));
+            accList = DatabaseConnection.getInstance().retrieveAccountInfo(UserInformation.getInstance().getSSN());
+            firstHeight.setText(String.valueOf(accList[1]));
+            firstWeight.setText(String.valueOf(accList[2]));
+            firstAge.setText(String.valueOf(accList[0]));
 
-            accInfo = DatabaseConnection.getInstance().retrieveCurrentStatistics(UserInformation.getInstance().getSSN(), updateDate.getText());
-            textArea1.setText(updateDate.getText());
-        } catch (Exception e) {
+            chosenInformationTA.setText("|    HEIGHT    |    WEIGHT    |    AGE    |");
+            chosenInformationTA.appendText("\n----------------------------------------");
+
+            refreshAndSetInformation();
+
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -246,22 +243,40 @@ public class UserController implements Initializable {
                     Integer.parseInt(updateAge.getText()));
 
 
-
-
         } catch (Exception e) {
             e.printStackTrace();
             //Fixa error handling
         }
     }
+
     @FXML
-    void searchButtonPressed() {
-        try {
+    void refreshButtonPressed(ActionEvent event) {
+        try{
+            refreshAndSetInformation();
 
-
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
-            //Fixa error handling
         }
     }
 
+    //Metod som hämtar, uppdaterar och visar din account information i de olika fönsterna.
+    public void refreshAndSetInformation() throws Exception{
+        loadedInformationLV.getItems().clear();
+
+        accountInfoList = DatabaseConnection.getInstance().retrieveAllCurrentStatistics(UserInformation.getInstance().getSSN());
+        loadedInformationLV.getItems().addAll(accountInfoList);
+
+        loadedInformationLV.setOnMouseClicked(e -> {
+            accInfo = loadedInformationLV.getSelectionModel().getSelectedItem();
+            retrievedAccountInfo = DatabaseConnection.getInstance().retrieveSpecificStatistics(accInfo.getDate());
+
+            chosenInformationTA.setText("|    HEIGHT    |    WEIGHT    |    AGE    |");
+            chosenInformationTA.appendText("\n------------------------------------------");
+
+            String allInformation = "      " + String.valueOf(retrievedAccountInfo.getHeight()) + "             " + String.valueOf(retrievedAccountInfo.getWeight() +
+                    "                " + String.valueOf(retrievedAccountInfo.getAge()));
+
+            chosenInformationTA.appendText("\n" + allInformation);
+        });
+    }
 }
