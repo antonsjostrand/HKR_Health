@@ -3,10 +3,11 @@ package Project.Model;
 public class Measurement {
     private int upperArmL, upperArmR, forearmL, forearmR, thighL, thighR, calfL, calfR,
     waist, shoulderWidth, chestWidth;
+    private String date;
 
     public Measurement(int upperArmL, int upperArmR, int forearmL, int forearmR,
                        int thighL, int thighR, int calfL, int calfR,
-                       int waist, int shoulderWidth, int chestWidth) {
+                       int waist, int shoulderWidth, int chestWidth, String date) {
         this.upperArmL = upperArmL;
         this.upperArmR = upperArmR;
         this.forearmL = forearmL;
@@ -18,6 +19,7 @@ public class Measurement {
         this.waist = waist;
         this.shoulderWidth = shoulderWidth;
         this.chestWidth = chestWidth;
+        this.date = date;
     }
 
     public int getUpperArmL() {
@@ -106,5 +108,18 @@ public class Measurement {
 
     public void setChestWidth(int chestWidth) {
         this.chestWidth = chestWidth;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Measurement: " + getDate();
     }
 }

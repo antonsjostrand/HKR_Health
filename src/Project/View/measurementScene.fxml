@@ -40,14 +40,14 @@
             <TextField fx:id="waistTF" layoutX="242.0" layoutY="415.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
             <TextField fx:id="shoulderWidthTF" layoutX="241.0" layoutY="458.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
             <TextField fx:id="chestWidthTF" layoutX="241.0" layoutY="501.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="upperArmRTF" layoutX="231.0" layoutY="240.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="forearmLTF" layoutX="231.0" layoutY="240.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
             <Text fill="#92c94a" layoutX="93.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upper arm: " wrappingWidth="111.7578125">
                <font>
                   <Font name="Helvetica Neue Light" size="17.0" />
                </font>
             </Text>
             <TextField fx:id="upperArmLTF" layoutX="229.0" layoutY="202.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="forearmLTF" layoutX="644.0" layoutY="200.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="upperArmRTF" layoutX="644.0" layoutY="200.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
             <TextField fx:id="thighLTF" layoutX="230.0" layoutY="276.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
             <TextField fx:id="calfLTF" layoutX="229.0" layoutY="314.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
             <Button fx:id="saveMeasurementButton" layoutX="518.0" layoutY="482.0" mnemonicParsing="false" onAction="#saveMeasurementButtonPressed" prefHeight="47.0" prefWidth="191.0" style="-fx-background-color: #92c94a#92c94a; -fx-background-radius: 5em;" text="Save Measurements" textFill="WHITE">

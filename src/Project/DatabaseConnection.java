@@ -421,6 +421,68 @@ public class DatabaseConnection {
 
     }
 
+    //Metod som hämtar samtliga av en avändares measurements
+    public ArrayList<Measurement> retrieveAllMeasurements(String ssn) throws Exception{
+        ArrayList<Measurement> measurementList = new ArrayList<>();
+        Measurement retrievedMeasurement;
+
+        ResultSet rs = st.executeQuery("SELECT upperArmL, upperArmR, forearmL, forearmR, thighL, thighR, calfL, calfR, " +
+                "waist, shoulderWidth, chestWidth, dateOfCreation FROM measurement WHERE training_diary_User_Person_SSN = '" + ssn + "';");
+
+        if (!rs.next()){
+            return null;
+        }else{
+            do {
+                retrievedMeasurement = new Measurement(rs.getInt(1),rs.getInt(2), rs.getInt(3),rs.getInt(4),
+                        rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9),
+                        rs.getInt(10), rs.getInt(11), rs.getString(12));
+
+                measurementList.add(retrievedMeasurement);
+
+            }while (rs.next());
+
+            return measurementList;
+        }
+    }
+
+    //Metod som hämtar en användares i measurements i String format.
+    public ArrayList<String> retrieveSpecificMeasurement(String ssn, String date){
+        try {
+            ArrayList<String> measurementList = new ArrayList<>();
+
+            ResultSet rs = st.executeQuery("SELECT upperArmL, upperArmR, forearmL, forearmR, thighL, thighR, calfL, calfR, " +
+                    "waist, shoulderWidth, chestWidth, dateOfCreation FROM measurement WHERE training_diary_User_Person_SSN = '" + ssn + "' AND dateOfCreation = STR_TO_DATE('" + date + "', '%Y-%m-%d');;");
+
+            if (!rs.next()) {
+                return null;
+            } else {
+                do {
+                    measurementList.add(rs.getString(1));
+                    measurementList.add(rs.getString(2));
+                    measurementList.add(rs.getString(3));
+                    measurementList.add(rs.getString(4));
+                    measurementList.add(rs.getString(5));
+                    measurementList.add(rs.getString(6));
+                    measurementList.add(rs.getString(7));
+                    measurementList.add(rs.getString(8));
+                    measurementList.add(rs.getString(9));
+                    measurementList.add(rs.getString(10));
+                    measurementList.add(rs.getString(11));
+                    measurementList.add(rs.getString(12));
+
+                } while (rs.next());
+
+                return measurementList;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
+
     //Metod som skapar en training diary i samband med att man skapar ett konto.
     public void addDiaryToDB(String ssn, String username) {
         try {
