@@ -651,4 +651,24 @@ public class DatabaseConnection {
     public void deleteFeedbackFromDB(String id) throws Exception{
         st.executeUpdate("DELETE FROM feedback WHERE feedbackID = " + Integer.parseInt(id) + ";");
     }
+
+    //metod som lagrar ett dailyintake objekt i databasen
+    public void addDailyIntakeToDB(DailyIntake dailyIntake, ArrayList<String> nutritionList)throws Exception{
+        int dailyID = DatabaseConnection.getInstance().retrieveBiggestID("idDaily_intake", "daily_intake") + 1;
+
+        System.out.println(dailyIntake.getDate());
+
+        st.executeUpdate("INSERT INTO daily_intake (idDaily_intake, training_diary_User_Person_SSN, training_diary_User_username, training_diary_diaryID," +
+                " totalKcal, totalProtein, totalCarbs, totalFat, dateOfCreation) VALUES (" + dailyID + ", '" + UserInformation.getInstance().getSSN() + "', '" + UserInformation.getInstance().getUsername() +
+                "', " + DatabaseConnection.getInstance().retrieveDiaryID(UserInformation.getInstance().getUsername()) + ", " + dailyIntake.getKcal() + ", " +
+                dailyIntake.getProtein() + ", " + dailyIntake.getCarbs() + ", " + dailyIntake.getFat() + ", STR_TO_DATE('" + dailyIntake.getDate() + "', '%d/%m-%Y'));");
+
+        for (int i = 0; i < nutritionList.size(); i=i+2) {
+
+            st.executeUpdate("INSERT INTO daily_intake_has_nutrition (daily_intake_idDaily_intake, Daily_intake_training_diary_User_Person_SSN, Daily_intake_training_diary_User_username, Daily_intake_training_diary_diaryID, " +
+                    "nutrition_name, weightInGrams) VALUES (" + dailyID + ", '" + UserInformation.getInstance().getSSN() + "', '" + UserInformation.getInstance().getUsername() +
+                    "', " + DatabaseConnection.getInstance().retrieveDiaryID(UserInformation.getInstance().getUsername()) + ", '" + nutritionList.get(i) + "', '" + nutritionList.get(i+1) + "');");
+
+        }
+    }
 }

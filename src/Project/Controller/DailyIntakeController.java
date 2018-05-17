@@ -1,6 +1,7 @@
 package Project.Controller;
 
 import Project.DatabaseConnection;
+import Project.Model.DailyIntake;
 import Project.Model.Nutrition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,11 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import javax.xml.crypto.Data;
@@ -24,10 +21,10 @@ import java.util.ResourceBundle;
 
 public class DailyIntakeController implements Initializable{
 
+    private ArrayList<String> dailyIntakeNutrition = new ArrayList<>();
     private ArrayList<Nutrition> nutritionList;
     private Nutrition retrievedNutrition;
-    private double protein, fat, carbs, kcal;
-    private double multiplier;
+    private double protein, fat, carbs, kcal, proteinTotal, fatTotal, carbsTotal, kcalTotal, gramTotal, multiplier;
     private String productName;
 
     @FXML
@@ -44,6 +41,9 @@ public class DailyIntakeController implements Initializable{
 
     @FXML
     private TextField amountTF;
+
+    @FXML
+    private TextField dateTF;
 
     @FXML
     private TextArea intakeTotalTA;
@@ -65,6 +65,9 @@ public class DailyIntakeController implements Initializable{
 
     @FXML
     private TextArea kcalTA;
+
+    @FXML
+    private TextArea gramTA;
 
     @FXML
     private Button saveButton;
@@ -113,15 +116,30 @@ public class DailyIntakeController implements Initializable{
                 carbs = carbs * multiplier;
                 fat = fat * multiplier;
                 kcal = kcal * multiplier;
-
             });
 
-            if (nameTA.getText() != null) {
+            if (productName != null) {
                 nameTA.appendText("\n" + productName);
                 proteinTA.appendText("\n" + String.valueOf(protein));
                 carbsTA.appendText("\n" + String.valueOf(carbs));
                 fatTA.appendText("\n" + String.valueOf(fat));
                 kcalTA.appendText("\n" + String.valueOf(kcal));
+                gramTA.appendText("\n" + amountTF.getText());
+
+                proteinTotal = proteinTotal + protein;
+                kcalTotal = kcalTotal + kcal;
+                fatTotal = fatTotal +fat;
+                carbsTotal = carbsTotal + carbs;
+
+                dailyIntakeNutrition.add(productName);
+                dailyIntakeNutrition.add(String.valueOf(amountTF.getText()));
+
+                intakeTotalTA.setText("|     PROTEIN     |      CARBS      |      FAT      |      KCAL     |");
+                intakeTotalTA.appendText("\n---------------------------------------------------------------");
+                intakeTotalTA.appendText("\n          " + proteinTotal + "               " + carbsTotal + "               " + fatTotal + "            " + kcalTotal);
+
+                productName = null;
+
             }else{
                 throw new NullPointerException();
                 //Skriv att man måste vara noga med att markera produkten man valt efter man skrivit in hur många gram man ätit
@@ -134,7 +152,12 @@ public class DailyIntakeController implements Initializable{
 
     @FXML
     void saveButtonPressed(ActionEvent event){
+        try{
+            createDailyIntake(dateTF.getText(), proteinTotal, carbsTotal, fatTotal, kcalTotal, dailyIntakeNutrition);
 
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML void searchButtonPressed(ActionEvent event){
@@ -278,6 +301,23 @@ public class DailyIntakeController implements Initializable{
 
 
         }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //Metod som skapar ett dailyintake object som sedan sparas i databasen.
+    public void createDailyIntake(String date, double protein, double carbs, double fat, double kcal, ArrayList<String> dailyIntakeNutritionList) {
+        try {
+            DailyIntake newDailyIntake = new DailyIntake(protein, fat, carbs, kcal, date);
+            DatabaseConnection.getInstance().addDailyIntakeToDB(newDailyIntake, dailyIntakeNutritionList);
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("INFORMATION");
+            alert.setHeaderText("Daily intake saved.");
+            alert.setContentText("Daily intake has been saved to the database.");
+            alert.showAndWait();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

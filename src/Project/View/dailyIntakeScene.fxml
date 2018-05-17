@@ -56,12 +56,19 @@
             </Label>
             <TextArea fx:id="intakeTotalTA" layoutX="390.0" layoutY="350.0" prefHeight="100.0" prefWidth="300.0" />
             <TextArea fx:id="nameTA" layoutX="390.0" layoutY="198.0" prefHeight="126.0" prefWidth="76.0" text="Product" />
-            <Button fx:id="saveButton" layoutX="569.0" layoutY="503.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #92C94A#92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Save" textFill="WHITE" />
+            <Button fx:id="saveButton" layoutX="395.0" layoutY="513.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #92C94A#92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Save" textFill="WHITE" />
             <Button fx:id="searchButton" layoutX="54.0" layoutY="202.0" mnemonicParsing="false" onAction="#searchButtonPressed" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #92C94A#92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Search" textFill="WHITE" />
             <TextArea fx:id="fatTA" layoutX="618.0" layoutY="198.0" prefHeight="126.0" prefWidth="76.0" text="Fat" />
             <TextArea fx:id="proteinTA" layoutX="466.0" layoutY="198.0" prefHeight="126.0" prefWidth="76.0" text="Protein" />
             <TextArea fx:id="carbsTA" layoutX="542.0" layoutY="198.0" prefHeight="126.0" prefWidth="76.0" text="Carbs" />
             <TextArea fx:id="kcalTA" layoutX="694.0" layoutY="198.0" prefHeight="126.0" prefWidth="76.0" text="Kcal" />
+            <TextArea fx:id="gramTA" layoutX="770.0" layoutY="198.0" prefHeight="126.0" prefWidth="76.0" text="Gram" />
+            <Label layoutX="390.0" layoutY="471.0" text="Date:" textFill="#92c94a">
+               <font>
+                  <Font name="Helvetica Neue Light" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="dateTF" layoutX="473.0" layoutY="471.0" prefHeight="25.0" prefWidth="230.0" promptText="example: 5/4-18" style="-fx-background-radius: 5em;" />
          </children>
       </AnchorPane>
    </center>
