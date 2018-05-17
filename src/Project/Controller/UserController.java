@@ -81,6 +81,13 @@ public class UserController implements Initializable {
 
             refreshAndSetInformation();
 
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("INFORMATION");
+            alert.setHeaderText("Update your information");
+            alert.setContentText("There is no updated information, please do an update.");
+            alert.showAndWait();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
