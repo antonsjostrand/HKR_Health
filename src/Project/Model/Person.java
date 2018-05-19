@@ -2,7 +2,7 @@ package Project.Model;
 
 import javafx.scene.control.Alert;
 
-public class Person {
+public abstract class Person {
 
     private String firstName, lastName, password, email, SSN;
     private int age;
