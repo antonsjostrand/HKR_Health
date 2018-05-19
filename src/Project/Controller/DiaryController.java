@@ -97,17 +97,32 @@ public class DiaryController implements Initializable {
 
     @FXML
     void intakeHistoryButtonPressed(ActionEvent event) {
+        try{
+            changeScene("nutritionHistoryScene", event);
 
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void workoutButtonPressed(ActionEvent event) {
+        try{
+            changeScene("workoutScene", event);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
     @FXML
     void workoutHistoryButtonPressed(ActionEvent event) {
-
+        try{
+            changeScene("workoutHistoryScene", event);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML void exerciseButtonPressed(ActionEvent event) {

@@ -300,12 +300,12 @@ public class DatabaseConnection {
     }
 
     //metod som hämtar en användares namn.
-    public String retrieveUserCompleteName(String username) throws Exception{
+    public String retrieveUserCompleteName(String username) throws Exception {
         String retrievedName, firstName, lastName;
 
         ResultSet rs = st.executeQuery("SELECT firstName, lastName FROM person, user WHERE SSN = Person_SSN AND username = '" + username + "';");
 
-        if (rs.next()){
+        if (rs.next()) {
             firstName = rs.getString(1);
             lastName = rs.getString(2);
 
@@ -341,20 +341,20 @@ public class DatabaseConnection {
     }
 
     //Metod som hämtar en persons samtliga currentstatistics från databasen
-    public ArrayList<AccountInfo> retrieveAllCurrentStatistics(String ssn) throws Exception{
+    public ArrayList<AccountInfo> retrieveAllCurrentStatistics(String ssn) throws Exception {
         ArrayList<AccountInfo> retrievedAccountInfoList = new ArrayList<>();
         AccountInfo retrievedAccInfo;
 
         ResultSet rs = st.executeQuery("SELECT currentHeight, currentWeight, currentAge, timeOfCreation FROM current_statistics" +
                 " WHERE User_Person_SSN = '" + ssn + "';");
-        if (!rs.next()){
+        if (!rs.next()) {
             return null;
-        }else{
+        } else {
             do {
-                retrievedAccInfo = new AccountInfo(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getString(4));
+                retrievedAccInfo = new AccountInfo(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4));
                 retrievedAccountInfoList.add(retrievedAccInfo);
 
-            }while (rs.next());
+            } while (rs.next());
 
             return retrievedAccountInfoList;
         }
@@ -422,31 +422,31 @@ public class DatabaseConnection {
     }
 
     //Metod som hämtar samtliga av en avändares measurements
-    public ArrayList<Measurement> retrieveAllMeasurements(String ssn) throws Exception{
+    public ArrayList<Measurement> retrieveAllMeasurements(String ssn) throws Exception {
         ArrayList<Measurement> measurementList = new ArrayList<>();
         Measurement retrievedMeasurement;
 
         ResultSet rs = st.executeQuery("SELECT upperArmL, upperArmR, forearmL, forearmR, thighL, thighR, calfL, calfR, " +
                 "waist, shoulderWidth, chestWidth, dateOfCreation FROM measurement WHERE training_diary_User_Person_SSN = '" + ssn + "';");
 
-        if (!rs.next()){
+        if (!rs.next()) {
             return null;
-        }else{
+        } else {
             do {
-                retrievedMeasurement = new Measurement(rs.getInt(1),rs.getInt(2), rs.getInt(3),rs.getInt(4),
+                retrievedMeasurement = new Measurement(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4),
                         rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9),
                         rs.getInt(10), rs.getInt(11), rs.getString(12));
 
                 measurementList.add(retrievedMeasurement);
 
-            }while (rs.next());
+            } while (rs.next());
 
             return measurementList;
         }
     }
 
     //Metod som hämtar en användares i measurements i String format.
-    public ArrayList<String> retrieveSpecificMeasurement(String ssn, String date){
+    public ArrayList<String> retrieveSpecificMeasurement(String ssn, String date) {
         try {
             ArrayList<String> measurementList = new ArrayList<>();
 
@@ -474,13 +474,11 @@ public class DatabaseConnection {
 
                 return measurementList;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
-
 
 
     //Metod som skapar en training diary i samband med att man skapar ett konto.
@@ -550,28 +548,28 @@ public class DatabaseConnection {
     }
 
     //Hämtar en specifik övning
-    public Exercise retrieveSpecificExercise(String name){
-        try{
+    public Exercise retrieveSpecificExercise(String name) {
+        try {
             Exercise retrievedExercise;
             String retrievedName, type, instruction, image;
             String[] muscleGroup = new String[4];
             int counter = 0;
 
             ResultSet rs = st.executeQuery("SELECT name, typeOfExercise, instruction, imagePath FROM exercise WHERE name = '" + name + "';");
-            if (rs.next()){
+            if (rs.next()) {
                 retrievedName = rs.getString(1);
                 type = rs.getString(2);
                 instruction = rs.getString(3);
                 image = rs.getString(4);
 
                 ResultSet rsTwo = st.executeQuery("SELECT muscleGroup FROM musclegroup WHERE Exercise_name = '" + name + "';");
-                if (!rsTwo.next()){
+                if (!rsTwo.next()) {
                     return null;
-                }else {
+                } else {
                     do {
                         muscleGroup[counter] = rsTwo.getString(1);
                         counter = counter + 1;
-                    }while (rsTwo.next());
+                    } while (rsTwo.next());
 
                     retrievedExercise = new Exercise(retrievedName, type, instruction, image);
                     retrievedExercise.setMuscleGroup(muscleGroup);
@@ -580,80 +578,80 @@ public class DatabaseConnection {
                 }
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
     //Metod som hämtar samtliga råvaror.
-    public ArrayList<String> retrieveAllNutritions() throws Exception{
-       ArrayList<String> retrievedNutrition = new ArrayList<>();
+    public ArrayList<String> retrieveAllNutritions() throws Exception {
+        ArrayList<String> retrievedNutrition = new ArrayList<>();
 
         ResultSet rs = st.executeQuery("SELECT name, protein, carbs, fat, kcal FROM nutrition;");
-            if (!rs.next()){
-                return null;
-            }else{
-                do {
-                    retrievedNutrition.add(rs.getString(1));
-                    retrievedNutrition.add(rs.getString(2));
-                    retrievedNutrition.add(rs.getString(3));
-                    retrievedNutrition.add(rs.getString(4));
-                    retrievedNutrition.add(rs.getString(5));
+        if (!rs.next()) {
+            return null;
+        } else {
+            do {
+                retrievedNutrition.add(rs.getString(1));
+                retrievedNutrition.add(rs.getString(2));
+                retrievedNutrition.add(rs.getString(3));
+                retrievedNutrition.add(rs.getString(4));
+                retrievedNutrition.add(rs.getString(5));
 
-                }while (rs.next());
-                return retrievedNutrition;
-            }
+            } while (rs.next());
+            return retrievedNutrition;
+        }
     }
 
     //Metod som hämtar en lista med specifika råvaror.
-    public ArrayList<String> retrieveSpecificNutrions(String macro, String from, String to) throws Exception{
+    public ArrayList<String> retrieveSpecificNutrions(String macro, String from, String to) throws Exception {
         ArrayList<String> retrievedNutrition = new ArrayList<>();
 
         ResultSet rs = st.executeQuery("SELECT name, protein, carbs, fat, kcal FROM nutrition WHERE " + macro + " >= " + from + " AND " + macro + " <= " + to + ";");
 
-            if (!rs.next()){
-                return null;
-            }else{
-                do {
-                    retrievedNutrition.add(rs.getString(1));
-                    retrievedNutrition.add(rs.getString(2));
-                    retrievedNutrition.add(rs.getString(3));
-                    retrievedNutrition.add(rs.getString(4));
-                    retrievedNutrition.add(rs.getString(5));
-                }while (rs.next());
-                return retrievedNutrition;
-            }
+        if (!rs.next()) {
+            return null;
+        } else {
+            do {
+                retrievedNutrition.add(rs.getString(1));
+                retrievedNutrition.add(rs.getString(2));
+                retrievedNutrition.add(rs.getString(3));
+                retrievedNutrition.add(rs.getString(4));
+                retrievedNutrition.add(rs.getString(5));
+            } while (rs.next());
+            return retrievedNutrition;
+        }
     }
 
     //Metod som söker upp nutrition object som innehåller ett ord eller en viss bokstav.
-    public ArrayList<Nutrition> searchForNutrition(String searchString) throws Exception{
+    public ArrayList<Nutrition> searchForNutrition(String searchString) throws Exception {
         ArrayList<Nutrition> nutritionList = new ArrayList<>();
         Nutrition retrievedNutrition;
 
         ResultSet rs = st.executeQuery("SELECT name, kcal, protein, fat, carbs FROM nutrition WHERE name LIKE '%" + searchString + "%'");
 
-        if (!rs.next()){
+        if (!rs.next()) {
             return null;
-        }else {
+        } else {
             do {
                 retrievedNutrition = new Nutrition(rs.getString(1), rs.getInt(2), rs.getInt(3),
                         rs.getInt(4), rs.getInt(5));
 
                 nutritionList.add(retrievedNutrition);
 
-            }while (rs.next());
+            } while (rs.next());
             return nutritionList;
         }
     }
 
     //Metod som raderar en feedback
-    public void deleteFeedbackFromDB(String id) throws Exception{
+    public void deleteFeedbackFromDB(String id) throws Exception {
         st.executeUpdate("DELETE FROM feedback WHERE feedbackID = " + Integer.parseInt(id) + ";");
     }
 
     //metod som lagrar ett dailyintake objekt i databasen
-    public void addDailyIntakeToDB(DailyIntake dailyIntake, ArrayList<String> nutritionList)throws Exception{
+    public void addDailyIntakeToDB(DailyIntake dailyIntake, ArrayList<String> nutritionList) throws Exception {
         int dailyID = DatabaseConnection.getInstance().retrieveBiggestID("idDaily_intake", "daily_intake") + 1;
 
         st.executeUpdate("INSERT INTO daily_intake (idDaily_intake, training_diary_User_Person_SSN, training_diary_User_username, training_diary_diaryID," +
@@ -661,12 +659,153 @@ public class DatabaseConnection {
                 "', " + DatabaseConnection.getInstance().retrieveDiaryID(UserInformation.getInstance().getUsername()) + ", " + dailyIntake.getKcal() + ", " +
                 dailyIntake.getProtein() + ", " + dailyIntake.getCarbs() + ", " + dailyIntake.getFat() + ", STR_TO_DATE('" + dailyIntake.getDate() + "', '%d/%m-%Y'));");
 
-        for (int i = 0; i < nutritionList.size(); i=i+2) {
+        for (int i = 0; i < nutritionList.size(); i = i + 2) {
 
             st.executeUpdate("INSERT INTO daily_intake_has_nutrition (daily_intake_idDaily_intake, Daily_intake_training_diary_User_Person_SSN, Daily_intake_training_diary_User_username, Daily_intake_training_diary_diaryID, " +
-                    "nutrition_name, weightInGrams) VALUES (" + dailyID + ", '" + UserInformation.getInstance().getSSN() + "', '" + UserInformation.getInstance().getUsername() +
-                    "', " + DatabaseConnection.getInstance().retrieveDiaryID(UserInformation.getInstance().getUsername()) + ", '" + nutritionList.get(i) + "', '" + nutritionList.get(i+1) + "');");
+                    "daily_intake_dateOfCreation, nutrition_name, weightInGrams) VALUES (" + dailyID + ", '" + UserInformation.getInstance().getSSN() + "', '" + UserInformation.getInstance().getUsername() +
+                    "', " + DatabaseConnection.getInstance().retrieveDiaryID(UserInformation.getInstance().getUsername()) + ", " +  "STR_TO_DATE('" + dailyIntake.getDate() + "', '%d/%m-%Y'), '" + nutritionList.get(i) + "', '" + nutritionList.get(i + 1) + "');");
 
+        }
+    }
+
+    //Metod som hämtar samtliga dailyIntakes som en person gjort.
+    public ArrayList<DailyIntake> retrieveAllDailyIntakes() throws Exception {
+        try {
+            ArrayList<DailyIntake> dailyIntakeList = new ArrayList<>();
+
+            DailyIntake retrievedDailyIntake;
+
+            ResultSet rs = st.executeQuery("SELECT totalProtein, totalFat, totalCarbs, totalKcal, dateOfCreation FROM daily_intake WHERE " +
+                    "training_diary_User_Person_SSN = '" + UserInformation.getInstance().getSSN() + "';");
+
+            if (!rs.next()) {
+                return null;
+            } else {
+                do {
+                    retrievedDailyIntake = new DailyIntake(rs.getInt(1), rs.getInt(2),
+                            rs.getInt(3), rs.getInt(4), rs.getString(5));
+
+                    dailyIntakeList.add(retrievedDailyIntake);
+                } while (rs.next());
+
+                return dailyIntakeList;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //Metod som hämtar en specifik dailyintake
+    public ArrayList<String> retrieveSpecifcDailyIntakeContents(String date) {
+        try {
+            ArrayList<String> retrievedContents = new ArrayList<>();
+
+            ResultSet rs = st.executeQuery("SELECT nutrition_name, weightInGrams FROM daily_intake_has_nutrition WHERE daily_intake_training_diary_User_Person_SSN = '" +
+                    UserInformation.getInstance().getSSN() + "' AND daily_intake_dateOfCreation = STR_TO_DATE('" + date + "', '%Y-%m-%d');");
+
+            if (!rs.next()) {
+                return null;
+            } else {
+                do {
+                    retrievedContents.add(rs.getString(1));
+                    retrievedContents.add(rs.getString(2));
+
+                } while (rs.next());
+
+                return retrievedContents;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //Metod som sparar en workout i databasen
+    public void addWorkoutToDB(ArrayList<String> list, String date) throws Exception{
+        int workoutID = DatabaseConnection.getInstance().retrieveBiggestID("workoutID", "workout") + 1;
+
+       st.executeUpdate("INSERT INTO workout (workoutID, dateOfCreationl, training_diary_User_Person_SSN, training_diary_User_username, training_diary_diaryID) " +
+               "VALUES (" + workoutID + ", STR_TO_DATE('" + date + "', '%d/%m-%Y'), '" + UserInformation.getInstance().getSSN() + "', '" + UserInformation.getInstance().getUsername() + "', " +
+                UserInformation.getInstance().getDiaryID() + ");");
+
+       for (int i = 0; i < list.size(); i = i + 4){
+           st.executeUpdate("INSERT INTO workout_has_exercise (workout_workoutID, Workout_training_diary_User_Person_SSN, Workout_training_diary_User_username, " +
+                   "Workout_training_diary_diaryID, exercise_name, reps, sets, weight) " +
+                   "VALUES (" + workoutID + ", '" + UserInformation.getInstance().getSSN() + "', '" + UserInformation.getInstance().getUsername() + "', " + UserInformation.getInstance().getDiaryID() + ", '" +
+                    list.get(i) + "', " + Integer.parseInt(list.get(i+1)) + ", " + Integer.parseInt(list.get(i+2)) + ", " + Integer.parseInt(list.get(i+3)) + ");");
+
+       }
+    }
+
+    //Metod som hämtar samtliga workouts from databasen
+    public ArrayList<String> retrieveAllWorkouts()throws Exception{
+        ArrayList<String> retrievedWorkouts = new ArrayList<>();
+
+        ResultSet rs = st.executeQuery("SELECT workoutID, dateOfCreationl FROM workout WHERE training_diary_User_Person_SSN = '" + UserInformation.getInstance().getSSN() + "';");
+
+        if (!rs.next()){
+            return null;
+        }else{
+            do{
+                retrievedWorkouts.add(rs.getString(1));
+                retrievedWorkouts.add(rs.getString(2));
+            }while(rs.next());
+            return retrievedWorkouts;
+        }
+    }
+
+    //Metod som hämtar en specifik workouts övningar
+    public ArrayList<String> retrieveSpecificWorkoutExercises(String id) {
+        try {
+            int workoutID = Integer.parseInt(id);
+            ArrayList<String> retrievedWorkoutContent = new ArrayList<>();
+
+            ResultSet rs = st.executeQuery("SELECT exercise_name, sets, reps, weight FROM workout_has_exercise WHERE workout_workoutID = " + workoutID + ";");
+
+            if (!rs.next()) {
+                return null;
+            } else {
+                do {
+                    retrievedWorkoutContent.add(rs.getString(1));
+                    retrievedWorkoutContent.add(rs.getString(2));
+                    retrievedWorkoutContent.add(rs.getString(3));
+                    retrievedWorkoutContent.add(rs.getString(4));
+                }while (rs.next());
+
+                return retrievedWorkoutContent;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //Metod som sparar en ny note i databasen
+    public void addNoteToDB(Note note) throws Exception{
+        int noteID = DatabaseConnection.getInstance().retrieveBiggestID("noteID", "notes") + 1;
+
+        st.executeUpdate("INSERT INTO notes (noteID, header, content, dateOfCreation, training_diary_User_Person_SSN, training_diary_User_username, training_diary_diaryID) " +
+                "VALUES (" + noteID + ", '" + note.getHeader() + "', '" + note.getContent() + "', STR_TO_DATE('" + note.getDate() + "', '%d/%m-%Y'), '" +
+                UserInformation.getInstance().getSSN() + "', '" + UserInformation.getInstance().getUsername() + "', " + UserInformation.getInstance().getDiaryID() + ");");
+
+    }
+
+    //Metod som hämtar samtliga notes i databasen
+    public ArrayList<Note> retrieveAllNotes(String ssn)throws Exception{
+        ArrayList<Note> retrievedNote = new ArrayList<>();
+        Note newNote;
+
+        ResultSet rs = st.executeQuery("SELECT header, content, dateOfCreation FROM notes WHERE training_diary_User_Person_SSN = '" + ssn + "';");
+
+        if (!rs.next()){
+            return null;
+        }else {
+            do {
+                newNote = new Note(rs.getString(1), rs.getString(2), rs.getString(3));
+                retrievedNote.add(newNote);
+            }while (rs.next());
+            return retrievedNote;
         }
     }
 }

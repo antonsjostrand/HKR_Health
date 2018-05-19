@@ -2,6 +2,7 @@ package Project.Controller;
 
 import Project.DatabaseConnection;
 import Project.Model.Diary;
+import Project.Model.Note;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -119,20 +120,19 @@ public class NotebookController implements Initializable {
     //Metod som skapar ett saveDiary objekt som sedan lagras i databasen.
     public void saveDiary() {
         try {
+            Note newNote = new Note(title.getText(), notes.getText(), todaysDate.getText());
 
-            title.getText();
-            todaysDate.getText();
-            notes.getText();
-
-            title.clear();
-            todaysDate.clear();
-            notes.clear();
+            DatabaseConnection.getInstance().addNoteToDB(newNote);
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("INFORMATION");
             alert.setHeaderText("Diary saved");
             alert.setContentText("Diary saved successful. Press cancel to go back to the diary scene.");
             alert.showAndWait();
+
+            notes.clear();
+            title.clear();
+            todaysDate.clear();
         }
         catch (Exception e){
             e.printStackTrace();
