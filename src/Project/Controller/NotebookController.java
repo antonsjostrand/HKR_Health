@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
@@ -64,6 +65,7 @@ public class NotebookController implements Initializable {
             checkDateFormat(todaysDate.getText());
 
             saveDiary();
+            throw new SQLException();
 
         } catch (InputMismatchException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -78,6 +80,14 @@ public class NotebookController implements Initializable {
             alert.setHeaderText("Input incorrect");
             alert.setContentText("The textfields cannot be empty.");
             alert.showAndWait();
+
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("You have to enter a valid date.");
+            alert.showAndWait();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -86,6 +96,13 @@ public class NotebookController implements Initializable {
     //Metod som kollar så att datumet är i korrekt format
     public void checkDateFormat(String date) {
         if (date.length() != 8) {
+            todaysDate.clear();
+            todaysDate.setText("DD/MM-YY");
+            todaysDate.requestFocus();
+            throw new InputMismatchException();
+        }
+
+        if (date.charAt(1) == '0' || date.charAt(4) == '0') {
             todaysDate.clear();
             todaysDate.setText("DD/MM-YY");
             todaysDate.requestFocus();
@@ -103,7 +120,8 @@ public class NotebookController implements Initializable {
 
         if (date.charAt(2) == '/' || date.charAt(5) == '-') {
             return;
-        } else {
+        }
+        else {
             todaysDate.clear();
             todaysDate.setText("DD/MM-YY");
             todaysDate.requestFocus();
@@ -124,7 +142,7 @@ public class NotebookController implements Initializable {
 
             DatabaseConnection.getInstance().addNoteToDB(newNote);
 
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("INFORMATION");
             alert.setHeaderText("Diary saved");
             alert.setContentText("Diary saved successful. Press cancel to go back to the diary scene.");
@@ -133,6 +151,10 @@ public class NotebookController implements Initializable {
             notes.clear();
             title.clear();
             todaysDate.clear();
+
+            throw new SQLException();
+        }
+        catch (SQLException e){
         }
         catch (Exception e){
             e.printStackTrace();
@@ -232,16 +254,17 @@ public class NotebookController implements Initializable {
 
     @FXML void cancelButtonPressed(ActionEvent event){
         try {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/diaryScene.fxml"));
-        Parent root = loader.load();
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
 
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-    } catch (IOException e){
-        //Fixa error handling
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/diaryScene.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e){
+            e.printStackTrace();
     }
 }
 

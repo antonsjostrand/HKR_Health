@@ -16,10 +16,17 @@ import javafx.stage.Stage;
 import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 public class DailyIntakeController implements Initializable{
+
+    private char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+            'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö', 'a',
+            'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'å', 'ä', 'ö'};
 
     private ArrayList<String> dailyIntakeNutrition = new ArrayList<>();
     private ArrayList<Nutrition> nutritionList;
@@ -145,6 +152,13 @@ public class DailyIntakeController implements Initializable{
                 //Skriv att man måste vara noga med att markera produkten man valt efter man skrivit in hur många gram man ätit
             }
 
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("The textfield cannot be empty.");
+            alert.showAndWait();
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -153,7 +167,32 @@ public class DailyIntakeController implements Initializable{
     @FXML
     void saveButtonPressed(ActionEvent event){
         try{
+            checkIfInputIsEmpty();
+            checkDateFormat(dateTF.getText());
             createDailyIntake(dateTF.getText(), proteinTotal, carbsTotal, fatTotal, kcalTotal, dailyIntakeNutrition);
+
+            throw new SQLException();
+
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("The textfields cannot be empty.");
+            alert.showAndWait();
+
+        } catch (InputMismatchException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("The values entered is not following the rules.");
+            alert.showAndWait();
+
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("You have to enter a valid date.");
+            alert.showAndWait();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -161,11 +200,18 @@ public class DailyIntakeController implements Initializable{
     }
 
     @FXML void searchButtonPressed(ActionEvent event){
-        try{
+        try {
             nutritionList = DatabaseConnection.getInstance().searchForNutrition(nutritionNameTF.getText());
 
             loadedNutritionLV.getItems().clear();
             loadedNutritionLV.getItems().addAll(nutritionList);
+
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("The textfield cannot be empty.");
+            alert.showAndWait();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -291,7 +337,7 @@ public class DailyIntakeController implements Initializable{
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e) {
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
 
@@ -310,10 +356,11 @@ public class DailyIntakeController implements Initializable{
     //Metod som skapar ett dailyintake object som sedan sparas i databasen.
     public void createDailyIntake(String date, double protein, double carbs, double fat, double kcal, ArrayList<String> dailyIntakeNutritionList) {
         try {
+
             DailyIntake newDailyIntake = new DailyIntake(protein, fat, carbs, kcal, date);
             DatabaseConnection.getInstance().addDailyIntakeToDB(newDailyIntake, dailyIntakeNutritionList);
 
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("INFORMATION");
             alert.setHeaderText("Daily intake saved.");
             alert.setContentText("Daily intake has been saved to the database.");
@@ -333,8 +380,54 @@ public class DailyIntakeController implements Initializable{
             intakeTotalTA.appendText("\n---------------------------------------------------------------");
 
 
+        }catch (SQLException e){
+
+
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    //Metod som kollar så att datumet är i korrekt format
+    public void checkDateFormat(String date) {
+        if (date.length() != 8) {
+            dateTF.clear();
+            dateTF.setText("DD/MM-YY");
+            dateTF.requestFocus();
+            throw new InputMismatchException();
+        }
+
+        if (date.charAt(1) == '0' || date.charAt(4) == '0') {
+            dateTF.clear();
+            dateTF.setText("DD/MM-YY");
+            dateTF.requestFocus();
+            throw new InputMismatchException();
+        }
+
+        for (int counter = 0; counter < letters.length; counter++) {
+            if (date.contains(String.valueOf(letters[counter]))) {
+                dateTF.clear();
+                dateTF.setText("DD/MM-YY");
+                dateTF.requestFocus();
+                throw new InputMismatchException();
+            }
+        }
+
+        if (date.charAt(2) == '/' || date.charAt(5) == '-') {
+            return;
+        }
+        else {
+            dateTF.clear();
+            dateTF.setText("DD/MM-YY");
+            dateTF.requestFocus();
+            throw new InputMismatchException();
+        }
+    }
+
+    //Kollar så att ingen input är tom.
+    public void checkIfInputIsEmpty(){
+        if (nutritionNameTF.getText().isEmpty() || amountTF.getText().isEmpty() || dateTF.getText().isEmpty()){
+            throw new NullPointerException();
         }
     }
 }

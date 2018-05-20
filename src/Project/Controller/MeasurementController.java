@@ -15,6 +15,7 @@ import Project.UserInformation;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 
 public class MeasurementController {
@@ -86,6 +87,8 @@ public class MeasurementController {
 
             createMeasurement();
 
+            throw new SQLException();
+
         }catch (InputMismatchException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -93,11 +96,18 @@ public class MeasurementController {
             alert.setContentText("The values entered is not following the rules.");
             alert.showAndWait();
 
-        }catch (NullPointerException e){
+        }catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Input incorrect");
             alert.setContentText("The textfields cannot be empty.");
+            alert.showAndWait();
+
+        }catch (SQLException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("You have to enter a valid date.");
             alert.showAndWait();
 
         } catch (Exception e) {
@@ -350,6 +360,13 @@ public class MeasurementController {
             throw new InputMismatchException();
         }
 
+        if (date.charAt(1) == '0' || date.charAt(4) == '0') {
+            dateTF.clear();
+            dateTF.setText("DD/MM-YY");
+            dateTF.requestFocus();
+            throw new InputMismatchException();
+        }
+
         for (int counter = 0; counter < letters.length; counter ++){
             if (date.contains(String.valueOf(letters[counter]))){
                 dateTF.clear();
@@ -411,7 +428,7 @@ public class MeasurementController {
             waistTF.clear();
             dateTF.clear();
 
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("INFORMATION");
             alert.setHeaderText("Measurement saved");
             alert.setContentText("Measurement saved successful. Press cancel to go back to the diary scene.");

@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -259,12 +260,17 @@ public class NutritionHistoryController implements Initializable {
                         nameTA.appendText("\n" + chosenDailyIntakes.get(i));
                         gramTA.appendText("\n" + chosenDailyIntakes.get(i+1));
 
-
                     }
 
                 });
             });
 
+        }catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Your nutrition history are empty");
+            alert.setContentText("There is no nothing to read.");
+            alert.showAndWait();
 
         }catch (Exception e){
             e.printStackTrace();
