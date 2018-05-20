@@ -171,7 +171,7 @@ public class DailyIntakeController implements Initializable{
             checkDateFormat(dateTF.getText());
             createDailyIntake(dateTF.getText(), proteinTotal, carbsTotal, fatTotal, kcalTotal, dailyIntakeNutrition);
 
-            throw new SQLException();
+
 
         }catch (NullPointerException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -187,12 +187,7 @@ public class DailyIntakeController implements Initializable{
             alert.setContentText("The values entered is not following the rules.");
             alert.showAndWait();
 
-        } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Input incorrect");
-            alert.setContentText("You have to enter a valid date.");
-            alert.showAndWait();
+
 
         }catch (Exception e){
             e.printStackTrace();
@@ -397,7 +392,7 @@ public class DailyIntakeController implements Initializable{
             throw new InputMismatchException();
         }
 
-        if (date.charAt(1) == '0' || date.charAt(4) == '0') {
+        if ((date.charAt(1) == '0' && date.charAt(0) == '0')|| (date.charAt(3) == '0' &&  date.charAt(4) == '0')) {
             dateTF.clear();
             dateTF.setText("DD/MM-YY");
             dateTF.requestFocus();
@@ -426,7 +421,7 @@ public class DailyIntakeController implements Initializable{
 
     //Kollar så att ingen input är tom.
     public void checkIfInputIsEmpty(){
-        if (nutritionNameTF.getText().isEmpty() || amountTF.getText().isEmpty() || dateTF.getText().isEmpty()){
+        if (amountTF.getText().isEmpty() || dateTF.getText().isEmpty()){
             throw new NullPointerException();
         }
     }
