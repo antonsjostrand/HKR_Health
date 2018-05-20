@@ -57,7 +57,7 @@ public class DiaryController implements Initializable {
 
     @FXML void myAccountButton(ActionEvent event) {
         try {
-            changeScene("accountInfoScene", event);
+            changeScene("userScene", event);
 
         }catch (IOException e){
             e.printStackTrace();
