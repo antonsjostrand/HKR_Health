@@ -87,8 +87,6 @@ public class MeasurementController {
 
             createMeasurement();
 
-            throw new SQLException();
-
         }catch (InputMismatchException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -101,13 +99,6 @@ public class MeasurementController {
             alert.setTitle("ERROR");
             alert.setHeaderText("Input incorrect");
             alert.setContentText("The textfields cannot be empty.");
-            alert.showAndWait();
-
-        }catch (SQLException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Input incorrect");
-            alert.setContentText("You have to enter a valid date.");
             alert.showAndWait();
 
         } catch (Exception e) {
@@ -360,7 +351,7 @@ public class MeasurementController {
             throw new InputMismatchException();
         }
 
-        if (date.charAt(1) == '0' || date.charAt(4) == '0') {
+        if ((date.charAt(1) == '0' && date.charAt(0) == '0')|| (date.charAt(3) == '0' &&  date.charAt(4) == '0')) {
             dateTF.clear();
             dateTF.setText("DD/MM-YY");
             dateTF.requestFocus();

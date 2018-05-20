@@ -320,6 +320,13 @@ public class UserController implements Initializable {
         try {
             refreshAndSetInformation();
 
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Empty");
+            alert.setContentText("There is no updated info yet.");
+            alert.showAndWait();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -357,6 +364,13 @@ public class UserController implements Initializable {
     //Metod som kollar så att datumet är i korrekt format
     public void checkDateFormat(String date) {
         if (date.length() != 8) {
+            updateDate.clear();
+            updateDate.setText("DD/MM-YY");
+            updateDate.requestFocus();
+            throw new InputMismatchException();
+        }
+
+        if ((date.charAt(1) == '0' && date.charAt(0) == '0')|| (date.charAt(3) == '0' &&  date.charAt(4) == '0')) {
             updateDate.clear();
             updateDate.setText("DD/MM-YY");
             updateDate.requestFocus();

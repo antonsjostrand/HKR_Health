@@ -65,7 +65,6 @@ public class NotebookController implements Initializable {
             checkDateFormat(todaysDate.getText());
 
             saveDiary();
-            throw new SQLException();
 
         } catch (InputMismatchException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -79,13 +78,6 @@ public class NotebookController implements Initializable {
             alert.setTitle("ERROR");
             alert.setHeaderText("Input incorrect");
             alert.setContentText("The textfields cannot be empty.");
-            alert.showAndWait();
-
-        } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Input incorrect");
-            alert.setContentText("You have to enter a valid date.");
             alert.showAndWait();
 
         } catch (Exception e) {
@@ -102,7 +94,7 @@ public class NotebookController implements Initializable {
             throw new InputMismatchException();
         }
 
-        if (date.charAt(1) == '0' || date.charAt(4) == '0') {
+        if ((date.charAt(1) == '0' && date.charAt(0) == '0')|| (date.charAt(3) == '0' &&  date.charAt(4) == '0')) {
             todaysDate.clear();
             todaysDate.setText("DD/MM-YY");
             todaysDate.requestFocus();
@@ -152,7 +144,7 @@ public class NotebookController implements Initializable {
             title.clear();
             todaysDate.clear();
 
-            throw new SQLException();
+
         }
         catch (SQLException e){
         }

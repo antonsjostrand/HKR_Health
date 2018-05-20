@@ -421,7 +421,7 @@ public class DailyIntakeController implements Initializable{
 
     //Kollar så att ingen input är tom.
     public void checkIfInputIsEmpty(){
-        if (amountTF.getText().isEmpty() || dateTF.getText().isEmpty()){
+        if (amountTF.getText().isEmpty() || dateTF.getText().isEmpty() || loadedNutritionLV.getItems().isEmpty()){
             throw new NullPointerException();
         }
     }

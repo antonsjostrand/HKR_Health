@@ -15,10 +15,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
 
-public class WorkoutController{
+public class WorkoutController {
+
+    private char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+            'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö', 'a',
+            'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'å', 'ä', 'ö'};
 
     private Exercise chosenExercise;
     private ArrayList<String> chosenExerciseInformation = new ArrayList<>();
@@ -116,26 +122,39 @@ public class WorkoutController{
     @FXML
     private Button homeButton;
 
-    @FXML void saveButtonPressed(ActionEvent event){
-        try{
+    @FXML
+    void saveButtonPressed(ActionEvent event) {
+        try {
             //Kolla så att ingen input är empty inklusive arraylistan. detta för att man inte ska kunna spara tomma workouts.
+            checkIfInputIsEmptyBeforeSave();
+            checkDateFormat(dateTF.getText());
 
             DatabaseConnection.getInstance().addWorkoutToDB(chosenExerciseInformation, dateTF.getText());
 
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("INFORMATION");
             alert.setHeaderText("Workout saved.");
             alert.setContentText("Your workout has been saved to the database.");
             alert.showAndWait();
 
-        }catch (Exception e){
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("The textfields cannot be empty.");
+            alert.showAndWait();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    @FXML void addButtonPressed(ActionEvent event){
-        try{
+    @FXML
+    void addButtonPressed(ActionEvent event) {
+        try {
+            checkIfInputIsEmpty();
+
             exerciseTA.appendText(chosenExercise.getName() + "\n");
             setsTA.appendText(setsTF.getText() + "\n");
             repsTA.appendText(repsTF.getText() + "\n");
@@ -150,7 +169,21 @@ public class WorkoutController{
             setsTF.clear();
             weightTF.clear();
 
-        }catch (Exception e){
+        }catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("The textfields cannot be empty.");
+            alert.showAndWait();
+
+        }catch (NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("Only numbers is allowed.");
+            alert.showAndWait();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -164,10 +197,10 @@ public class WorkoutController{
             exerciseLV.getItems().addAll(exerciseList);
 
             exerciseLV.setOnMouseClicked(e -> {
-               chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
+                chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
 
             });
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
@@ -175,12 +208,13 @@ public class WorkoutController{
             alert.showAndWait();
             e.printStackTrace();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void homeButtonPressed(ActionEvent event) {
+    @FXML
+    void homeButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -190,13 +224,13 @@ public class WorkoutController{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    void goBack (ActionEvent event) {
+    void goBack(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -219,12 +253,12 @@ public class WorkoutController{
             exerciseLV.getItems().clear();
             exerciseLV.getItems().addAll(exerciseList);
 
-            exerciseLV.setOnMouseClicked(e ->{
+            exerciseLV.setOnMouseClicked(e -> {
                 chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
 
 
             });
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
@@ -232,7 +266,7 @@ public class WorkoutController{
             alert.showAndWait();
             e.printStackTrace();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -244,12 +278,12 @@ public class WorkoutController{
             exerciseLV.getItems().clear();
             exerciseLV.getItems().addAll(exerciseList);
 
-            exerciseLV.setOnMouseClicked(e ->{
+            exerciseLV.setOnMouseClicked(e -> {
                 chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
 
 
             });
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
@@ -257,7 +291,7 @@ public class WorkoutController{
             alert.showAndWait();
             e.printStackTrace();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -269,12 +303,12 @@ public class WorkoutController{
             exerciseLV.getItems().clear();
             exerciseLV.getItems().addAll(exerciseList);
 
-            exerciseLV.setOnMouseClicked(e ->{
-               chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
+            exerciseLV.setOnMouseClicked(e -> {
+                chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
 
 
             });
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
@@ -282,7 +316,7 @@ public class WorkoutController{
             alert.showAndWait();
             e.printStackTrace();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -294,12 +328,12 @@ public class WorkoutController{
             exerciseLV.getItems().clear();
             exerciseLV.getItems().addAll(exerciseList);
 
-            exerciseLV.setOnMouseClicked(e ->{
+            exerciseLV.setOnMouseClicked(e -> {
                 chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
 
 
             });
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
@@ -307,7 +341,7 @@ public class WorkoutController{
             alert.showAndWait();
             e.printStackTrace();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -319,12 +353,12 @@ public class WorkoutController{
             exerciseLV.getItems().clear();
             exerciseLV.getItems().addAll(exerciseList);
 
-            exerciseLV.setOnMouseClicked(e ->{
+            exerciseLV.setOnMouseClicked(e -> {
                 chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
 
 
             });
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
@@ -332,7 +366,7 @@ public class WorkoutController{
             alert.showAndWait();
             e.printStackTrace();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -349,12 +383,12 @@ public class WorkoutController{
             exerciseLV.getItems().clear();
             exerciseLV.getItems().addAll(exerciseList);
 
-            exerciseLV.setOnMouseClicked(e ->{
-               chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
+            exerciseLV.setOnMouseClicked(e -> {
+                chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
 
 
             });
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
@@ -362,7 +396,7 @@ public class WorkoutController{
             alert.showAndWait();
             e.printStackTrace();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -374,12 +408,12 @@ public class WorkoutController{
             exerciseLV.getItems().clear();
             exerciseLV.getItems().addAll(exerciseList);
 
-            exerciseLV.setOnMouseClicked(e ->{
+            exerciseLV.setOnMouseClicked(e -> {
                 chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
 
 
             });
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
@@ -387,7 +421,7 @@ public class WorkoutController{
             alert.showAndWait();
             e.printStackTrace();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -399,12 +433,12 @@ public class WorkoutController{
             exerciseLV.getItems().clear();
             exerciseLV.getItems().addAll(exerciseList);
 
-            exerciseLV.setOnMouseClicked(e ->{
+            exerciseLV.setOnMouseClicked(e -> {
                 chosenExercise = exerciseLV.getSelectionModel().getSelectedItem();
 
 
             });
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
@@ -412,7 +446,7 @@ public class WorkoutController{
             alert.showAndWait();
             e.printStackTrace();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -443,7 +477,7 @@ public class WorkoutController{
     }
 
     @FXML
-    void cancelButtonPressed(ActionEvent event){
+    void cancelButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -454,12 +488,13 @@ public class WorkoutController{
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void exerciseButtonPressed(ActionEvent event) {
+    @FXML
+    void exerciseButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -469,12 +504,13 @@ public class WorkoutController{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void stretchButtonPressed(ActionEvent event) {
+    @FXML
+    void stretchButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -484,12 +520,13 @@ public class WorkoutController{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
-            //Fixa error handling
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    @FXML void timerButtonPressed(ActionEvent event) {
+    @FXML
+    void timerButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -499,12 +536,13 @@ public class WorkoutController{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
-            //Fixa error handling
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    @FXML void diaryButtonPressed(ActionEvent event) {
+    @FXML
+    void diaryButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -514,12 +552,13 @@ public class WorkoutController{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             //Fixa error handling
         }
     }
 
-    @FXML void nutritionButtonPressed(ActionEvent event) {
+    @FXML
+    void nutritionButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -529,13 +568,14 @@ public class WorkoutController{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-    @FXML void feedbackButtonPressed(ActionEvent event){
+    @FXML
+    void feedbackButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -545,9 +585,58 @@ public class WorkoutController{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
-            //Fixa error handling
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
+    //Kollar så att ingen input är tom innan man lägger till.
+    public void checkIfInputIsEmpty() {
+        if (setsTF.getText().isEmpty() || repsTF.getText().isEmpty() || weightTF.getText().isEmpty() || exerciseLV.getItems().isEmpty()) {
+            throw new NullPointerException();
+        }
+    }
+
+    //Kollar så att ingen input är tom innan man sparar.
+    public void checkIfInputIsEmptyBeforeSave() {
+        if (setsTF.getText().isEmpty() || repsTF.getText().isEmpty() || weightTF.getText().isEmpty() || dateTF.getText().isEmpty() ||
+                exerciseLV.getItems().isEmpty()) {
+            throw new NullPointerException();
+        }
+    }
+    //Metod som kollar så att datumet är i korrekt format
+    public void checkDateFormat(String date) {
+        if (date.length() != 8) {
+            dateTF.clear();
+            dateTF.setText("DD/MM-YY");
+            dateTF.requestFocus();
+            throw new InputMismatchException();
+        }
+
+        if ((date.charAt(1) == '0' && date.charAt(0) == '0')|| (date.charAt(3) == '0' &&  date.charAt(4) == '0')) {
+            dateTF.clear();
+            dateTF.setText("DD/MM-YY");
+            dateTF.requestFocus();
+            throw new InputMismatchException();
+        }
+
+        for (int counter = 0; counter < letters.length; counter++) {
+            if (date.contains(String.valueOf(letters[counter]))) {
+                dateTF.clear();
+                dateTF.setText("DD/MM-YY");
+                dateTF.requestFocus();
+                throw new InputMismatchException();
+            }
+        }
+
+        if (date.charAt(2) == '/' || date.charAt(5) == '-') {
+            return;
+        }
+        else {
+            dateTF.clear();
+            dateTF.setText("DD/MM-YY");
+            dateTF.requestFocus();
+            throw new InputMismatchException();
+        }
+    }
 }

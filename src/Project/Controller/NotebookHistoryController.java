@@ -191,7 +191,6 @@ public class NotebookHistoryController implements Initializable {
                 dateLabel.setText(chosenNote.getDate());
                 contentTA.setText(chosenNote.getContent());
 
-
             });
 
         }catch (NullPointerException e){
