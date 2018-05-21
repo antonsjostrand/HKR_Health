@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
-public class DailyIntakeController implements Initializable{
+public class DailyIntakeController implements Initializable {
 
     private char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
             'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö', 'a',
@@ -82,7 +82,8 @@ public class DailyIntakeController implements Initializable{
     @FXML
     private Button homeButton;
 
-    @FXML private Button searchButton;
+    @FXML
+    private Button searchButton;
 
     @FXML
     private Button exercisesButton;
@@ -107,7 +108,7 @@ public class DailyIntakeController implements Initializable{
 
     @FXML
     void addButtonPressed(ActionEvent event) {
-        try{
+        try {
             loadedNutritionLV.setOnMouseClicked(e -> {
                 retrievedNutrition = loadedNutritionLV.getSelectionModel().getSelectedItem();
 
@@ -135,7 +136,7 @@ public class DailyIntakeController implements Initializable{
 
                 proteinTotal = proteinTotal + protein;
                 kcalTotal = kcalTotal + kcal;
-                fatTotal = fatTotal +fat;
+                fatTotal = fatTotal + fat;
                 carbsTotal = carbsTotal + carbs;
 
                 dailyIntakeNutrition.add(productName);
@@ -147,33 +148,32 @@ public class DailyIntakeController implements Initializable{
 
                 productName = null;
 
-            }else{
+            } else {
                 throw new NullPointerException();
                 //Skriv att man måste vara noga med att markera produkten man valt efter man skrivit in hur många gram man ätit
             }
 
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Input incorrect");
             alert.setContentText("The textfield cannot be empty.");
             alert.showAndWait();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    void saveButtonPressed(ActionEvent event){
-        try{
-            checkIfInputIsEmpty();
+    void saveButtonPressed(ActionEvent event) {
+        try {
+            checkIfInputIsEmpty(amountTF.getText());
             checkDateFormat(dateTF.getText());
             createDailyIntake(dateTF.getText(), proteinTotal, carbsTotal, fatTotal, kcalTotal, dailyIntakeNutrition);
 
 
-
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Input incorrect");
@@ -188,33 +188,35 @@ public class DailyIntakeController implements Initializable{
             alert.showAndWait();
 
 
-
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void searchButtonPressed(ActionEvent event){
+    @FXML
+    void searchButtonPressed(ActionEvent event) {
         try {
             nutritionList = DatabaseConnection.getInstance().searchForNutrition(nutritionNameTF.getText());
 
             loadedNutritionLV.getItems().clear();
             loadedNutritionLV.getItems().addAll(nutritionList);
 
-        }catch (NullPointerException e){
+
+        } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText("Input does not exist");
             alert.setContentText("The nutrition you are searching for doesn't exist.");
             alert.showAndWait();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    @FXML void homeButtonPressed(ActionEvent event) {
+    @FXML
+    void homeButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -224,12 +226,13 @@ public class DailyIntakeController implements Initializable{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void exerciseButtonPressed(ActionEvent event) {
+    @FXML
+    void exerciseButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -239,12 +242,13 @@ public class DailyIntakeController implements Initializable{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void stretchButtonPressed(ActionEvent event) {
+    @FXML
+    void stretchButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -254,12 +258,13 @@ public class DailyIntakeController implements Initializable{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void timerButtonPressed(ActionEvent event) {
+    @FXML
+    void timerButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -269,12 +274,13 @@ public class DailyIntakeController implements Initializable{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
 
         }
     }
 
-    @FXML void diaryButtonPressed(ActionEvent event) {
+    @FXML
+    void diaryButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -284,12 +290,13 @@ public class DailyIntakeController implements Initializable{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void nutritionButtonPressed(ActionEvent event) {
+    @FXML
+    void nutritionButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -299,12 +306,13 @@ public class DailyIntakeController implements Initializable{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void feedbackButtonPressed(ActionEvent event){
+    @FXML
+    void feedbackButtonPressed(ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -314,12 +322,13 @@ public class DailyIntakeController implements Initializable{
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
-    void goBack (ActionEvent event) {
+    void goBack(ActionEvent event) {
         try {
             dailyIntakeNutrition.clear();
 
@@ -338,12 +347,12 @@ public class DailyIntakeController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try{
+        try {
             intakeTotalTA.setText("   KCAL   |   PROTEIN   |   CARBS   |   FAT   |");
             intakeTotalTA.appendText("\n---------------------------------------------");
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -374,6 +383,17 @@ public class DailyIntakeController implements Initializable{
             intakeTotalTA.setText("|     PROTEIN     |      CARBS      |      FAT      |      KCAL     |");
             intakeTotalTA.appendText("\n---------------------------------------------------------------");
 
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Date incorrect.");
+            alert.setContentText("Enter a valid date.");
+            alert.showAndWait();
+
+            dateTF.clear();
+            dateTF.setText("DD/MM-YY");
+            dateTF.requestFocus();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -388,7 +408,7 @@ public class DailyIntakeController implements Initializable{
             throw new InputMismatchException();
         }
 
-        if ((date.charAt(1) == '0' && date.charAt(0) == '0')|| (date.charAt(3) == '0' &&  date.charAt(4) == '0')) {
+        if ((date.charAt(1) == '0' && date.charAt(0) == '0') || (date.charAt(3) == '0' && date.charAt(4) == '0')) {
             dateTF.clear();
             dateTF.setText("DD/MM-YY");
             dateTF.requestFocus();
@@ -406,8 +426,8 @@ public class DailyIntakeController implements Initializable{
 
         if (date.charAt(2) == '/' || date.charAt(5) == '-') {
             return;
-        }
-        else {
+
+        } else {
             dateTF.clear();
             dateTF.setText("DD/MM-YY");
             dateTF.requestFocus();
@@ -416,9 +436,15 @@ public class DailyIntakeController implements Initializable{
     }
 
     //Kollar så att ingen input är tom.
-    public void checkIfInputIsEmpty(){
-        if (amountTF.getText().isEmpty() || dateTF.getText().isEmpty() || loadedNutritionLV.getItems().isEmpty()){
+    public void checkIfInputIsEmpty(String amount) {
+        if (amountTF.getText().isEmpty() || dateTF.getText().isEmpty() || loadedNutritionLV.getItems().isEmpty()) {
             throw new NullPointerException();
+        }
+        if (amount.trim().length() == 0) {
+            amountTF.clear();
+            amountTF.setText("Enter a digit.");
+            amountTF.requestFocus();
+            throw new InputMismatchException();
         }
     }
 }

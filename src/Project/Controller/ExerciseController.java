@@ -88,7 +88,6 @@ public class ExerciseController {
             alert.setHeaderText("Empty exercise register.");
             alert.setContentText("There is no exercises for this muscle group in the database.");
             alert.showAndWait();
-            e.printStackTrace();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -130,7 +129,6 @@ public class ExerciseController {
             alert.setHeaderText("Empty exercise register.");
             alert.setContentText("There is no exercises for this muscle group in the database.");
             alert.showAndWait();
-            e.printStackTrace();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -157,7 +155,6 @@ public class ExerciseController {
             alert.setHeaderText("Empty exercise register.");
             alert.setContentText("There is no exercises for this muscle group in the database.");
             alert.showAndWait();
-            e.printStackTrace();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -178,13 +175,13 @@ public class ExerciseController {
                 viewExercises(retrievedExercise);
 
             });
+
         }catch (NullPointerException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
             alert.setContentText("There is no exercises for this muscle group in the database.");
             alert.showAndWait();
-            e.printStackTrace();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -211,7 +208,7 @@ public class ExerciseController {
             alert.setHeaderText("Empty exercise register.");
             alert.setContentText("There is no exercises for this muscle group in the database.");
             alert.showAndWait();
-            e.printStackTrace();
+
 
         }catch (Exception e){
             e.printStackTrace();
@@ -238,7 +235,6 @@ public class ExerciseController {
             alert.setHeaderText("Empty exercise register.");
             alert.setContentText("There is no exercises for this muscle group in the database.");
             alert.showAndWait();
-            e.printStackTrace();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -270,7 +266,6 @@ public class ExerciseController {
             alert.setHeaderText("Empty exercise register.");
             alert.setContentText("There is no exercises for this muscle group in the database.");
             alert.showAndWait();
-            e.printStackTrace();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -297,7 +292,6 @@ public class ExerciseController {
             alert.setHeaderText("Empty exercise register.");
             alert.setContentText("There is no exercises for this muscle group in the database.");
             alert.showAndWait();
-            e.printStackTrace();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -324,7 +318,6 @@ public class ExerciseController {
             alert.setHeaderText("Empty exercise register.");
             alert.setContentText("There is no exercises for this muscle group in the database.");
             alert.showAndWait();
-            e.printStackTrace();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -351,7 +344,6 @@ public class ExerciseController {
             alert.setHeaderText("Empty exercise register.");
             alert.setContentText("There is no exercises for this muscle group in the database.");
             alert.showAndWait();
-            e.printStackTrace();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -461,6 +453,7 @@ public class ExerciseController {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
+
         } catch (IOException e){
             e.printStackTrace();
         }

@@ -61,7 +61,7 @@ public class NotebookController implements Initializable {
     @FXML
     void saveDiaryButton(ActionEvent event) {
         try {
-            checkIfInputIsEmpty();
+            checkIfInputIsEmpty(title.getText(), notes.getText());
             checkDateFormat(todaysDate.getText());
 
             saveDiary();
@@ -121,9 +121,21 @@ public class NotebookController implements Initializable {
         }
     }
     //Kollar så att ingen input är tom.
-    public void checkIfInputIsEmpty(){
-        if (title.getText().isEmpty() || todaysDate.getText().isEmpty() || notes.getText().isEmpty()){
+    public void checkIfInputIsEmpty(String titleText, String notesText) {
+        if (title.getText().isEmpty() || todaysDate.getText().isEmpty() || notes.getText().isEmpty()) {
             throw new NullPointerException();
+        }
+        if (titleText.trim().length() == 0) {
+            title.clear();
+            title.setText("Enter a title.");
+            title.requestFocus();
+            throw new InputMismatchException();
+        }
+        if (notesText.trim().length() == 0) {
+            notes.clear();
+            notes.setText("Enter some text.");
+            notes.requestFocus();
+            throw new InputMismatchException();
         }
     }
 
@@ -145,8 +157,16 @@ public class NotebookController implements Initializable {
             todaysDate.clear();
 
 
-        }
-        catch (SQLException e){
+        }catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Date incorrect.");
+            alert.setContentText("Enter a valid date.");
+            alert.showAndWait();
+
+            todaysDate.clear();
+            todaysDate.setText("DD/MM-YY");
+            todaysDate.requestFocus();
         }
         catch (Exception e){
             e.printStackTrace();

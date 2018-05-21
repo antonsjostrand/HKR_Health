@@ -63,8 +63,9 @@ public class GuestStretchController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
+
         } catch (IOException e){
-            // Error handling
+            e.printStackTrace();
         }
     }
 
@@ -80,8 +81,9 @@ public class GuestStretchController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
+
         } catch (IOException e) {
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
 
@@ -105,7 +107,6 @@ public class GuestStretchController implements Initializable {
             alert.setHeaderText("Empty exercise register.");
             alert.setContentText("There is no exercises for this bodypart in the database.");
             alert.showAndWait();
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -133,7 +134,6 @@ public class GuestStretchController implements Initializable {
             alert.setContentText("There is no exercises for this bodypart in the database.");
             alert.showAndWait();
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -160,7 +160,6 @@ public class GuestStretchController implements Initializable {
             alert.setContentText("There is no exercises for this bodypart in the database.");
             alert.showAndWait();
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -176,9 +175,10 @@ public class GuestStretchController implements Initializable {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
+
         } catch (IOException e) {
             e.printStackTrace();
-            // Error handling
+
         }
     }
 
@@ -196,7 +196,7 @@ public class GuestStretchController implements Initializable {
             stage.setScene(scene);
 
         } catch (IOException e) {
-            // Error handling
+            e.printStackTrace();
         }
     }
 
@@ -211,8 +211,9 @@ public class GuestStretchController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
+
         } catch (IOException e) {
-            // Error handling
+            e.printStackTrace();
         }
     }
 

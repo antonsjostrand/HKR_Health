@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
@@ -126,7 +127,7 @@ public class WorkoutController {
     void saveButtonPressed(ActionEvent event) {
         try {
             //Kolla så att ingen input är empty inklusive arraylistan. detta för att man inte ska kunna spara tomma workouts.
-            checkIfInputIsEmptyBeforeSave();
+            checkIfInputIsEmptyBeforeSave(setsTF.getText(), repsTF.getText(), weightTF.getText());
             checkDateFormat(dateTF.getText());
 
             DatabaseConnection.getInstance().addWorkoutToDB(chosenExerciseInformation, dateTF.getText());
@@ -136,6 +137,17 @@ public class WorkoutController {
             alert.setHeaderText("Workout saved.");
             alert.setContentText("Your workout has been saved to the database.");
             alert.showAndWait();
+
+        }catch (SQLException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Date incorrect.");
+            alert.setContentText("Enter a valid date.");
+            alert.showAndWait();
+
+            dateTF.clear();
+            dateTF.setText("DD/MM-YY");
+            dateTF.requestFocus();
 
         }catch (NullPointerException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -153,7 +165,7 @@ public class WorkoutController {
     @FXML
     void addButtonPressed(ActionEvent event) {
         try {
-            checkIfInputIsEmpty();
+            checkIfInputIsEmpty(setsTF.getText(), repsTF.getText(), weightTF.getText());
 
             exerciseTA.appendText(chosenExercise.getName() + "\n");
             setsTA.appendText(setsTF.getText() + "\n");
@@ -241,7 +253,7 @@ public class WorkoutController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e) {
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
 
@@ -591,19 +603,56 @@ public class WorkoutController {
     }
 
     //Kollar så att ingen input är tom innan man lägger till.
-    public void checkIfInputIsEmpty() {
+    public void checkIfInputIsEmpty(String sets, String reps, String weight) {
         if (setsTF.getText().isEmpty() || repsTF.getText().isEmpty() || weightTF.getText().isEmpty() || exerciseLV.getItems().isEmpty()) {
             throw new NullPointerException();
+        }
+        if (sets.trim().length() == 0) {
+            setsTF.clear();
+            setsTF.setText("Enter a title.");
+            setsTF.requestFocus();
+            throw new InputMismatchException();
+        }
+        if (reps.trim().length() == 0) {
+            repsTF.clear();
+            repsTF.setText("Enter some text.");
+            repsTF.requestFocus();
+            throw new InputMismatchException();
+        }
+        if (weight.trim().length() == 0) {
+            weightTF.clear();
+            weightTF.setText("Enter some text.");
+            weightTF.requestFocus();
+            throw new InputMismatchException();
         }
     }
 
     //Kollar så att ingen input är tom innan man sparar.
-    public void checkIfInputIsEmptyBeforeSave() {
+    public void checkIfInputIsEmptyBeforeSave(String sets, String reps, String weight) {
         if (setsTF.getText().isEmpty() || repsTF.getText().isEmpty() || weightTF.getText().isEmpty() || dateTF.getText().isEmpty() ||
                 exerciseLV.getItems().isEmpty()) {
             throw new NullPointerException();
         }
+        if (sets.trim().length() == 0) {
+            setsTF.clear();
+            setsTF.setText("Enter a title.");
+            setsTF.requestFocus();
+            throw new InputMismatchException();
+        }
+        if (reps.trim().length() == 0) {
+            repsTF.clear();
+            repsTF.setText("Enter some text.");
+            repsTF.requestFocus();
+            throw new InputMismatchException();
+        }
+        if (weight.trim().length() == 0) {
+            weightTF.clear();
+            weightTF.setText("Enter some text.");
+            weightTF.requestFocus();
+            throw new InputMismatchException();
+        }
     }
+
     //Metod som kollar så att datumet är i korrekt format
     public void checkDateFormat(String date) {
         if (date.length() != 8) {
