@@ -1,6 +1,7 @@
 package Project.Controller;
 
 import Project.DatabaseConnection;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -53,12 +54,23 @@ public class AddAdminController implements Initializable {
 
             addNewAdmin(checkIfAdminStatus);
 
-        }catch (InputMismatchException e){
+        }catch (InputMismatchException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Input failure.");
             alert.setHeaderText("Input format incorrect.");
             alert.setContentText("The values entered doesn't correspond with the rules.");
             alert.showAndWait();
+
+        }catch (MySQLIntegrityConstraintViolationException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR.");
+            alert.setHeaderText("Wrong SSN.");
+            alert.setContentText("The SSN entered doesn't exist.");
+            alert.showAndWait();
+
+            ssnPromoteTF.clear();
+            ssnPromoteTF.setText("Enter an existing SSN.");
+            ssnPromoteTF.requestFocus();
 
         }catch (Exception e){
             e.printStackTrace();

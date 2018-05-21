@@ -55,7 +55,7 @@
                <font>
                   <Font name="Helvetica Neue Light" size="20.0" />
                </font></Label>
-            <Label layoutX="261.0" layoutY="227.0" text="Type" textFill="#66c923">
+            <Label layoutX="261.0" layoutY="227.0" text="Type (Strength/Stretch)" textFill="#66c923">
                <font>
                   <Font name="Helvetica Neue Light" size="20.0" />
                </font></Label>

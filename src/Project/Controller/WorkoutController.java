@@ -138,6 +138,12 @@ public class WorkoutController {
             alert.setContentText("Your workout has been saved to the database.");
             alert.showAndWait();
 
+            dateTF.clear();
+            exerciseTA.clear();
+            setsTA.clear();
+            repsTA.clear();
+            weightTA.clear();
+
         }catch (SQLException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -149,11 +155,18 @@ public class WorkoutController {
             dateTF.setText("DD/MM-YY");
             dateTF.requestFocus();
 
-        }catch (NullPointerException e){
+        }catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Input incorrect");
             alert.setContentText("The textfields cannot be empty.");
+            alert.showAndWait();
+
+        }catch (InputMismatchException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("Make sure the date format is correct.");
             alert.showAndWait();
 
         } catch (Exception e) {
@@ -166,6 +179,7 @@ public class WorkoutController {
     void addButtonPressed(ActionEvent event) {
         try {
             checkIfInputIsEmpty(setsTF.getText(), repsTF.getText(), weightTF.getText());
+            checkSetRepWeightFormat(setsTF.getText(), repsTF.getText(), weightTF.getText());
 
             exerciseTA.appendText(chosenExercise.getName() + "\n");
             setsTA.appendText(setsTF.getText() + "\n");
@@ -193,6 +207,13 @@ public class WorkoutController {
             alert.setTitle("ERROR");
             alert.setHeaderText("Input incorrect");
             alert.setContentText("Only numbers is allowed.");
+            alert.showAndWait();
+
+        }catch (InputMismatchException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Input incorrect");
+            alert.setContentText("The input is not correct.");
             alert.showAndWait();
 
         } catch (Exception e) {
@@ -609,19 +630,19 @@ public class WorkoutController {
         }
         if (sets.trim().length() == 0) {
             setsTF.clear();
-            setsTF.setText("Enter a title.");
+            setsTF.setText("Enter a digit.");
             setsTF.requestFocus();
             throw new InputMismatchException();
         }
         if (reps.trim().length() == 0) {
             repsTF.clear();
-            repsTF.setText("Enter some text.");
+            repsTF.setText("Enter a digit.");
             repsTF.requestFocus();
             throw new InputMismatchException();
         }
         if (weight.trim().length() == 0) {
             weightTF.clear();
-            weightTF.setText("Enter some text.");
+            weightTF.setText("Enter a digit.");
             weightTF.requestFocus();
             throw new InputMismatchException();
         }
@@ -669,6 +690,34 @@ public class WorkoutController {
             dateTF.setText("DD/MM-YY");
             dateTF.requestFocus();
             throw new InputMismatchException();
+        }
+    }
+
+    //Metod som kollar så att formattet på sets/reps/Weight är korrekt.
+    public void checkSetRepWeightFormat(String set, String rep, String weight){
+        for (int i = 0; i < letters.length; i++){
+            if (set.contains(String.valueOf(letters[i]))){
+                setsTF.clear();
+                setsTF.setText("Enter an digit.");
+                setsTF.requestFocus();
+                throw new NumberFormatException();
+            }
+        }
+        for (int i = 0; i < letters.length; i++){
+            if (rep.contains(String.valueOf(letters[i]))){
+                repsTF.clear();
+                repsTF.setText("Enter an digit.");
+                repsTF.requestFocus();
+                throw new NumberFormatException();
+            }
+        }
+        for (int i = 0; i < letters.length; i++){
+            if (weight.contains(String.valueOf(letters[i]))){
+                weightTF.clear();
+                weightTF.setText("Enter an digit.");
+                weightTF.requestFocus();
+                throw new NumberFormatException();
+            }
         }
     }
 }

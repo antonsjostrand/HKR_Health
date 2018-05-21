@@ -233,6 +233,18 @@ public class NutritionController implements Initializable{
                 throw new InputMismatchException();
             }
         }
+        if (from.trim().length() == 0){
+            valueFromTF.clear();
+            valueFromTF.setText("Enter a digit.");
+            valueFromTF.requestFocus();
+            throw new InputMismatchException();
+        }
+        if (to.trim().length() == 0){
+            valueToTF.clear();
+            valueToTF.setText("Enter a digit.");
+            valueToTF.requestFocus();
+            throw new InputMismatchException();
+        }
     }
 
     @FXML void homeButtonPressed(ActionEvent event) {
