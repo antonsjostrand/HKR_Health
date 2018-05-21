@@ -71,29 +71,40 @@ public class FeedbackController {
     }
 
     //metod som kollar om formattet på headern är korrekt.
-    public void checkHeaderFormat(String header){
-        if (header.length() > 25){
+    public void checkHeaderFormat(String header) {
+        if (header.length() > 25) {
             headerTF.clear();
             headerTF.setText("Enter a proper header.");
             headerTF.requestFocus();
             throw new InputMismatchException();
         }
 
-        for (int i = 0; i < numbers.length; i++){
-            if (header.contains(String.valueOf(i))){
+        for (int i = 0; i < numbers.length; i++) {
+            if (header.contains(String.valueOf(i))) {
                 headerTF.clear();
                 headerTF.setText("Enter a proper header.");
                 headerTF.requestFocus();
                 throw new InputMismatchException();
             }
         }
-
+        if (header.trim().length() == 0) {
+            headerTF.clear();
+            headerTF.setText("Enter a proper header.");
+            headerTF.requestFocus();
+            throw new InputMismatchException();
+        }
 
     }
 
     //Metod som kollar om formattet på content är korrekt.
-    public void checkContentFormat(String content){
-        if (content.length() < 1 || content.length() > 254 ){
+    public void checkContentFormat(String content) {
+        if (content.length() < 1 || content.length() > 254) {
+            contentTA.clear();
+            contentTA.setText("Enter a proper feedback.");
+            contentTA.requestFocus();
+            throw new InputMismatchException();
+        }
+        if (content.trim().length() == 0) {
             contentTA.clear();
             contentTA.setText("Enter a proper feedback.");
             contentTA.requestFocus();
@@ -115,7 +126,7 @@ public class FeedbackController {
 
         DatabaseConnection.getInstance().addFeedbackToDB(ssn, username, headerTF.getText(), contentTA.getText());
 
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("INFORMATION");
         alert.setHeaderText("Feedback saved.");
         alert.setContentText("Your feedback has now been saved.");

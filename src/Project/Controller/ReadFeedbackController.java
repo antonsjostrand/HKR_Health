@@ -83,7 +83,7 @@ public class ReadFeedbackController implements Initializable {
         try{
             DatabaseConnection.getInstance().deleteFeedbackFromDB(deleteIDTF.getText());
 
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("INFORMATION");
             alert.setHeaderText("Feedback deleted.");
             alert.setContentText("The feedback with ID: " + deleteIDTF.getText() + " is now deleted.");
