@@ -202,10 +202,10 @@ public class DailyIntakeController implements Initializable{
             loadedNutritionLV.getItems().addAll(nutritionList);
 
         }catch (NullPointerException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Input incorrect");
-            alert.setContentText("The textfield cannot be empty.");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Input does not exist");
+            alert.setContentText("The nutrition you are searching for doesn't exist.");
             alert.showAndWait();
 
         }catch (Exception e){
@@ -373,10 +373,6 @@ public class DailyIntakeController implements Initializable{
 
             intakeTotalTA.setText("|     PROTEIN     |      CARBS      |      FAT      |      KCAL     |");
             intakeTotalTA.appendText("\n---------------------------------------------------------------");
-
-
-        }catch (SQLException e){
-
 
         } catch (Exception e) {
             e.printStackTrace();
