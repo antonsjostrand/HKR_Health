@@ -122,16 +122,6 @@ public class GuestController implements Initializable {
         }
     }
 
-   /* @FXML
-    void lostPasswordButtonPressed(ActionEvent event) {
-        try {
-            changeScene("lostPasswordScene", event);
-
-        } catch (IOException e) {
-            //Fixa error handling
-        }
-    }*/
-
 
     @FXML
     void guestPressedStretchButton(ActionEvent event) {
@@ -148,7 +138,7 @@ public class GuestController implements Initializable {
             stage.setScene(scene);
 
         } catch (IOException e) {
-            // Error handling
+            e.printStackTrace();
         }
     }
 

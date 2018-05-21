@@ -33,6 +33,9 @@
             <MenuItem fx:id="hamstringsMenuOne" mnemonicParsing="false" onAction="#hamstringsMenuOnePressed" text="Hamstrings" />
             <MenuItem fx:id="calvesMenuOne" mnemonicParsing="false" onAction="#calvesMenuOnePressed" text="Calves" />
             <MenuItem fx:id="absMenuOne" mnemonicParsing="false" onAction="#absMenuOnePressed" text="Abs" />
+            <MenuItem fx:id="fullBodyMenu" mnemonicParsing="false" onAction="#fullBodyMenuPressed" text="Full body" />
+            <MenuItem fx:id="upperBodyMenu" mnemonicParsing="false" onAction="#upperBodyMenuPressed" text="Upper body" />
+            <MenuItem fx:id="lowerBodyMenu" mnemonicParsing="false" onAction="#lowerBodyMenuPressed" text="Lower body" />
         </items>
       </MenuButton>
       <Label fx:id="muscleGroupOneLabel" layoutX="250.0" layoutY="261.0">

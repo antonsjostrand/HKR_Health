@@ -24,19 +24,16 @@ public class StretchController implements Initializable {
     private Exercise retrievedExercise;
 
     @FXML
-    private MenuButton muscleGroupMenu;
+    private MenuButton bodyPartMenu;
 
     @FXML
-    private MenuItem chestMenu, shouldersMenu, backMenu, bicepsMenu, tricepsMenu, gluteusMenu;
+    private MenuItem lowerBodyMenu;
 
     @FXML
-    private MenuItem quadMenu;
+    private MenuItem upperBodyMenu;
 
     @FXML
-    private MenuItem hamstringMenu;
-
-    @FXML
-    private MenuItem calvesMenu;
+    private MenuItem fullBodyMenu;
 
     @FXML
     private Button cancelButton;
@@ -52,9 +49,9 @@ public class StretchController implements Initializable {
     private ListView<Exercise> exerciseLV;
 
     @FXML
-    void backMenuPressed(ActionEvent event) {
+    void lowerBodyMenuPressed(ActionEvent event) {
         try {
-            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Back");
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Lower body");
             exerciseLV.getItems().clear();
             exerciseLV.getItems().addAll(exerciseList);
 
@@ -69,20 +66,19 @@ public class StretchController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
-            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.setContentText("There is no exercises for this bodypart in the database.");
             alert.showAndWait();
-            e.printStackTrace();
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
     @FXML
-    void bicepsMenuPressed(ActionEvent event) {
+    void upperBodyMenuPressed(ActionEvent event){
         try {
-            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Biceps");
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Upper body");
             exerciseLV.getItems().clear();
             exerciseLV.getItems().addAll(exerciseList);
 
@@ -97,9 +93,9 @@ public class StretchController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
-            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.setContentText("There is no exercises for this bodypart in the database.");
             alert.showAndWait();
-            e.printStackTrace();
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -107,9 +103,9 @@ public class StretchController implements Initializable {
     }
 
     @FXML
-    void calvesMenuPressed(ActionEvent event) {
+    void fullBodyMenuPressed(ActionEvent event){
         try {
-            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Calves");
+            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Full body");
             exerciseLV.getItems().clear();
             exerciseLV.getItems().addAll(exerciseList);
 
@@ -124,181 +120,22 @@ public class StretchController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Empty exercise register.");
-            alert.setContentText("There is no exercises for this muscle group in the database.");
+            alert.setContentText("There is no exercises for this bodypart in the database.");
             alert.showAndWait();
-            e.printStackTrace();
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @FXML
-    void chestMenuPressed(ActionEvent event) {
-        try {
-            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Chest");
-            exerciseLV.getItems().clear();
-            exerciseLV.getItems().addAll(exerciseList);
 
-            exerciseLV.setOnMouseClicked(e -> {
-                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
-                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
-
-                viewExercises(retrievedExercise);
-
-            });
-        } catch (NullPointerException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Empty exercise register.");
-            alert.setContentText("There is no exercises for this muscle group in the database.");
-            alert.showAndWait();
-            e.printStackTrace();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
-    void gluteusMenuPressed(ActionEvent event) {
-        try {
-            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Gluteus");
-            exerciseLV.getItems().clear();
-            exerciseLV.getItems().addAll(exerciseList);
-
-            exerciseLV.setOnMouseClicked(e -> {
-                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
-                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
-
-                viewExercises(retrievedExercise);
-
-            });
-        } catch (NullPointerException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Empty exercise register.");
-            alert.setContentText("There is no exercises for this muscle group in the database.");
-            alert.showAndWait();
-            e.printStackTrace();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void hamstringMenuPressed(ActionEvent event) {
-        try {
-            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Hamstrings");
-            exerciseLV.getItems().clear();
-            exerciseLV.getItems().addAll(exerciseList);
-
-            exerciseLV.setOnMouseClicked(e -> {
-                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
-                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
-
-                viewExercises(retrievedExercise);
-
-            });
-        } catch (NullPointerException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Empty exercise register.");
-            alert.setContentText("There is no exercises for this muscle group in the database.");
-            alert.showAndWait();
-            e.printStackTrace();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void muscleGroupMenuPressed(ActionEvent event) {
+    void bodyPartMenuPressed(ActionEvent event) {
 
     }
 
-    @FXML
-    void quadMenuPressed(ActionEvent event) {
-        try {
-            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Quadriceps");
-            exerciseLV.getItems().clear();
-            exerciseLV.getItems().addAll(exerciseList);
-
-            exerciseLV.setOnMouseClicked(e -> {
-                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
-                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
-
-                viewExercises(retrievedExercise);
-
-            });
-        } catch (NullPointerException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Empty exercise register.");
-            alert.setContentText("There is no exercises for this muscle group in the database.");
-            alert.showAndWait();
-            e.printStackTrace();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void shouldersMenuPressed(ActionEvent event) {
-        try {
-            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Shoulders");
-            exerciseLV.getItems().clear();
-            exerciseLV.getItems().addAll(exerciseList);
-
-            exerciseLV.setOnMouseClicked(e -> {
-                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
-                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
-
-                viewExercises(retrievedExercise);
-
-            });
-        } catch (NullPointerException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Empty exercise register.");
-            alert.setContentText("There is no exercises for this muscle group in the database.");
-            alert.showAndWait();
-            e.printStackTrace();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void tricepsMenuPressed(ActionEvent event) {
-        try {
-            ArrayList<Exercise> exerciseList = DatabaseConnection.getInstance().retrieveExercise("Triceps");
-            exerciseLV.getItems().clear();
-            exerciseLV.getItems().addAll(exerciseList);
-
-            exerciseLV.setOnMouseClicked(e -> {
-                Exercise testExercise = exerciseLV.getSelectionModel().getSelectedItem();
-                retrievedExercise = DatabaseConnection.getInstance().retrieveSpecificExercise(testExercise.getName());
-
-                viewExercises(retrievedExercise);
-
-            });
-        } catch (NullPointerException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Empty exercise register.");
-            alert.setContentText("There is no exercises for this muscle group in the database.");
-            alert.showAndWait();
-            e.printStackTrace();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     void cancelButtonPressed(ActionEvent event) {

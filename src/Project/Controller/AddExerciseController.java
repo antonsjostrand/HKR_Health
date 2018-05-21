@@ -60,6 +60,14 @@ public class AddExerciseController {
 
     @FXML
     private MenuItem absMenuOne;
+
+    @FXML
+    private MenuItem fullBodyMenu;
+
+    @FXML private MenuItem upperBodyMenu;
+
+    @FXML private MenuItem lowerBodyMenu;
+
     @FXML
     private Label muscleGroupOneLabel;
 
@@ -158,6 +166,33 @@ public class AddExerciseController {
     void tricepsMenuOnePressed(ActionEvent event) {
         try{
             fillMusclegroupLabels("Triceps");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void fullBodyMenuPressed(ActionEvent event){
+        try{
+            fillMusclegroupLabels("Full body");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void lowerBodyMenuPressed(ActionEvent event){
+        try{
+            fillMusclegroupLabels("Lower body");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void upperBodyMenuPressed(ActionEvent event){
+        try{
+            fillMusclegroupLabels("Upper body");
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.GuestStretchController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.GuestStretchController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="855.0">
          <children>
@@ -21,18 +21,11 @@
                   <Image url="@../../Resources/guestBackground.png" />
                </image>
             </ImageView>
-            <MenuButton fx:id="muscleGroupMenu" layoutX="40.0" layoutY="207.0" mnemonicParsing="false" onAction="#muscleGroupMenuPressed" prefHeight="44.0" prefWidth="250.0" style="-fx-background-color: #92C94A #92C94A;" text="Muscle Group" textFill="WHITE">
+            <MenuButton fx:id="bodyPartMenu" layoutX="40.0" layoutY="207.0" mnemonicParsing="false" onAction="#bodyPartMenuPressed" prefHeight="44.0" prefWidth="250.0" style="-fx-background-color: #92C94A #92C94A;" text="Body part" textFill="WHITE">
                <items>
-                  <MenuItem fx:id="backMenu" mnemonicParsing="false" onAction="#backMenuPressed" text="Back" />
-                  <MenuItem fx:id="chestMenu" mnemonicParsing="false" onAction="#chestMenuPressed" text="Chest" />
-                  <MenuItem fx:id="shouldersMenu" mnemonicParsing="false" onAction="#shouldersMenuPressed" text="Shoulders" />
-                  <MenuItem fx:id="bicepsMenu" disable="true" mnemonicParsing="false" text="Biceps" />
-                  <MenuItem fx:id="tricepsMenu" disable="true" mnemonicParsing="false" text="Triceps" />
-                  <MenuItem fx:id="gluteusMenu" disable="true" mnemonicParsing="false" text="Gluteus" />
-                  <MenuItem fx:id="quadMenu" disable="true" mnemonicParsing="false" text="Quadriceps" />
-                  <MenuItem fx:id="hamstringMenu" disable="true" mnemonicParsing="false" text="Hamstrings" />
-                  <MenuItem fx:id="calvesMenu" disable="true" mnemonicParsing="false" text="Calves" />
-                  <MenuItem fx:id="absMenu" disable="true" mnemonicParsing="false" text="Abs" />
+                  <MenuItem fx:id="lowerBodyMenu" mnemonicParsing="false" onAction="#lowerBodyMenuPressed" text="Lower body" />
+                  <MenuItem fx:id="upperBodyMenu" disable="true" mnemonicParsing="false" onAction="#upperBodyMenuPressed" text="Upper body" />
+                  <MenuItem fx:id="fullBodyMenu" disable="true" mnemonicParsing="false" onAction="#fullBodyMenuPressed" text="Full body" />
                </items>
             </MenuButton>
             <ListView fx:id="exerciseLV" layoutX="40.0" layoutY="265.0" prefHeight="171.0" prefWidth="251.0" />
