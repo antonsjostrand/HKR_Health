@@ -322,7 +322,7 @@ public class DatabaseConnection {
             int retrievedHeight, retrievedAge, retrievedWeight;
             String retrievedDate;
 
-            ResultSet rs = st.executeQuery("SELECT currentWeight, currentHeight, currentAge, timeOfCreation FROM current_statistics" +
+            ResultSet rs = st.executeQuery("SELECT currentWeight, currentHeight, currentAge, timeOfCreation FROM history_statistics" +
                     " WHERE timeOfCreation = STR_TO_DATE('" + date + "', '%Y-%m-%d');");
 
             if (rs.next()) {
@@ -340,12 +340,12 @@ public class DatabaseConnection {
         return null;
     }
 
-    //Metod som hämtar en persons samtliga currentstatistics från databasen
+    //Metod som hämtar en persons samtliga historystatistics från databasen
     public ArrayList<AccountInfo> retrieveAllCurrentStatistics(String ssn) throws Exception {
         ArrayList<AccountInfo> retrievedAccountInfoList = new ArrayList<>();
         AccountInfo retrievedAccInfo;
 
-        ResultSet rs = st.executeQuery("SELECT currentHeight, currentWeight, currentAge, timeOfCreation FROM current_statistics" +
+        ResultSet rs = st.executeQuery("SELECT currentHeight, currentWeight, currentAge, timeOfCreation FROM history_statistics" +
                 " WHERE User_Person_SSN = '" + ssn + "';");
         if (!rs.next()) {
             return null;
@@ -363,7 +363,7 @@ public class DatabaseConnection {
 
     //Metod som uppdaterar dina current statistics. Datumet måste vara i formattet: 5/4-18. Alltså d/m-år.
     public void updateCurrentStatistics(String SSN, String username, String date, int height, int weight, int age) throws Exception {
-        st.executeUpdate("INSERT INTO current_statistics (currentWeight, currentHeight, currentAge, timeOfCreation, User_Person_SSN, User_username) " +
+        st.executeUpdate("INSERT INTO history_statistics (currentWeight, currentHeight, currentAge, timeOfCreation, User_Person_SSN, User_username) " +
                 "VALUES (" + weight + ", " + height + ", " + age + ", STR_TO_DATE('" + date + "', '%d/%m-%Y'), '" + SSN + "', '" + username + "');");
     }
 
