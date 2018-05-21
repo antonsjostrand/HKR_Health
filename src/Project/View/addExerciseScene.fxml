@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.AddExerciseController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.AddExerciseController">
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="115.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f;" BorderPane.alignment="CENTER">
          <children>
@@ -59,7 +59,7 @@
                <font>
                   <Font name="Helvetica Neue Light" size="20.0" />
                </font></Label>
-            <TextArea fx:id="instructionTA" layoutX="470.0" layoutY="190.0" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea fx:id="instructionTA" layoutX="470.0" layoutY="190.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
             <Label layoutX="470.0" layoutY="162.0" text="Instruction" textFill="#66c923">
                <font>
                   <Font name="Helvetica Neue Light" size="20.0" />
@@ -87,6 +87,31 @@
                   <MenuItem fx:id="lowerBodyMenu" mnemonicParsing="false" onAction="#lowerBodyMenuPressed" text="Lower body" />
                </items>
             </MenuButton>
+            <Label layoutX="136.0" layoutY="421.0" text="Musclegroup: " textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="muscleGroupOneLabel" layoutX="261.0" layoutY="421.0" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="muscleGroupTwoLabel" layoutX="261.0" layoutY="451.0" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="muscleGroupThreeLabel" layoutX="261.0" layoutY="481.0" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="muscleGroupFourLabel" layoutX="261.0" layoutY="511.0" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

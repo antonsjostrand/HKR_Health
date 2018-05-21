@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -25,6 +22,9 @@ import java.util.ResourceBundle;
 public class GuestStretchController implements Initializable {
 
     @FXML private javafx.scene.image.ImageView hkrlogo;
+
+    @FXML
+    private TextArea instructionTA;
 
     @FXML
     private Label exerciseNameLabel;
@@ -228,7 +228,7 @@ public class GuestStretchController implements Initializable {
     //Metod som skriver ut informationen om övningen på scenen.
     public void viewExercises(Exercise exercise) {
         exerciseNameLabel.setText(exercise.getName());
-        instructionLabel.setText("Instruction: " + exercise.getInstruction());
+        instructionTA.setText("Instruction: " + exercise.getInstruction());
         imageIV.setImage(new Image(exercise.getImagePath()));
 
         String[] muscleGroups = exercise.getMuscleGroup();

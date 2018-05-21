@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -26,6 +27,10 @@ public class GuestExercisesController implements Initializable {
     @FXML
     private ImageView hkrlogo;
     @FXML private ImageView body;
+
+    @FXML
+    private TextArea instructionTA;
+
     @FXML
     private Label exerciseNameLabel;
 
@@ -223,7 +228,7 @@ public class GuestExercisesController implements Initializable {
     //Metod som skriver ut informationen om övningen på scenen.
     public void viewExercises(Exercise exercise) {
         exerciseNameLabel.setText(exercise.getName());
-        instructionLabel.setText("Instruction: " + exercise.getInstruction());
+        instructionTA.setText("Instruction: " + exercise.getInstruction());
         imageIV.setImage(new Image(exercise.getImagePath()));
 
         String[] muscleGroups = exercise.getMuscleGroup();

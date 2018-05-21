@@ -6,13 +6,14 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.GuestExercisesController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.GuestExercisesController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="855.0">
          <children>
@@ -37,7 +38,6 @@
             </MenuButton>
             <ListView fx:id="exerciseLV" layoutX="40.0" layoutY="265.0" prefHeight="171.0" prefWidth="251.0" />
             <ImageView fx:id="imageIV" fitHeight="233.0" fitWidth="383.0" layoutX="389.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="instructionLabel" layoutX="43.0" layoutY="475.0" text="Instruction" />
             <Label fx:id="muscleGroupLabel" layoutX="43.0" layoutY="448.0" text="Musclegroups" />
             <AnchorPane prefHeight="106.0" prefWidth="855.0" style="-fx-background-color: #92C94A #92C94A #92C94A #92C94A;">
                <children>
@@ -53,6 +53,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <TextArea fx:id="instructionTA" layoutX="40.0" layoutY="476.0" prefHeight="110.0" prefWidth="251.0" wrapText="true" />
          </children>
       </AnchorPane>
    </center>

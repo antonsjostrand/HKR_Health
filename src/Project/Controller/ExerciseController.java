@@ -21,6 +21,9 @@ public class ExerciseController {
     private Exercise retrievedExercise;
 
     @FXML
+    private TextArea instructionTA;
+
+    @FXML
     private MenuButton muscleGroupMenu;
 
     @FXML
@@ -462,7 +465,7 @@ public class ExerciseController {
     //Metod som skriver ut informationen om övningen på scenen.
     public void viewExercises(Exercise exercise) {
         exerciseNameLabel.setText(exercise.getName());
-        instructionLabel.setText("Instruction: " + exercise.getInstruction());
+        instructionTA.setText("Instruction: " + exercise.getInstruction());
         imageIV.setImage(new Image(exercise.getImagePath()));
 
         String[] muscleGroups = exercise.getMuscleGroup();
