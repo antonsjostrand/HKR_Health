@@ -4,23 +4,81 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.ReadFeedbackController">
-   <children>
-      <Button fx:id="cancelButton" layoutX="153.0" layoutY="561.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
-      <Button fx:id="readFeedbackButton" layoutX="30.0" layoutY="561.0" mnemonicParsing="false" onAction="#readFeedbackButtonPressed" text="READ" />
-      <TextArea fx:id="idFeedbackTA" layoutX="30.0" layoutY="37.0" prefHeight="200.0" prefWidth="60.0" />
-      <TextArea fx:id="chosenFeedbackTA" layoutX="30.0" layoutY="348.0" prefHeight="200.0" prefWidth="513.0" wrapText="true" />
-      <TextField fx:id="feedbackIDTF" layoutX="30.0" layoutY="267.0" />
-      <Label layoutX="30.0" layoutY="20.0" text="Feedbacks" />
-      <Label layoutX="30.0" layoutY="250.0" text="Read Feedback ID" />
-      <Label layoutX="30.0" layoutY="330.0" text="Chosen Feedback" />
-      <TextArea fx:id="headerFeedbackTA" layoutX="90.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" />
-      <TextArea fx:id="writerTA" layoutX="290.0" layoutY="37.0" prefHeight="200.0" prefWidth="253.0" />
-      <Button fx:id="refreshButton" layoutX="79.0" layoutY="561.0" mnemonicParsing="false" onAction="#refreshButtonPressed" text="REFRESH" />
-      <TextField fx:id="deleteIDTF" layoutX="335.0" layoutY="267.0" />
-      <Label layoutX="335.0" layoutY="250.0" text="Feedback ID to delete" />
-      <Button fx:id="deleteButton" layoutX="335.0" layoutY="300.0" mnemonicParsing="false" onAction="#deleteButtonPressed" text="Delete" />
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.ReadFeedbackController">
+   <left>
+      <AnchorPane prefHeight="600.0" prefWidth="115.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="599.0" fitWidth="186.0" layoutY="2.0" opacity="0.03" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/createaccount.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="79.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/logo3.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="2.0" layoutY="50.0" prefHeight="55.0" prefWidth="140.0" text="Health" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="841.0">
+         <children>
+            <ImageView fx:id="background" fitHeight="629.0" fitWidth="764.0" layoutX="45.0" layoutY="-31.0" opacity="0.12" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/loginBackground.png" />
+               </image>
+            </ImageView>
+            <Text fill="#66c923" layoutX="344.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check feedback">
+               <font>
+                  <Font name="Helvetica Neue Medium" size="42.0" />
+               </font>
+            </Text>
+            <Button fx:id="cancelButton" layoutX="681.0" layoutY="505.0" mnemonicParsing="false" onAction="#cancelButtonPressed" style="-fx-background-color: Grey; -fx-background-radius: 5em;" text="Cancel" textFill="WHITE" />
+            <Button fx:id="readFeedbackButton" layoutX="668.0" layoutY="404.0" mnemonicParsing="false" onAction="#readFeedbackButtonPressed" style="-fx-background-color: #66c923#66c923; -fx-background-radius: 5em;" text="READ" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <TextArea fx:id="idFeedbackTA" layoutX="25.0" layoutY="112.0" prefHeight="200.0" prefWidth="60.0" />
+            <TextArea fx:id="chosenFeedbackTA" layoutX="25.0" layoutY="368.0" prefHeight="200.0" prefWidth="513.0" wrapText="true" />
+            <TextField fx:id="feedbackIDTF" layoutX="626.0" layoutY="171.0" />
+            <Label layoutX="25.0" layoutY="79.0" text="Feedbacks" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <Label layoutX="626.0" layoutY="146.0" text="Read Feedback ID" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <Label layoutX="25.0" layoutY="330.0" text="Chosen Feedback" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <TextArea fx:id="headerFeedbackTA" layoutX="85.0" layoutY="112.0" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea fx:id="writerTA" layoutX="285.0" layoutY="112.0" prefHeight="200.0" prefWidth="253.0" />
+            <Button fx:id="refreshButton" layoutX="649.0" layoutY="451.0" mnemonicParsing="false" onAction="#refreshButtonPressed" style="-fx-background-color: #66c923#66c923; -fx-background-radius: 5em;" text="REFRESH" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <TextField fx:id="deleteIDTF" layoutX="626.0" layoutY="252.0" />
+            <Label layoutX="626.0" layoutY="226.0" text="Feedback ID to delete" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <Button fx:id="deleteButton" layoutX="679.0" layoutY="285.0" mnemonicParsing="false" onAction="#deleteButtonPressed" style="-fx-background-color: #66c923#66c923; -fx-background-radius: 5em;" text="Delete" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -3,21 +3,82 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.AddNutritionController">
-   <children>
-      <Button fx:id="cancelButton" layoutX="470.0" layoutY="327.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
-      <Button fx:id="createButton" layoutX="399.0" layoutY="327.0" mnemonicParsing="false" onAction="#createButtonPressed" text="Create" />
-      <Label layoutX="39.0" layoutY="68.0" text="Name" />
-      <Label layoutX="39.0" layoutY="110.0" text="Kcal" />
-      <TextField fx:id="nameTF" layoutX="39.0" layoutY="85.0" />
-      <TextField fx:id="kcalTF" layoutX="39.0" layoutY="127.0" />
-      <Label layoutX="39.0" layoutY="158.0" text="Protein" />
-      <TextField fx:id="proteinTF" layoutX="39.0" layoutY="175.0" />
-      <Label layoutX="39.0" layoutY="208.0" text="Carbohydrates" />
-      <TextField fx:id="carbohydratesTF" layoutX="39.0" layoutY="225.0" />
-      <Label layoutX="39.0" layoutY="257.0" text="Fat" />
-      <TextField fx:id="fatTF" layoutX="39.0" layoutY="274.0" />
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.AddNutritionController">
+   <left>
+      <AnchorPane prefHeight="600.0" prefWidth="115.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="599.0" fitWidth="186.0" layoutY="2.0" opacity="0.03" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/createaccount.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="79.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/logo3.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="2.0" layoutY="50.0" prefHeight="55.0" prefWidth="140.0" text="Health" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="841.0">
+         <children>
+            <ImageView fx:id="background" fitHeight="629.0" fitWidth="764.0" layoutX="45.0" layoutY="-31.0" opacity="0.12" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/loginBackground.png" />
+               </image>
+            </ImageView>
+            <Text fill="#66c923" layoutX="382.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add nutrition">
+               <font>
+                  <Font name="Helvetica Neue Medium" size="42.0" />
+               </font>
+            </Text>
+            <Button fx:id="cancelButton" layoutX="507.0" layoutY="331.0" mnemonicParsing="false" onAction="#cancelButtonPressed" style="-fx-background-color: grey; -fx-background-radius: 5em;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Button>
+            <Button fx:id="createButton" layoutX="496.0" layoutY="269.0" mnemonicParsing="false" onAction="#createButtonPressed" style="-fx-background-color: #66c923#66c923; -fx-background-radius: 5em;" text="Create" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="26.0" />
+               </font></Button>
+            <Label layoutX="182.0" layoutY="159.0" text="Name" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <Label layoutX="180.0" layoutY="233.0" text="Kcal" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <TextField fx:id="nameTF" layoutX="180.0" layoutY="196.0" />
+            <TextField fx:id="kcalTF" layoutX="180.0" layoutY="270.0" />
+            <Label layoutX="180.0" layoutY="306.0" text="Protein" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <TextField fx:id="proteinTF" layoutX="180.0" layoutY="340.0" />
+            <Label layoutX="180.0" layoutY="371.0" text="Carbohydrates" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <TextField fx:id="carbohydratesTF" layoutX="180.0" layoutY="407.0" />
+            <Label layoutX="180.0" layoutY="447.0" text="Fat" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <TextField fx:id="fatTF" layoutX="180.0" layoutY="474.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

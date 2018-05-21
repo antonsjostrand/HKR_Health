@@ -6,57 +6,88 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.AddExerciseController">
-   <children>
-      <Button fx:id="cancelButton" layoutX="670.0" layoutY="381.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
-      <TextField fx:id="nameTF" layoutX="250.0" layoutY="106.0" />
-      <TextField fx:id="typeTF" layoutX="250.0" layoutY="148.0" />
-      <Label layoutX="250.0" layoutY="89.0" text="Name" />
-      <Label layoutX="250.0" layoutY="131.0" text="Type" />
-      <TextArea fx:id="instructionTA" layoutX="458.0" layoutY="121.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label layoutX="458.0" layoutY="101.0" text="Instruction" />
-      <Button fx:id="createButton" layoutX="598.0" layoutY="381.0" mnemonicParsing="false" onAction="#createButtonPressed" text="Create" />
-      <TextField fx:id="pathTF" layoutX="250.0" layoutY="190.0" />
-      <Label layoutX="250.0" layoutY="173.0" text="Path " />
-      <MenuButton fx:id="muscleGroupMenu" layoutX="250.0" layoutY="237.0" mnemonicParsing="false" text="Choose musclegroups">
-        <items>
-            <MenuItem fx:id="chestMenuOne" mnemonicParsing="false" onAction="#chestMenuOnePressed" text="Chest" />
-            <MenuItem fx:id="shouldersMenuOne" mnemonicParsing="false" onAction="#shouldersMenuOnePressed" text="Shoulders" />
-            <MenuItem fx:id="backMenuOne" mnemonicParsing="false" onAction="#backMenuOnePressed" text="Back" />
-          <MenuItem fx:id="bicepsMenuOne" mnemonicParsing="false" onAction="#bicepsMenuOnePressed" text="Biceps" />
-          <MenuItem fx:id="tricepsMenuOne" mnemonicParsing="false" onAction="#tricepsMenuOnePressed" text="Triceps" />
-            <MenuItem fx:id="gluteusMenuOne" mnemonicParsing="false" onAction="#gluteusMenuOnePressed" text="Gluteus" />
-            <MenuItem fx:id="quadricepsMenuOne" mnemonicParsing="false" onAction="#quadricepsMenuOnePressed" text="Quadriceps" />
-            <MenuItem fx:id="hamstringsMenuOne" mnemonicParsing="false" onAction="#hamstringsMenuOnePressed" text="Hamstrings" />
-            <MenuItem fx:id="calvesMenuOne" mnemonicParsing="false" onAction="#calvesMenuOnePressed" text="Calves" />
-            <MenuItem fx:id="absMenuOne" mnemonicParsing="false" onAction="#absMenuOnePressed" text="Abs" />
-            <MenuItem fx:id="fullBodyMenu" mnemonicParsing="false" onAction="#fullBodyMenuPressed" text="Full body" />
-            <MenuItem fx:id="upperBodyMenu" mnemonicParsing="false" onAction="#upperBodyMenuPressed" text="Upper body" />
-            <MenuItem fx:id="lowerBodyMenu" mnemonicParsing="false" onAction="#lowerBodyMenuPressed" text="Lower body" />
-        </items>
-      </MenuButton>
-      <Label fx:id="muscleGroupOneLabel" layoutX="250.0" layoutY="261.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="muscleGroupTwoLabel" layoutX="250.0" layoutY="314.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="muscleGroupThreeLabel" layoutX="250.0" layoutY="364.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="muscleGroupFourLabel" layoutX="250.0" layoutY="413.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.AddExerciseController">
+   <left>
+      <AnchorPane prefHeight="600.0" prefWidth="115.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="599.0" fitWidth="186.0" layoutY="2.0" opacity="0.03" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/createaccount.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="79.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/logo3.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="2.0" layoutY="50.0" prefHeight="55.0" prefWidth="140.0" text="Health" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="841.0">
+         <children>
+            <ImageView fx:id="background" fitHeight="629.0" fitWidth="764.0" layoutX="45.0" layoutY="-31.0" opacity="0.12" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/loginBackground.png" />
+               </image>
+            </ImageView>
+            <Text fill="#66c923" layoutX="382.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add exercise">
+               <font>
+                  <Font name="Helvetica Neue Medium" size="42.0" />
+               </font>
+            </Text>
+            <Button fx:id="cancelButton" layoutX="576.0" layoutY="471.0" mnemonicParsing="false" onAction="#cancelButtonPressed" style="-fx-background-color: grey; -fx-background-radius: 5em;" text="Cancel" textFill="WHITE" />
+            <TextField fx:id="nameTF" layoutX="262.0" layoutY="190.0" />
+            <TextField fx:id="typeTF" layoutX="262.0" layoutY="263.0" />
+            <Label layoutX="262.0" layoutY="162.0" text="Name" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <Label layoutX="261.0" layoutY="227.0" text="Type" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <TextArea fx:id="instructionTA" layoutX="470.0" layoutY="190.0" prefHeight="200.0" prefWidth="200.0" />
+            <Label layoutX="470.0" layoutY="162.0" text="Instruction" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <Button fx:id="createButton" layoutX="504.0" layoutY="471.0" mnemonicParsing="false" onAction="#createButtonPressed" style="-fx-background-color: #66c923#66c923; -fx-background-radius: 5em;" text="Create" textFill="WHITE" />
+            <TextField fx:id="pathTF" layoutX="262.0" layoutY="330.0" />
+            <Label layoutX="260.0" layoutY="300.0" text="Path " textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <MenuButton fx:id="muscleGroupMenu" layoutX="262.0" layoutY="396.0" mnemonicParsing="false" style="-fx-background-color: #66c923#66c923; -fx-background-radius: 5em;" text="Choose musclegroups" textFill="WHITE">
+               <items>
+                  <MenuItem fx:id="chestMenuOne" mnemonicParsing="false" onAction="#chestMenuOnePressed" text="Chest" />
+                  <MenuItem fx:id="shouldersMenuOne" mnemonicParsing="false" onAction="#shouldersMenuOnePressed" text="Shoulders" />
+                  <MenuItem fx:id="backMenuOne" mnemonicParsing="false" onAction="#backMenuOnePressed" text="Back" />
+                  <MenuItem fx:id="bicepsMenuOne" mnemonicParsing="false" onAction="#bicepsMenuOnePressed" text="Biceps" />
+                  <MenuItem fx:id="tricepsMenuOne" mnemonicParsing="false" onAction="#tricepsMenuOnePressed" text="Triceps" />
+                  <MenuItem fx:id="gluteusMenuOne" mnemonicParsing="false" onAction="#gluteusMenuOnePressed" text="Gluteus" />
+                  <MenuItem fx:id="quadricepsMenuOne" mnemonicParsing="false" onAction="#quadricepsMenuOnePressed" text="Quadriceps" />
+                  <MenuItem fx:id="hamstringsMenuOne" mnemonicParsing="false" onAction="#hamstringsMenuOnePressed" text="Hamstrings" />
+                  <MenuItem fx:id="calvesMenuOne" mnemonicParsing="false" onAction="#calvesMenuOnePressed" text="Calves" />
+                  <MenuItem fx:id="absMenuOne" mnemonicParsing="false" onAction="#absMenuOnePressed" text="Abs" />
+                  <MenuItem fx:id="fullBodyMenu" mnemonicParsing="false" onAction="#fullBodyMenuPressed" text="Full body" />
+                  <MenuItem fx:id="upperBodyMenu" mnemonicParsing="false" onAction="#upperBodyMenuPressed" text="Upper body" />
+                  <MenuItem fx:id="lowerBodyMenu" mnemonicParsing="false" onAction="#lowerBodyMenuPressed" text="Lower body" />
+               </items>
+            </MenuButton>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

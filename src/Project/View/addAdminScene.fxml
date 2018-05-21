@@ -4,16 +4,67 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.AddAdminController">
-   <children>
-      <Button fx:id="cancelButton" layoutX="505.0" layoutY="339.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" />
-      <Button fx:id="promoteButton" layoutX="44.0" layoutY="339.0" mnemonicParsing="false" onAction="#promoteButtonPressed" text="Promote" />
-      <TextField fx:id="ssnPromoteTF" layoutX="44.0" layoutY="279.0" />
-      <TextArea fx:id="usersTA" layoutX="44.0" layoutY="46.0" prefHeight="200.0" prefWidth="363.0" />
-      <Label layoutX="44.0" layoutY="29.0" text="Users" />
-      <Label layoutX="44.0" layoutY="262.0" text="User to promote" />
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.AddAdminController">
+   <left>
+      <AnchorPane prefHeight="600.0" prefWidth="115.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="599.0" fitWidth="186.0" layoutY="2.0" opacity="0.03" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/createaccount.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="79.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/logo3.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="2.0" layoutY="50.0" prefHeight="55.0" prefWidth="140.0" text="Health" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="841.0">
+         <children>
+            <ImageView fx:id="background" fitHeight="629.0" fitWidth="764.0" layoutX="45.0" layoutY="-31.0" opacity="0.12" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/loginBackground.png" />
+               </image>
+            </ImageView>
+            <Text fill="#66c923" layoutX="382.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add admin">
+               <font>
+                  <Font name="Helvetica Neue Medium" size="42.0" />
+               </font>
+            </Text>
+            <Button fx:id="cancelButton" layoutX="688.0" layoutY="483.0" mnemonicParsing="false" onAction="#cancelButtonPressed" style="-fx-background-color: grey; -fx-background-radius: 5em;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="18.0" />
+               </font></Button>
+            <Button fx:id="promoteButton" layoutX="227.0" layoutY="483.0" mnemonicParsing="false" onAction="#promoteButtonPressed" style="-fx-background-color: #66c923#66c923; -fx-background-radius: 5em;" text="Promote" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="18.0" />
+               </font></Button>
+            <TextField fx:id="ssnPromoteTF" layoutX="227.0" layoutY="435.0" />
+            <TextArea fx:id="usersTA" layoutX="227.0" layoutY="200.0" prefHeight="200.0" prefWidth="363.0" />
+            <Label layoutX="227.0" layoutY="173.0" text="Users" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+            <Label layoutX="227.0" layoutY="406.0" text="User to promote" textFill="#66c923">
+               <font>
+                  <Font name="Helvetica Neue Light" size="20.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

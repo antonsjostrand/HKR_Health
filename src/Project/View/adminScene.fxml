@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,6 +18,16 @@
                   <Image url="@../../Resources/createaccount.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="79.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/logo3.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="2.0" layoutY="50.0" prefHeight="55.0" prefWidth="140.0" text="Health" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Light" size="36.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </left>
