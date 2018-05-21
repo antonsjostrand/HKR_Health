@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.CreateAccountController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.CreateAccountController">
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="115.0" style="-fx-background-color: #83e76f#83e76f #83e76f#83e76f;" BorderPane.alignment="CENTER">
          <children>
@@ -46,8 +46,8 @@
             <TextField fx:id="ssnTF" layoutX="250.0" layoutY="320.0" />
             <TextField fx:id="usernameTF" layoutX="550.0" layoutY="200.0" />
             <TextField fx:id="heightTF" layoutX="550.0" layoutY="240.0" />
-            <TextField fx:id="weightTF" layoutX="550.0" layoutY="280.0" />
-            <TextField fx:id="passwordTF" layoutX="550.0" layoutY="320.0" />
+            <TextField fx:id="passwordTF" layoutX="550.0" layoutY="280.0" />
+            <TextField fx:id="weightTF" layoutX="550.0" layoutY="320.0" />
             <TextField fx:id="emailTF" layoutX="550.0" layoutY="360.0" />
             <Label layoutX="150.0" layoutY="200.0" text="Firstname:" textFill="#66c923">
                <font>
