@@ -287,6 +287,17 @@ public class UserController implements Initializable {
                     Integer.parseInt(updateWeight.getText()),
                     Integer.parseInt(updateAge.getText()));
 
+            updateDate.clear();
+            updateHeight.clear();
+            updateWeight.clear();
+            updateAge.clear();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("INFORMATION");
+            alert.setHeaderText("Update saved.");
+            alert.setContentText("Your new update has been saved to the database.");
+            alert.showAndWait();
+
 
         }catch (InputMismatchException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

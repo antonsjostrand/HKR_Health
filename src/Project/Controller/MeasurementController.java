@@ -244,6 +244,18 @@ public class MeasurementController {
                 throw new InputMismatchException();
             }
         }
+        if (forarmL.trim().length() == 0){
+            forearmLTF.clear();
+            forearmLTF.setText("Enter a valid digit.");
+            forearmLTF.requestFocus();
+            throw new InputMismatchException();
+        }
+        if (forearmR.trim().length() == 0){
+            forearmRTF.clear();
+            forearmRTF.setText("Enter a valid digit.");
+            forearmRTF.requestFocus();
+            throw new InputMismatchException();
+        }
     }
 
     //Metod som kollar formattet på armmåttet.
@@ -263,6 +275,18 @@ public class MeasurementController {
                 upperArmLTF.requestFocus();
                 throw new InputMismatchException();
             }
+        }
+        if (leftArm.trim().length() == 0){
+            upperArmLTF.clear();
+            upperArmLTF.setText("Enter a valid digit.");
+            upperArmLTF.requestFocus();
+            throw new InputMismatchException();
+        }
+        if (rightArm.trim().length() == 0){
+            upperArmRTF.clear();
+            upperArmRTF.setText("Enter a valid digit.");
+            upperArmRTF.requestFocus();
+            throw new InputMismatchException();
         }
     }
 
@@ -284,6 +308,18 @@ public class MeasurementController {
                 throw new InputMismatchException();
             }
         }
+        if (leftThigh.trim().length() == 0){
+            thighLTF.clear();
+            thighLTF.setText("Enter a valid digit.");
+            thighLTF.requestFocus();
+            throw new InputMismatchException();
+        }
+        if (rightThigh.trim().length() == 0){
+            thighRTF.clear();
+            thighRTF.setText("Enter a valid digit.");
+            thighRTF.requestFocus();
+            throw new InputMismatchException();
+        }
     }
 
     //Metod som kollar formattet på vadmåttet.
@@ -304,6 +340,19 @@ public class MeasurementController {
                 throw new InputMismatchException();
             }
         }
+        if (leftCalf.trim().length() == 0){
+            calfLTF.clear();
+            calfLTF.setText("Enter a valid digit.");
+            calfLTF.requestFocus();
+            throw new InputMismatchException();
+        }
+
+        if (rightCalf.trim().length() == 0){
+            calfRTF.clear();
+            calfRTF.setText("Enter a valid digit.");
+            calfRTF.requestFocus();
+            throw new InputMismatchException();
+        }
     }
 
     //Metod som kollar formattet på bröstmåttet.
@@ -315,6 +364,12 @@ public class MeasurementController {
                 chestWidthTF.requestFocus();
                 throw new InputMismatchException();
             }
+        }
+        if (chest.trim().length() == 0){
+            chestWidthTF.clear();
+            chestWidthTF.setText("Enter a valid digit.");
+            chestWidthTF.requestFocus();
+            throw new InputMismatchException();
         }
     }
 
@@ -328,6 +383,12 @@ public class MeasurementController {
                 throw new InputMismatchException();
             }
         }
+        if (waist.trim().length() == 0){
+            waistTF.clear();
+            waistTF.setText("Enter a valid digit.");
+            waistTF.requestFocus();
+            throw new InputMismatchException();
+        }
     }
 
     //Metod som kollar formattet på axelmåttet.
@@ -339,6 +400,12 @@ public class MeasurementController {
                 shoulderWidthTF.requestFocus();
                 throw new InputMismatchException();
             }
+        }
+        if (shoulder.trim().length() == 0){
+            shoulderWidthTF.clear();
+            shoulderWidthTF.setText("Enter a valid digit.");
+            shoulderWidthTF.requestFocus();
+            throw new InputMismatchException();
         }
     }
 
@@ -425,8 +492,19 @@ public class MeasurementController {
             alert.setContentText("Measurement saved successful. Press cancel to go back to the diary scene.");
             alert.showAndWait();
 
-        } catch (Exception e) {
+        }catch (SQLException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Date incorrect.");
+            alert.setContentText("Enter a valid date.");
+            alert.showAndWait();
 
+            dateTF.clear();
+            dateTF.setText("DD/MM-YY");
+            dateTF.requestFocus();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
