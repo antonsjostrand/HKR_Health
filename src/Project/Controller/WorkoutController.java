@@ -127,7 +127,7 @@ public class WorkoutController {
     void saveButtonPressed(ActionEvent event) {
         try {
             //Kolla så att ingen input är empty inklusive arraylistan. detta för att man inte ska kunna spara tomma workouts.
-            checkIfInputIsEmptyBeforeSave(setsTF.getText(), repsTF.getText(), weightTF.getText());
+            checkIfInputIsEmptyBeforeSave();
             checkDateFormat(dateTF.getText());
 
             DatabaseConnection.getInstance().addWorkoutToDB(chosenExerciseInformation, dateTF.getText());
@@ -628,28 +628,11 @@ public class WorkoutController {
     }
 
     //Kollar så att ingen input är tom innan man sparar.
-    public void checkIfInputIsEmptyBeforeSave(String sets, String reps, String weight) {
-        if (setsTF.getText().isEmpty() || repsTF.getText().isEmpty() || weightTF.getText().isEmpty() || dateTF.getText().isEmpty() ||
+    public void checkIfInputIsEmptyBeforeSave() {
+        if (exerciseTA.getText().isEmpty() || setsTA.getText().isEmpty() || repsTA.getText().isEmpty() ||
+                weightTA.getText().isEmpty() || dateTF.getText().isEmpty() ||
                 exerciseLV.getItems().isEmpty()) {
             throw new NullPointerException();
-        }
-        if (sets.trim().length() == 0) {
-            setsTF.clear();
-            setsTF.setText("Enter a title.");
-            setsTF.requestFocus();
-            throw new InputMismatchException();
-        }
-        if (reps.trim().length() == 0) {
-            repsTF.clear();
-            repsTF.setText("Enter some text.");
-            repsTF.requestFocus();
-            throw new InputMismatchException();
-        }
-        if (weight.trim().length() == 0) {
-            weightTF.clear();
-            weightTF.setText("Enter some text.");
-            weightTF.requestFocus();
-            throw new InputMismatchException();
         }
     }
 
