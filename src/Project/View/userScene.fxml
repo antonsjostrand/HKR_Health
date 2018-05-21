@@ -148,6 +148,13 @@
                   <Label fx:id="ssnLabel" layoutX="76.0" layoutY="62.0" text="SSN" textFill="WHITE" />
                </children>
             </AnchorPane>
+            <TextField fx:id="firstHeight" layoutX="111.0" layoutY="195.0" prefHeight="25.0" prefWidth="230.0" promptText="180 (cm)" style="-fx-background-radius: 5em;" />
+            <TextField fx:id="firstWeight" layoutX="111.0" layoutY="237.0" prefHeight="25.0" prefWidth="230.0" promptText="78 (kg)" style="-fx-background-radius: 5em;" />
+            <TextField fx:id="firstAge" layoutX="111.0" layoutY="279.0" prefHeight="25.0" prefWidth="230.0" promptText="21" style="-fx-background-radius: 5em;" />
+            <TextField fx:id="updateHeight" layoutX="549.0" layoutY="190.0" prefHeight="25.0" prefWidth="230.0" style="-fx-background-radius: 5em;" />
+            <TextField fx:id="updateWeight" layoutX="549.0" layoutY="234.0" prefHeight="25.0" prefWidth="230.0" style="-fx-background-radius: 5em;" />
+            <TextField fx:id="updateAge" layoutX="549.0" layoutY="278.0" prefHeight="25.0" prefWidth="230.0" style="-fx-background-radius: 5em;" />
+            <TextField fx:id="updateDate" layoutX="546.0" layoutY="322.0" prefHeight="25.0" prefWidth="230.0" promptText="example: 5/4-18" style="-fx-background-radius: 5em;" />
             <Label layoutX="78.0" layoutY="137.0" prefHeight="53.0" prefWidth="229.0" text="First day with HKR Health" textFill="#92c94a">
                <font>
                   <Font name="Helvetica Neue Medium" size="18.0" />
@@ -200,13 +207,6 @@
             </Label>
             <Button fx:id="saveButton" layoutX="617.0" layoutY="362.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #92C94A#92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Save info" textFill="WHITE" />
             <TextArea fx:id="chosenInformationTA" layoutX="552.0" layoutY="418.0" prefHeight="125.0" prefWidth="230.0" />
-            <TextField fx:id="firstWeight" layoutX="111.0" layoutY="237.0" prefHeight="25.0" prefWidth="230.0" promptText="78 (kg)" style="-fx-background-radius: 5em;" />
-            <TextField fx:id="firstHeight" layoutX="111.0" layoutY="195.0" prefHeight="25.0" prefWidth="230.0" promptText="180 (cm)" style="-fx-background-radius: 5em;" />
-            <TextField fx:id="firstAge" layoutX="111.0" layoutY="279.0" prefHeight="25.0" prefWidth="230.0" promptText="21" style="-fx-background-radius: 5em;" />
-            <TextField fx:id="updateWeight" layoutX="549.0" layoutY="234.0" prefHeight="25.0" prefWidth="230.0" style="-fx-background-radius: 5em;" />
-            <TextField fx:id="updateHeight" layoutX="549.0" layoutY="190.0" prefHeight="25.0" prefWidth="230.0" style="-fx-background-radius: 5em;" />
-            <TextField fx:id="updateAge" layoutX="549.0" layoutY="278.0" prefHeight="25.0" prefWidth="230.0" style="-fx-background-radius: 5em;" />
-            <TextField fx:id="updateDate" layoutX="546.0" layoutY="322.0" prefHeight="25.0" prefWidth="230.0" promptText="example: 5/4-18" style="-fx-background-radius: 5em;" />
             <ListView fx:id="loadedInformationLV" layoutX="111.0" layoutY="418.0" prefHeight="125.0" prefWidth="230.0" />
             <Button fx:id="refreshButton" layoutX="113.0" layoutY="377.0" mnemonicParsing="false" onAction="#refreshButtonPressed" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #92C94A#92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Refresh" textFill="WHITE" />
          </children>

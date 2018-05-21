@@ -43,11 +43,12 @@
             <TextField fx:id="firstNameTF" layoutX="250.0" layoutY="200.0" />
             <TextField fx:id="lastNameTF" layoutX="250.0" layoutY="240.0" />
             <TextField fx:id="ageTF" layoutX="250.0" layoutY="280.0" />
+            <TextField fx:id="ssnTF" layoutX="250.0" layoutY="320.0" />
+            <TextField fx:id="usernameTF" layoutX="550.0" layoutY="200.0" />
             <TextField fx:id="heightTF" layoutX="550.0" layoutY="240.0" />
             <TextField fx:id="weightTF" layoutX="550.0" layoutY="280.0" />
-            <TextField fx:id="usernameTF" layoutX="550.0" layoutY="200.0" />
             <TextField fx:id="passwordTF" layoutX="550.0" layoutY="320.0" />
-            <TextField fx:id="ssnTF" layoutX="250.0" layoutY="320.0" />
+            <TextField fx:id="emailTF" layoutX="550.0" layoutY="360.0" />
             <Label layoutX="150.0" layoutY="200.0" text="Firstname:" textFill="#66c923">
                <font>
                   <Font name="Helvetica Neue Light" size="18.0" />
@@ -88,7 +89,6 @@
                <font>
                   <Font name="Helvetica Neue Light" size="18.0" />
                </font></Label>
-            <TextField fx:id="emailTF" layoutX="550.0" layoutY="360.0" />
             <Label layoutX="450.0" layoutY="360.0" text="Email:" textFill="#66c923">
                <font>
                   <Font name="Helvetica Neue Light" size="18.0" />

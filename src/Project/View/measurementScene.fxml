@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.MeasurementController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.MeasurementController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="855.0">
          <children>
@@ -34,22 +34,23 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <TextField fx:id="forearmRTF" layoutX="642.0" layoutY="239.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="thighRTF" layoutX="641.0" layoutY="277.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="calfRTF" layoutX="641.0" layoutY="313.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="waistTF" layoutX="242.0" layoutY="415.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="shoulderWidthTF" layoutX="241.0" layoutY="458.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="chestWidthTF" layoutX="241.0" layoutY="501.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="forearmLTF" layoutX="231.0" layoutY="240.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="upperArmLTF" layoutX="230.0" layoutY="202.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="forearmLTF" layoutX="230.0" layoutY="240.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="thighLTF" layoutX="230.0" layoutY="276.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="calfLTF" layoutX="230.0" layoutY="314.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="upperArmRTF" layoutX="640.0" layoutY="200.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="forearmRTF" layoutX="640.0" layoutY="239.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="thighRTF" layoutX="640.0" layoutY="277.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="calfRTF" layoutX="640.0" layoutY="313.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="waistTF" layoutX="240.0" layoutY="415.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="shoulderWidthTF" layoutX="240.0" layoutY="458.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="chestWidthTF" layoutX="240.0" layoutY="501.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
+            <TextField fx:id="dateTF" layoutX="506.0" layoutY="430.0" prefHeight="29.0" prefWidth="112.0" promptText="Ex. 31/12 -18" />
             <Text fill="#92c94a" layoutX="93.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upper arm: " wrappingWidth="111.7578125">
                <font>
                   <Font name="Helvetica Neue Light" size="17.0" />
                </font>
             </Text>
-            <TextField fx:id="upperArmLTF" layoutX="229.0" layoutY="202.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="upperArmRTF" layoutX="644.0" layoutY="200.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="thighLTF" layoutX="230.0" layoutY="276.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
-            <TextField fx:id="calfLTF" layoutX="229.0" layoutY="314.0" prefHeight="29.0" prefWidth="127.0" promptText="00cm..." />
             <Button fx:id="saveMeasurementButton" layoutX="518.0" layoutY="482.0" mnemonicParsing="false" onAction="#saveMeasurementButtonPressed" prefHeight="47.0" prefWidth="191.0" style="-fx-background-color: #92c94a#92c94a; -fx-background-radius: 5em;" text="Save Measurements" textFill="WHITE">
                <font>
                   <Font size="15.0" />
@@ -60,7 +61,6 @@
                   <Font name="Helvetica Neue Medium" size="24.0" />
                </font>
             </Text>
-            <TextField fx:id="dateTF" layoutX="560.0" layoutY="433.0" prefHeight="29.0" prefWidth="112.0" promptText="Ex. 31/12 -18" />
             <Text fill="#92c94a" layoutX="581.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Todays date:">
                <font>
                   <Font name="Helvetica Neue Light" size="12.0" />

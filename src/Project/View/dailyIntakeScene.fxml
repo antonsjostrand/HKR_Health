@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.DailyIntakeController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.DailyIntakeController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="855.0">
          <children>
@@ -35,9 +35,11 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <TextField fx:id="nutritionNameTF" layoutX="54.0" layoutY="163.0" prefHeight="25.0" prefWidth="230.0" promptText="Chicken" style="-fx-background-radius: 5em;" />
+            <TextField fx:id="amountTF" layoutX="54.0" layoutY="503.0" prefHeight="25.0" prefWidth="230.0" promptText="200" style="-fx-background-radius: 5em;" />
+            <TextField fx:id="dateTF" layoutX="473.0" layoutY="471.0" prefHeight="25.0" prefWidth="230.0" promptText="example: 5/4-18" style="-fx-background-radius: 5em;" />
             <ListView fx:id="loadedNutritionLV" layoutX="54.0" layoutY="261.0" prefHeight="200.0" prefWidth="200.0" />
             <Button fx:id="addButton" layoutX="54.0" layoutY="542.0" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: #92C94A#92C94A; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Add" textFill="WHITE" />
-            <TextField fx:id="nutritionNameTF" layoutX="54.0" layoutY="163.0" prefHeight="25.0" prefWidth="230.0" promptText="Chicken" style="-fx-background-radius: 5em;" />
             <Label layoutX="54.0" layoutY="143.0" text="Name or letter:" textFill="#92c94a">
                <font>
                   <Font name="Helvetica Neue Light" size="14.0" />
@@ -48,7 +50,6 @@
                   <Font name="Helvetica Neue Light" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="amountTF" layoutX="54.0" layoutY="503.0" prefHeight="25.0" prefWidth="230.0" promptText="200" style="-fx-background-radius: 5em;" />
             <Label layoutX="54.0" layoutY="483.0" text="Amount (g)" textFill="#92c94a">
                <font>
                   <Font name="Helvetica Neue Light" size="14.0" />
@@ -68,7 +69,6 @@
                   <Font name="Helvetica Neue Light" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="dateTF" layoutX="473.0" layoutY="471.0" prefHeight="25.0" prefWidth="230.0" promptText="example: 5/4-18" style="-fx-background-radius: 5em;" />
          </children>
       </AnchorPane>
    </center>
