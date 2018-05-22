@@ -22,7 +22,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class GuestExercisesController implements Initializable {
+public class GuestExercisesController {
 
     @FXML
     private ImageView hkrlogo;
@@ -243,11 +243,5 @@ public class GuestExercisesController implements Initializable {
         }
 
         muscleGroupLabel.setText("Musclegroups: " + muscleGroupSentence);
-    }
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

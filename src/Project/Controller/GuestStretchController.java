@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class GuestStretchController implements Initializable {
+public class GuestStretchController {
 
     @FXML private javafx.scene.image.ImageView hkrlogo;
 
@@ -243,11 +243,5 @@ public class GuestStretchController implements Initializable {
         }
 
         muscleGroupLabel.setText("Musclegroups: " + muscleGroupSentence);
-    }
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

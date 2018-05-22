@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class StretchController implements Initializable {
+public class StretchController {
     private Exercise retrievedExercise;
 
     @FXML
@@ -311,10 +311,5 @@ public class StretchController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

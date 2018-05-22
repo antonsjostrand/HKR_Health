@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
-public class AdminController implements Initializable {
+public class AdminController {
 
     @FXML
     private Button exerciseButton;
@@ -74,11 +74,6 @@ public class AdminController implements Initializable {
         }
     }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     public void changeScene(String resource, ActionEvent event) throws IOException {
         Node node = (Node) event.getSource();

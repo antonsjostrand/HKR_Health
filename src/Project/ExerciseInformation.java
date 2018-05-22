@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import java.util.ArrayList;
 
 public class ExerciseInformation {
+
     private static ExerciseInformation ourExercise;
 
     private String name, type, instruction, imagePath;

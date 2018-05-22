@@ -64,14 +64,6 @@ public class LoginController implements Initializable {
         }
     }
 
-    // Om vi vill logga in genom att trycka på ENTER-knappen
-
-    /* @FXML
-    public void handleEnterPressed(KeyEvent event) {
-    if (event.getCode() == KeyCode.ENTER) {
-        // do some actions
-    }
-}      */
 
 
     @FXML void createAccountButtonPressed(ActionEvent event) {
@@ -79,7 +71,7 @@ public class LoginController implements Initializable {
             changeScene("createAccountScene", event);
 
         } catch (IOException e){
-            //Fixa error handling
+           e.printStackTrace();
         }
     }
 
@@ -127,7 +119,7 @@ public class LoginController implements Initializable {
             changeScene("lostPasswordScene", event);
 
         }catch (IOException e){
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
 

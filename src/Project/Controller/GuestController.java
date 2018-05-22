@@ -22,9 +22,8 @@ import java.net.URL;
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
-public class GuestController implements Initializable {
+public class GuestController{
 
-    private boolean loginStatus;
 
     @FXML
     private ImageView HKRlogo;
@@ -57,38 +56,6 @@ public class GuestController implements Initializable {
     @FXML
     private Button lostPasswordButton;
 
-    /* @FXML
-     void adminButtonPressed(ActionEvent event) {
-         try {
-             loginStatus = DatabaseConnection.getInstance().handleAdminLogin(userNameTF.getText(), passwordTF.getText());
-
-             if (loginStatus == true) {
-                 changeScene("adminScene", event);
-
-             } else if (loginStatus == false) {
-                 userNameTF.clear();
-                 passwordTF.clear();
-                 userNameTF.requestFocus();
-                 throw new InputMismatchException();
-             }
-
-         } catch (InputMismatchException e) {
-             Alert alert = new Alert(Alert.AlertType.ERROR);
-             alert.setTitle("Error");
-             alert.setHeaderText("Admin login failed.");
-             alert.setContentText("Username or password is not correct or you might not be an admin.");
-             alert.showAndWait();
-
-         } catch (Exception e) {
-             e.printStackTrace();
-         }
-     }*/
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
-
 
     @FXML
     void guestButtonPressed(ActionEvent event) {
@@ -102,7 +69,7 @@ public class GuestController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e) {
-            //Fixa error handling
+            e.printStackTrace();
         }
     }
 
@@ -118,15 +85,13 @@ public class GuestController implements Initializable {
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
-            // Error handling
+
         }
     }
 
 
     @FXML
     void guestPressedStretchButton(ActionEvent event) {
-
-
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -170,51 +135,8 @@ public class GuestController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e) {
-            // Error handling
-        }
-
-
-   /* @FXML void loginButtonPressed(ActionEvent event) {
-        try {
-            loginStatus = DatabaseConnection.getInstance().handleUserLogin(userNameTF.getText(), passwordTF.getText());
-
-            if (loginStatus == true) {
-                UserInformation.getInstance().setSSN(DatabaseConnection.getInstance().retrieveUserSSN(userNameTF.getText()));
-                UserInformation.getInstance().setUsername(userNameTF.getText());
-                changeScene("userScene", event);
-
-            } else if (loginStatus == false) {
-                userNameTF.clear();
-                passwordTF.clear();
-                userNameTF.requestFocus();
-                throw new InputMismatchException();
-            }
-        }catch (InputMismatchException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("User login failed");
-            alert.setContentText("Username or password is not correct, try again.");
-            alert.showAndWait();
-
-        } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-*/
 
-
-
-   /* public void changeScene(String resource, ActionEvent event) throws IOException{
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Project/View/" + resource + ".fxml"));
-        Parent root = loader.load();
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-    }
-
-}*/
     }
 }

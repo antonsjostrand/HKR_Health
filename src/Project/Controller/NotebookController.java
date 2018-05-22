@@ -23,7 +23,7 @@ import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
-public class NotebookController implements Initializable {
+public class NotebookController{
 
     private char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
             'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö', 'a',
@@ -36,10 +36,6 @@ public class NotebookController implements Initializable {
     private TextArea notes;
     @FXML
     private ImageView notebookLogo;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-    }
 
     @FXML
     void goBack(ActionEvent event) {

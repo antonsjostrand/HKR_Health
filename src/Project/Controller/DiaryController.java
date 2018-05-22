@@ -16,15 +16,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DiaryController implements Initializable {
+public class DiaryController {
 
     @FXML private ImageView diaryLogo;
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
     @FXML void measurementUpdateButtonPressed (ActionEvent event) {
         try {
             changeScene("measurementScene", event);

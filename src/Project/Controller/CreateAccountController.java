@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 
 
 
-public class CreateAccountController implements Initializable {
+public class CreateAccountController {
 
     private boolean checkUserName;
     private boolean checkSSN;
@@ -118,11 +118,6 @@ public class CreateAccountController implements Initializable {
         }
     }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     //Kontrollerar så att inga textfields är tomma när man försöker skapa ett konto.
     public void checkInputNotEmpty(){
